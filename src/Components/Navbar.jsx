@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
    <nav className="w-[100vw] bg-base-100 h-[100px] flex items-center shadow-sm fixed top-0 z-10 left-0 right-0">
-     <div className="flex justify-between items-center w-[1240px] mx-auto ">
+     <div className="flex justify-between items-center w-full px-5 2xl:w-[1536px] mx-auto ">
       <div className="">
         <a className="btn btn-ghost text-xl">Study Mate</a>
       </div>
