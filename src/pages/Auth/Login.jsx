@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 const Login = () => {
 
-  const {singInWithGoogle , setUser} = use(AuthContext)
+  const {singInWithGoogle ,loginWithEmail, setUser} = use(AuthContext)
 
   const handleGoogleSingIn = () => {
     singInWithGoogle()
@@ -13,6 +13,18 @@ const Login = () => {
       setUser(res.user)
     })
     .catch(error => error)
+  }
+  
+  const handleEmailSignIn = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    loginWithEmail(email , password)
+    .then(res => {
+      setUser(res.user)
+    })
+    .then(error => console.log(error))
   }
   
 
@@ -34,17 +46,17 @@ const Login = () => {
            <form>
              <fieldset className="fieldset">
               <label className="label">Email</label>
-              <input type="email" className="input w-full" placeholder="Email" />
+              <input name="email" type="email" className="input w-full" placeholder="Email" />
               <label className="label">Password</label>
-              <input type="password" className="input w-full" placeholder="Password" />
+              <input name="password" type="password" className="input w-full" placeholder="Password" />
               <p>Forget Password</p>
-            </fieldset>
-           </form>
               <button onClick={handleGoogleSingIn} className="btn bg-white text-black border-[#e5e5e5] my-2">
                 <FcGoogle></FcGoogle> Login with Google
               </button>
-              <button className="btn bg-[#5BBC2E] text-white hover:bg-white hover:border-2 hover:border-[#5BBC2E] hover:text-[#5BBC2E]">Login</button>
+              <button onSubmit={handleEmailSignIn} className="btn bg-[#5BBC2E] text-white hover:bg-white hover:border-2 hover:border-[#5BBC2E] hover:text-[#5BBC2E]">Login</button>
               <p className="text-sm font-semibold">don't have an account <Link className="text-[#5BBC2E]" to={'/register'}>Register</Link></p>
+            </fieldset>
+           </form>
           </div>
         </div>
       </div>

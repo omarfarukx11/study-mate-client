@@ -49,7 +49,7 @@ const Navbar = () => {
 
 
       <div className=" hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="flex justify-between gap-5">
          {
             links
          }
@@ -61,10 +61,10 @@ const Navbar = () => {
                     <img 
                     src={user.photoURL}
                     alt="User"
-                    className="w-[60px] h-[60px] rounded-full"
+                    className="w-[50px] h-[50px] rounded-full"
                     />
               </div>
-          <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+          <ul tabIndex="-1" className="dropdown-content flex flex-col bg-base-100 rounded-box z-1 w-52 p-4 shadow-sm">
             <li className="btn bg-[#5BBC2E] text-white hover:bg-white hover:border-2 hover:border-[#5BBC2E] hover:text-[#5BBC2E] "><Link className="no-style-link" to={'/profile'}>Profile</Link></li>
             <li className="btn bg-[#5BBC2E] text-white hover:bg-white hover:border-2 hover:border-[#5BBC2E] hover:text-[#5BBC2E]" onClick={handleLogout}>LogOut</li>
           </ul>
