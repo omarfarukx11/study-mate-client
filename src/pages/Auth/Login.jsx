@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import { Link } from "react-router";
 
 const Login = () => {
 
@@ -36,12 +37,14 @@ const Login = () => {
               <input type="email" className="input w-full" placeholder="Email" />
               <label className="label">Password</label>
               <input type="password" className="input w-full" placeholder="Password" />
+              <p>Forget Password</p>
             </fieldset>
            </form>
-              <button onClick={handleGoogleSingIn} className="btn bg-white text-black border-[#e5e5e5]">
+              <button onClick={handleGoogleSingIn} className="btn bg-white text-black border-[#e5e5e5] my-2">
                 <FcGoogle></FcGoogle> Login with Google
               </button>
               <button className="btn bg-[#5BBC2E] text-white hover:bg-white hover:border-2 hover:border-[#5BBC2E] hover:text-[#5BBC2E]">Login</button>
+              <p className="text-sm font-semibold">don't have an account <Link className="text-[#5BBC2E]" to={'/register'}>Register</Link></p>
           </div>
         </div>
       </div>

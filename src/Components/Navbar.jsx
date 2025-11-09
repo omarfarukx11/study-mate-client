@@ -4,7 +4,18 @@ import { AuthContext } from "../AuthContext/AuthContext";
 import { FcMenu } from "react-icons/fc";
 
 const Navbar = () => {
-  const {user} = use(AuthContext)
+  const {user ,logOutUser} = use(AuthContext)
+
+  const handleLogout = () => {
+    logOutUser()
+    .then(() => {
+      alert('log out success')
+    }
+    )
+    .catch(error => error)
+  }
+  
+
      const links = (
     <>
       <li><NavLink to="/">Home</NavLink></li>
@@ -23,26 +34,14 @@ const Navbar = () => {
           <li>
            
           </li>
-          <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button">
-                    <img 
-                    src={user.photoURL}
-                    alt="User"
-                    className="w-[60px] h-[60px] rounded-full"
-                    />
-              </div>
-          <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-            <li><Link to={'/profile'}>Profile</Link></li>
-            <li>LogOut</li>
-          </ul>
-        </div>
+        
         </>
       )}
     </>
   );
 
   return (
-   <nav className="w-[100vw] bg-base-100 shadow-sm fixed top-0 z-10 left-0 right-0">
+   <nav className="w-[100vw] bg-base-100 h-[100px] flex items-center shadow-sm fixed top-0 z-10 left-0 right-0">
      <div className="flex justify-between items-center w-[1240px] mx-auto ">
       <div className="">
         <a className="btn btn-ghost text-xl">Study Mate</a>
@@ -55,8 +54,23 @@ const Navbar = () => {
             links
          }
         </ul>
+         {
+          user && 
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button">
+                    <img 
+                    src={user.photoURL}
+                    alt="User"
+                    className="w-[60px] h-[60px] rounded-full"
+                    />
+              </div>
+          <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+            <li className="btn bg-[#5BBC2E] text-white hover:bg-white hover:border-2 hover:border-[#5BBC2E] hover:text-[#5BBC2E] "><Link className="no-style-link" to={'/profile'}>Profile</Link></li>
+            <li className="btn bg-[#5BBC2E] text-white hover:bg-white hover:border-2 hover:border-[#5BBC2E] hover:text-[#5BBC2E]" onClick={handleLogout}>LogOut</li>
+          </ul>
+        </div>
+         }
       </div>
-
          <div className=" lg:hidden ">
        <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
