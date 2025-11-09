@@ -1,35 +1,66 @@
-import React from "react";
-import { NavLink } from "react-router";
+import React, { use } from "react";
+import { Link, NavLink } from "react-router";
+import { AuthContext } from "../AuthContext/AuthContext";
+import { FcMenu } from "react-icons/fc";
 
 const Navbar = () => {
+  const {user} = use(AuthContext)
+     const links = (
+    <>
+      <li><NavLink to="/">Home</NavLink></li>
+      <li><NavLink to="/findPartner">Find Partners</NavLink></li>
 
-    const links = <>
-         <li> <NavLink to={'/'}>Home</NavLink> </li>
-         <li> <NavLink to={'/findPartner'}>Find Partners</NavLink> </li>
-         <li> <NavLink to={'/Register'}>Register</NavLink> </li>
-         <li> <NavLink to={'/login'}>Login</NavLink> </li>
+      {!user && (
+        <>
+          <li><NavLink to="/login">Login</NavLink></li>
+        </>
+      )}
+
+      {user && (
+        <>
+          <li><NavLink to="/createPP">Create Partner Profile</NavLink></li>
+          <li><NavLink to="/myConnection">My Connections</NavLink></li>
+          <li>
+           
+          </li>
+          <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button">
+                    <img 
+                    src={user.photoURL}
+                    alt="User"
+                    className="w-[60px] h-[60px] rounded-full"
+                    />
+              </div>
+          <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+            <li><Link to={'/profile'}>Profile</Link></li>
+            <li>LogOut</li>
+          </ul>
+        </div>
+        </>
+      )}
     </>
+  );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
-        <div className="dropdown">
+   <nav className="w-[100vw] bg-base-100 shadow-sm fixed top-0 z-10 left-0 right-0">
+     <div className="flex justify-between items-center w-[1240px] mx-auto ">
+      <div className="">
+        <a className="btn btn-ghost text-xl">Study Mate</a>
+      </div>
+
+
+      <div className=" hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+         {
+            links
+         }
+        </ul>
+      </div>
+
+         <div className=" lg:hidden ">
+       <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
-            </svg>
+            <FcMenu></FcMenu>
           </div>
           <ul
             tabIndex="-1"
@@ -40,19 +71,9 @@ const Navbar = () => {
             }
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-         {
-            links
-         }
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
-      </div>
+         </div>
     </div>
+   </nav>
   );
 };
 
