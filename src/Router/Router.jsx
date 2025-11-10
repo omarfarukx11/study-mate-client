@@ -7,6 +7,7 @@ import FindPartners from "../pages/Partners/FindPartners";
 import CreatePartnerProfile from "../pages/Partners/CreatePartnerProfile";
 import MyConnection from "../pages/Partners/MyConnection";
 import Profile from "../pages/Profile/Profile";
+import PrivateRoute from "../AuthContext/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,9 @@ export const router = createBrowserRouter([
         },
         {
             path:"/findPartner",
-            Component:FindPartners
+            element:<PrivateRoute>
+                <FindPartners></FindPartners>
+            </PrivateRoute>
         },
         {
             path:"/createPP",
@@ -36,7 +39,9 @@ export const router = createBrowserRouter([
         },
         {
             path:'/myConnection',
-            Component:MyConnection,
+            element:<PrivateRoute>
+                <MyConnection></MyConnection>
+            </PrivateRoute>,
         },
         {
             path:"/profile",
