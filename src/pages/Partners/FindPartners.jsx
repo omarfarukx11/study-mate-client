@@ -15,18 +15,23 @@ const FindPartner = () => {
   }, []);
 
 
-  const filteredPartners = partners
-    .filter((p) =>
-      [p.name, p.skill, p.subject].some((field) =>
-        field?.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+ const filteredPartners = partners
+  .filter((p) =>
+    [p.name, p.skill, p.subject].some((field) =>
+      field?.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    .sort((a, b) => {
-      if (sortOption === "rating") return b.rating - a.rating;
-      if (sortOption === "name") return a.name.localeCompare(b.name);
-      return 0;
-    });
-console.log(filteredPartners)
+  )
+  .sort((a, b) => {
+    if (sortOption === "rating") return b.rating - a.rating;
+    if (sortOption === "name") return a.name.localeCompare(b.name);
+    if (sortOption === "experience") {
+      const levels = { Beginner: 1, Intermediate: 2, Advanced: 3 };
+      return levels[b.experienceLevel] - levels[a.experienceLevel];
+    }
+    return 0;
+  });
+
+
   return (
     <div className="min-h-screen w-[1536px] mx-auto bg-gray-100 p-6 md:p-10">
       {/* Header */}
