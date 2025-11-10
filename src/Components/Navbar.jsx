@@ -56,11 +56,11 @@ const Navbar = () => {
     <nav className="w-[100vw] bg-base-100 h-[100px] flex items-center shadow-sm fixed top-0 z-10 left-0 right-0">
       <div className="flex justify-between items-center w-full px-5 2xl:w-[1536px] mx-auto ">
         <div className="">
-          <a className="btn btn-ghost text-xl">Study Mate</a>
+          <h1 className="btn btn-ghost text-3xl">Study<span className="text-[#5BBC2E]">Mate</span></h1>
         </div>
 
-        <div className=" hidden lg:flex">
-          <ul className="flex justify-between gap-5">{links}</ul>
+        <div className=" hidden lg:flex items-center justify-center">
+          <ul className="flex justify-between gap-5 text-lg text-gray-500 font-semibold">{links}</ul>
           {user && (
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button">
