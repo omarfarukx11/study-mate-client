@@ -34,7 +34,7 @@ const Home = () => {
         </p>
       </div>
 
-      <div className="w-[1536px] mx-auto grid grid-cols-1 gap-5 lg:grid-cols-3 rounded-sm">
+      <div className="w-[1536px] mx-auto grid grid-cols-1 gap-5 lg:grid-cols-3 rounded-sm my-20">
         {topPartner.map((data) => (
           <TopPartners key={data._id} data={data}></TopPartners>
         ))}
