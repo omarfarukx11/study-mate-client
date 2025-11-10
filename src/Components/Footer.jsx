@@ -1,30 +1,54 @@
 import React from "react";
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="w-[100vw] bg-black">
-    <div className=" bottom-0 footer 2xl:w-[1536px] mx-auto sm:footer-horizontal grid lg:grid-cols-3 grid-cols-1 text-neutral-content p-10">
-        <nav>
-        <h6 className="footer-title">Services</h6>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
-        <a className="link link-hover">Marketing</a>
-        <a className="link link-hover">Advertisement</a>
-      </nav>
-      <nav>
-        <h6 className="footer-title">Company</h6>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
-      </nav>
-      <nav>
-        <h6 className="footer-title">Legal</h6>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
-      </nav>
-    </div>
+    <footer className="w-full bg-black text-white">
+      <div className="2xl:w-[1536px] mx-auto px-6 py-12 grid lg:grid-cols-3 gap-8">
+        <div className="flex flex-col space-y-4">
+          <h1 className="text-2xl font-bold">Study<span className="text-[#5BBC2E]">Mate</span></h1>
+          <p className="text-gray-400">
+            StudyMate is a platform that connects students with study partners to enhance learning and collaboration.
+          </p>
+          <div className="flex space-x-4 mt-2">
+            <a href="#" className="hover:text-green-500">
+              <FaFacebookF />
+            </a>
+            <a href="#" className="hover:text-green-500">
+              <FaTwitter />
+            </a>
+            <a href="#" className="hover:text-green-500">
+              <FaLinkedinIn />
+            </a>
+            <a href="#" className="hover:text-green-500">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+
+      
+        <div className="flex flex-col space-y-2">
+          <h6 className="font-semibold text-white mb-2">Services</h6>
+          <a href="#" className="hover:text-green-500">Branding</a>
+          <a href="#" className="hover:text-green-500">Design</a>
+          <a href="#" className="hover:text-green-500">Marketing</a>
+          <a href="#" className="hover:text-green-500">Advertisement</a>
+        </div>
+
+  
+        <div className="flex flex-col space-y-2">
+          <h6 className="font-semibold text-white mb-2">Company</h6>
+          <a href="#" className="hover:text-green-500">About Us</a>
+          <a href="#" className="hover:text-green-500">Contact</a>
+          <a href="#" className="hover:text-green-500">Jobs</a>
+          <a href="#" className="hover:text-green-500">Press Kit</a>
+        </div>
+      </div>
+
+    
+      <div className="border-t-2 bg-[#5BBC2E] mt-8 py-4 text-center text-white text-sm">
+        &copy; {new Date().getFullYear()} StudyMate. All rights reserved.
+      </div>
     </footer>
   );
 };
