@@ -1,5 +1,6 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { RiTwitterXFill } from "react-icons/ri";
 
 const Footer = () => {
   return (
@@ -18,7 +19,7 @@ const Footer = () => {
               <FaFacebookF />
             </a>
             <a href="#" className="hover:text-[#5BBC2E] transition-colors duration-300">
-              <FaTwitter />
+              <RiTwitterXFill />
             </a>
             <a href="#" className="hover:text-[#5BBC2E] transition-colors duration-300">
               <FaLinkedinIn />
