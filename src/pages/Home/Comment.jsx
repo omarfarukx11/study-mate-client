@@ -14,8 +14,8 @@ const Comment = () => {
   }, [axiosInstance]);
 
   return (
-    <div className="w-[1536px] mx-auto my-20 ">
-      <Marquee pauseOnHover={true} speed={300} gradient={false} >
+    <div className="2xl:w-[1536px] mx-auto my-20 ">
+      <Marquee pauseOnHover={true} speed={100} gradient={false} >
   <div className="flex gap-8">
     {comments.map((comment) => (
       <ReviewCard key={comment.id} comment={comment} />

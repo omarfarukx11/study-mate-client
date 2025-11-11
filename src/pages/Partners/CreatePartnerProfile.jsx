@@ -14,7 +14,7 @@ const CreatePartnerProfile = () => {
     const name = form.name.value;
     const profileImage = form.profileImage.value;
     const subject = form.subject.value;
-    const skill = form.skill.value; // ✅ নতুন field
+    const skill = form.skill.value; 
     const studyMode = form.studyMode.value;
     const availabilityTime = form.availabilityTime.value;
     const location = form.location.value;

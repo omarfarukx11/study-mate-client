@@ -1,138 +1,132 @@
-import React, { use, useEffect } from "react";
+import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { singWithEmail, user, setUser, setLoading, singInWithGoogle } =
-    use(AuthContext);
+  const { singWithEmail, singInWithGoogle, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
-
-  const googleSingUp = () => {
+  const handleGoogleSignUp = (e) => {
+    e.preventDefault();
     singInWithGoogle()
-      .then((result) => {
-        setUser(result.user);
+      .then((res) => {
+        setUser(res.user);
         Swal.fire({
-          position: "top-end",
+          position: "top-center",
           icon: "success",
-          title: "Registration Successful",
+          title: "Registration successful",
           showConfirmButton: false,
           timer: 1500,
         });
         navigate("/");
       })
-      .catch((error) => console.log(error));
+      .catch((err) => console.log(err));
   };
 
-  const handleEmailSingUp = (e) => {
+  const handleEmailSignUp = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photoURL = e.target.photoURL.value;
     const password = e.target.password.value;
 
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-    if (!passwordPattern.test(password)) {
-      alert("need strong password");
-      return;
-    }
     singWithEmail(email, password)
-      .then((result) => {
-        const user = result.user;
-        setUser({ displayName: name, photoURL: photoURL })
-          .then(() => {
-            setUser({ ...user, displayName: name, photoURL: photoURL });
-            setLoading(false);
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Registration Successful",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            navigate("/");
-          })
-          .catch((error) => {
-            error;
-            setUser(user);
-          });
+      .then((res) => {
+        const user = res.user;
+        setUser({ ...user, displayName: name, photoURL: photoURL });
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Registration successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
       })
-      .catch((error) => {
-        error;
-      });
+      .catch((err) => console.log(err));
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Register Now!</h1>
-          <p className="py-6">
-            Access your StudyMate account to find learning partners, <br />{" "}
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <div className="flex flex-col lg:flex-row-reverse items-center gap-10 w-full max-w-7xl">
+
+
+        <div className="text-center lg:text-left max-w-lg">
+          <h1 className="text-5xl font-bold text-gray-800 mb-4">Register Now!</h1>
+          <p className="text-gray-600 text-lg">
+            Access your StudyMate account to find learning partners, <br />
             manage your connections, and continue your study journey.
           </p>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <div className="card-body">
-            <form onSubmit={handleEmailSingUp}>
-              <fieldset className="fieldset">
-                <label className="label">Name</label>
-                <input
-                  type="name"
-                  name="name"
-                  className="input w-full"
-                  placeholder="name"
-                />
-                <label className="label">Email</label>
-                <input
-                  name="email"
-                  type="email"
-                  className="input w-full"
-                  placeholder="Email"
-                />
-                <label className="label">PhotURL</label>
-                <input
-                  type="url"
-                  name="photoURL"
-                  className="input w-full"
-                  placeholder="photoURL"
-                />
-                <label className="label">Password</label>
-                <input
-                  name="password"
-                  type="password"
-                  className="input w-full"
-                  placeholder="Password"
-                />
-                <button
-                  type="Submit"
-                  className="btn bg-[#5BBC2E] text-white hover:bg-white hover:border-2 hover:border-[#5BBC2E] hover:text-[#5BBC2E]"
-                >
-                  Register
-                </button>
-                <button
-                  onClick={googleSingUp}
-                  className="btn bg-white text-black border-[#e5e5e5] my-2"
-                >
-                  <FcGoogle></FcGoogle> Login with Google
-                </button>
-                <p className="text-sm font-semibold">
-                  Already have an account{" "}
-                  <Link className="text-[#5BBC2E]" to={"/login"}>
-                    Login
-                  </Link>
-                </p>
-              </fieldset>
+
+
+        <div className="card bg-white w-full max-w-lg lg:p-8 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-300">
+          <div className="card-body flex flex-col gap-4">
+            <form onSubmit={handleEmailSignUp}>
+              <label className="label font-semibold text-gray-700">Name</label>
+              <input
+                name="name"
+                type="text"
+                className="input input-bordered w-full rounded-lg px-4 py-2"
+                placeholder="Name"
+                required
+              />
+
+              <label className="label font-semibold text-gray-700">Email</label>
+              <input
+                name="email"
+                type="email"
+                className="input input-bordered w-full rounded-lg px-4 py-2"
+                placeholder="Email"
+                required
+              />
+
+              <label className="label font-semibold text-gray-700">Photo URL</label>
+              <input
+                name="photoURL"
+                type="url"
+                className="input input-bordered w-full rounded-lg px-4 py-2"
+                placeholder="Photo URL"
+              />
+
+              <label className="label font-semibold text-gray-700">Password</label>
+              <input
+                name="password"
+                type="password"
+                className="input input-bordered w-full rounded-lg px-4 py-2"
+                placeholder="Password"
+                required
+              />
+
+              {/* Google Button */}
+              <button
+                type="button"
+                onClick={handleGoogleSignUp}
+                className="flex items-center justify-center gap-2 w-full bg-white border border-gray-300 text-black font-semibold py-3 rounded-lg shadow hover:bg-gray-100 transition-all duration-300 mb-3 mt-3"
+              >
+                <FcGoogle size={24} /> Register with Google
+              </button>
+
+              {/* Email Register Button */}
+              <button
+                type="submit"
+                className="w-full bg-green-500 text-white font-semibold py-3 rounded-lg shadow hover:bg-white hover:text-green-500 hover:border hover:border-green-500 transition-all duration-300 mb-2"
+              >
+                Register
+              </button>
+
+              <p className="text-sm text-center text-gray-600 mt-2">
+                Already have an account?{" "}
+                <Link className="text-green-500 font-semibold hover:underline" to={"/login"}>
+                  Login
+                </Link>
+              </p>
             </form>
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -54,7 +54,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-[100vw] bg-base-100 h-[100px] flex items-center shadow-sm fixed top-0 z-10 left-0 right-0">
-      <div className="flex justify-between items-center w-full px-5 2xl:w-[1536px] mx-auto ">
+      <div className="flex justify-between items-center px-5 w-[1536px] mx-auto border-2 ">
         <div className="">
           <h1 className="btn btn-ghost text-3xl">Study<span className="text-[#5BBC2E]">Mate</span></h1>
         </div>

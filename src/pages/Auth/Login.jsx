@@ -59,7 +59,7 @@ const Login = () => {
         </div>
 
         {/* Login Card */}
-        <div className="card bg-white w-full max-w-lg p-8 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-300">
+        <div className="card bg-white w-full max-w-lg lg:p-8 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-300">
           <div className="card-body flex flex-col gap-4">
             <form onSubmit={handleEmailSignIn}>
               <label className="label font-semibold text-gray-700">Email</label>

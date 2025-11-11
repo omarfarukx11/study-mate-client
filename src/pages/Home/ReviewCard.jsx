@@ -4,7 +4,7 @@ const ReviewCard = ({comment}) => {
 
     const {name , image , rating ,review} = comment
     return (
-         <div className="card bg-white shadow-xl border border-[#5BBC2E] p-6 w-[500px] space-x-5 h-[300px] mx-auto ">
+         <div className="card bg-white shadow-xl border border-[#5BBC2E] p-6 lg:w-[500px] w-[300px] space-x-5 h-[300px]  mx-auto ">
         <div className="flex flex-col items-center text-center">
           <img
             src={image}
@@ -17,7 +17,7 @@ const ReviewCard = ({comment}) => {
            <p>{rating}</p>
           </div>
 
-          <p className="text-gray-600 text-base leading-relaxed">
+          <p className="text-gray-600 lg:text-base text-sm leading-relaxed ">
           {review}
           </p>
         </div>

@@ -31,7 +31,7 @@ const FindPartner = () => {
     });
 
   return (
-    <div className="min-h-screen w-[1536px] mx-auto bg-gray-100 p-6 md:p-10">
+    <div className="min-h-screen 2xl:w-[1536px] mx-auto bg-gray-100 p-6 md:p-10">
       {/* Header */}
       <h1 className="text-3xl md:text-5xl font-bold text-center text-gray-800 mb-8">
         Find Your Study Partner
