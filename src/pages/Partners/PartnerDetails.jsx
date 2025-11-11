@@ -88,7 +88,7 @@ const PartnerDetails = () => {
 
           {/* Call to Action */}
           <div className="mt-6 md:mt-8">
-            <button className="w-full border-3 hover:border-[#5BBC2E] hover:bg-white hover:text-[#5BBC2E] font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg shadow-md transition-all duration-300 bg-[#5BBC2E] text-white">
+            <button className="w-full hover:border-3 hover:border-[#5BBC2E] hover:bg-white hover:text-[#5BBC2E] font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg shadow-md transition-all duration-300 bg-[#5BBC2E] text-white">
               Connect with {name}
             </button>
           </div>

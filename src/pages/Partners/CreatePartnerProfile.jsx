@@ -1,11 +1,190 @@
-import React from 'react';
+import React, { use, useContext } from "react";
+import { AuthContext } from "../../AuthContext/AuthContext";
+// import useAxios from "../../Hooks/useAxios";
 
 const CreatePartnerProfile = () => {
-    return (
-        <div>
-            <h1>create Partner Profile</h1>
+const { user } = useContext(AuthContext);
+// const axiosInstance = use(useAxios)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const profileImage = form.profileImage.value;
+    const subject = form.subject.value;
+    const studyMode = form.studyMode.value;
+    const availabilityTime = form.availabilityTime.value;
+    const location = form.location.value;
+    const experienceLevel = form.experienceLevel.value;
+    const rating = form.rating.value;
+    const email = user?.email || "";
+    const partnerCount = 0;
+
+    const newPartner = {
+      name,
+      profileImage,
+      subject,
+      studyMode,
+      availabilityTime,
+      location,
+      experienceLevel,
+      rating,
+      email,
+      partnerCount,
+    };
+
+    fetch("http://localhost:3000/studyPartners", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newPartner),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        alert("✅ Profile created successfully!");
+        form.reset();
+      })
+      .catch(() => alert("Failed to create profile"));
+  };
+
+  return (
+    <div className="min-h-screen flex justify-center items-center bg-gray-100 py-10 px-4">
+      <div className="w-full max-w-3xl bg-white shadow-2xl border-2 border-[#5BBC2E] rounded-xl p-8 md:p-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#5BBC2E] mb-8">
+          Create Your Study Partner Profile
+        </h2>
+
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Full Name */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          {/* Profile Image */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Profile Image URL</label>
+            <input
+              type="url"
+              name="profileImage"
+              required
+              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              placeholder="Paste your profile image link"
+            />
+          </div>
+
+          {/* Subject */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Subject</label>
+            <input
+              type="text"
+              name="subject"
+              required
+              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              placeholder="e.g. Math, English, Programming"
+            />
+          </div>
+
+          {/* Study Mode */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Study Mode</label>
+            <select
+              name="studyMode"
+              required
+              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+            >
+              <option value="">Select Mode</option>
+              <option value="Online">Online</option>
+              <option value="Offline">Offline</option>
+            </select>
+          </div>
+
+          {/* Availability Time */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Availability Time</label>
+            <input
+              type="text"
+              name="availabilityTime"
+              required
+              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              placeholder="e.g. Evening 6–9 PM"
+            />
+          </div>
+
+          {/* Location */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Location</label>
+            <input
+              type="text"
+              name="location"
+              required
+              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              placeholder="City, Area or preferred place"
+            />
+          </div>
+
+          {/* Experience Level */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Experience Level</label>
+            <select
+              name="experienceLevel"
+              required
+              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+            >
+              <option value="">Select Level</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div>
+
+          {/* Rating */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Rating</label>
+            <input
+              type="number"
+              name="rating"
+              min="0"
+              max="5"
+              step="0.1"
+              required
+              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              placeholder="e.g. 4.5"
+            />
+          </div>
+
+          {/* Email (Read Only, Green Border) */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Email (Read Only)</label>
+            <input
+              type="email"
+              name="email"
+              value={user?.email || ""}
+              readOnly
+              className="w-full border-2 border-[#5BBC2E] bg-gray-100 text-gray-700 rounded-sm px-4 py-2 cursor-not-allowed"
+            />
+          </div>
+        </form>
+
+        {/* Submit Button */}
+        <div className="mt-10">
+          <button
+            type="submit"
+            form="createProfileForm"
+            onClick={handleSubmit}
+            className="w-full bg-[#5BBC2E] text-white font-semibold text-lg py-3 rounded-sm hover:bg-white hover:text-[#5BBC2E] hover:border-2 hover:border-[#5BBC2E] transition-all duration-300"
+          >
+            Create Profile
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default CreatePartnerProfile;
