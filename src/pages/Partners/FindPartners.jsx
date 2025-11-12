@@ -42,15 +42,18 @@ const FindPartner = () => {
         <input
           type="text"
           placeholder=" Search by name, skill, or subject..."
-          className="w-full md:w-2/3 px-4 py-2 border-2 border-green-400 rounded-sm focus:outline-none focus:border-green-500 text-sm md:text-base"
+          className="w-full md:w-2/3 px-4 py-2 border-2 border-[#5BBC2E] rounded-sm focus:outline-none focus:border-[#5BBC2E] text-sm md:text-base"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
 
         <select
-          className={`w-full md:w-1/4 px-3 py-2 border-2 rounded-sm text-sm md:text-base outline-none focus:ring-0 ${
-            sortOption ? "border-green-500" : "border-green-500"
-          }`}
+          className={`w-full md:w-1/4 px-3 py-2 border-2 rounded-sm text-sm md:text-base outline-none focus:ring-0 
+    border-[#5BBC2E] 
+    hover:border-[#45A527] 
+    hover:bg-[#F0FFF0] 
+    transition-colors duration-200 ease-in-out
+  `}
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
         >

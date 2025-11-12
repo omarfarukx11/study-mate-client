@@ -7,11 +7,10 @@ import MyRequest from "./MyRequest";
 const MyConnection = () => {
   const allPartners = useLoaderData();
 
-  console.log(allPartners)
 
 
   return (
-    <div className="overflow-x-auto 2xl:w-[1536px] mx-auto mb-10 ">
+    <div className="overflow-x-auto 2xl:w-[1536px] px-5 lg:px-0 mx-auto mb-10 ">
       <div className="lg:h-[300px] lg:py-0 py-10  my-5 bg-[#f5f5f5] flex items-center justify-center flex-col rounded-sm">
         <h1 className="lg:text-6xl text-2xl font-bold text-center ">
           My <span className="text-[#5BBC2E]">Connections</span>
@@ -25,9 +24,9 @@ const MyConnection = () => {
         </p>
       </div>
 
-      <table className="table w-full">
+      <table className="table full  ">
     
-        <thead className="h-[100px] bg-[#5BBC2E] text-white text-2xl">
+        <thead className="h-[100px] bg-[#5BBC2E] text-white lg:text-2xl text-[10px]">
           <tr>
             <th>SL</th>
             <th>Partner Name</th>
@@ -35,6 +34,7 @@ const MyConnection = () => {
             <th>Study Mode</th>
             <th>Update</th>
             <th>Delete</th>
+
           </tr>
         </thead>
 

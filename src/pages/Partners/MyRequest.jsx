@@ -164,7 +164,7 @@ const MyRequest = ({ data, index }) => {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="btn btn-outline"
+                  className="btn  bg-red-700 hover:bg-red-800 text-white "
                 >
                   Cancel
                 </button>
