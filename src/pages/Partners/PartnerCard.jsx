@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const PartnerCard = ({ partner }) => {
   const { _id, name, skill, subject, rating } = partner;
-  console.log(partner)
+
 
   return (
     <div className="flex flex-col md:flex-row rounded-lg overflow-hidden shadow-2xl hover:shadow-2xl transition-transform hover:scale-105 duration-300 bg-white w-full max-w-4xl mx-auto">

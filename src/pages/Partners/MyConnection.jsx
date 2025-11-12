@@ -7,6 +7,9 @@ import MyRequest from "./MyRequest";
 const MyConnection = () => {
   const allPartners = useLoaderData();
 
+  console.log(allPartners)
+
+
   return (
     <div className="overflow-x-auto 2xl:w-[1536px] mx-auto mb-10 ">
       <div className="lg:h-[300px] lg:py-0 py-10  my-5 bg-[#f5f5f5] flex items-center justify-center flex-col rounded-sm">

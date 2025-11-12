@@ -13,16 +13,18 @@ const Comment = () => {
     });
   }, [axiosInstance]);
 
-  return (
-    <div className="2xl:w-[1536px] mx-auto my-20 ">
-      <Marquee pauseOnHover={true} speed={100} gradient={false} >
-  <div className="flex gap-8">
-    {comments.map((comment) => (
-      <ReviewCard key={comment.id} comment={comment} />
-    ))}
-  </div>
-</Marquee>
+  // Duplicate array to avoid last-first overlap
+  const marqueeItems = [...comments, ...comments];
 
+  return (
+    <div className="2xl:w-[1536px] mx-auto my-20">
+      <Marquee pauseOnHover={true} speed={300} gradient={false}>
+        <div className="flex gap-8">
+          {marqueeItems.map((comment, index) => (
+            <ReviewCard key={index} comment={comment} />
+          ))}
+        </div>
+      </Marquee>
     </div>
   );
 };

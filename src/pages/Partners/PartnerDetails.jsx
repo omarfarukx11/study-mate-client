@@ -26,10 +26,9 @@ const PartnerDetails = () => {
   } = partnerDetails;
 
   const [currentPartnerCount, setCurrentPartnerCount] = useState(partnerCount);
-  const [requested, setRequested] = useState(false)
+  const [requested, setRequested] = useState(false);
 
   const handleSendRequest = async () => {
-  
     try {
       const response = await axiosInstance.post(`/request/${_id}`, {
         email: user.email,
@@ -37,7 +36,7 @@ const PartnerDetails = () => {
 
       if (response.data.success) {
         setCurrentPartnerCount(prev => prev + 1);
-        setRequested(true); 
+        setRequested(true);
         Swal.fire("Success", response.data.message, "success");
       }
     } catch (err) {
@@ -51,7 +50,7 @@ const PartnerDetails = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4 md:p-6">
-      <div className="w-full max-w-7xl bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-green-500">
+      <div className="w-full max-w-7xl bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-[#5BBC2E]">
         <div className="w-full md:w-1/2 p-4">
           <img src={profileImage} alt={name} className="w-full h-full object-cover rounded-sm" />
         </div>
@@ -63,8 +62,8 @@ const PartnerDetails = () => {
             <div className="my-6 border-t-3 border-[#5BBC2E] rounded-full"></div>
 
             <div className="flex flex-wrap gap-2 md:gap-4 mb-4 md:mb-6">
-              <span className="text-xs sm:text-sm md:text-lg font-semibold border-2 border-green-500 text-green-500 px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">{subject}</span>
-              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-green-100 text-green-700 px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">{skill}</span>
+              <span className="text-xs sm:text-sm md:text-lg font-semibold border-2 border-[#5BBC2E] text-[#5BBC2E] px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">{subject}</span>
+              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-[#E8F8E2] text-[#5BBC2E] px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">{skill}</span>
               <span className="text-xs sm:text-sm md:text-lg font-semibold bg-[#5BBC2E] text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full flex items-center gap-1 md:gap-2">
                 <FaRegStar className="text-sm sm:text-base md:text-lg" /> {rating}
               </span>
@@ -80,7 +79,7 @@ const PartnerDetails = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-4 text-gray-700 text-sm sm:text-base md:text-lg">
-            <div className="flex items-center gap-2 md:gap-3"><FaEnvelope className="text-green-500" /> {email}</div>
+            <div className="flex items-center gap-2 md:gap-3"><FaEnvelope className="text-[#5BBC2E]" /> {email}</div>
             <div className="flex items-center gap-2 md:gap-3"><FaMapMarkerAlt className="text-red-500" /> {location}</div>
             <div className="flex items-center gap-2 md:gap-3"><FaClock className="text-yellow-500" /> {availabilityTime}</div>
             <div className="flex items-center gap-2 md:gap-3"><FaUsers className="text-blue-500" /> {currentPartnerCount} Partner(s)</div>
@@ -90,9 +89,9 @@ const PartnerDetails = () => {
             <button
               onClick={handleSendRequest}
               disabled={requested}
-              className={`w-full font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg shadow-md transition-all duration-300 
-                ${requested ? "bg-gray-400 text-white cursor-not-allowed" : "bg-[#5BBC2E] text-white hover:border-3 hover:border-[#5BBC2E] hover:bg-white hover:text-[#5BBC2E]"}
-              `}
+              className={`w-full md:w-auto border-2 border-[#5BBC2E] bg-white text-[#5BBC2E] font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-sm shadow-md transition-all duration-300 hover:bg-[#5BBC2E] hover:text-white text-sm md:text-base ${
+                requested ? "bg-gray-400 border-gray-400 text-white cursor-not-allowed hover:bg-gray-400 hover:text-white" : ""
+              }`}
             >
               {requested ? "Request Sent" : `Connect with ${name}`}
             </button>
