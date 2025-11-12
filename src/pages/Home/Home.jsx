@@ -2,9 +2,10 @@ import React from "react";
 import Navbar from "../../Components/Navbar";
 import Banner from "./Banner";
 import TopPartners from "./TopPartners";
-import { useLoaderData } from "react-router";
+
 import AboutStudy from "./AboutStudy";
 import Comment from "./Comment";
+import { useLoaderData } from "react-router";
 
 const Home = () => {
   const topPartner = useLoaderData();

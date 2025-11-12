@@ -26,11 +26,10 @@ const PartnerDetails = () => {
   } = partnerDetails;
 
   const [currentPartnerCount, setCurrentPartnerCount] = useState(partnerCount);
-  const [requested, setRequested] = useState(false); // button state
+  const [requested, setRequested] = useState(false)
 
   const handleSendRequest = async () => {
   
-
     try {
       const response = await axiosInstance.post(`/request/${_id}`, {
         email: user.email,

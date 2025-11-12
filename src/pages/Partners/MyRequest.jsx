@@ -1,48 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegStar } from "react-icons/fa";
+import useAxios from "../../Hooks/useAxios";
 
-const MyRequest = ({ request, index }) => {
-  // Alternate background colors for odd/even cards
-  const bgColor = index % 2 === 0 ? "bg-white" : "bg-gray-100";
+const MyRequest = ({ data, index }) => {
+  const { partnerId: id } = data;
+  const axiosInstance = useAxios();
+  const [reqData, setReqData] = useState([]);
+
+    const {name , profileImage , subject , studyMode , location } = reqData
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/findPartner/${id}`)
+      .then((data) => {
+        setReqData(data.data);
+      })
+      .catch((err) => console.error("Error fetching partner:", err));
+  }, [axiosInstance, id]);
+
+const handleDelete = () => {
+  console.log('hello delete')
+}
+
+
+
+
 
   return (
-    <div className={`${bgColor} shadow-lg rounded-lg border border-e-red-600 p-6 mb-6 flex flex-col md:flex-row gap-6  `}>
-      
-      {/* Partner Image */}
-      <div className="w-full md:w-1/4 flex justify-center md:justify-start">
-        <img
-          src={request.profileImage || "https://via.placeholder.com/150"}
-          alt={request.partnerName}
-          className="w-32 h-32 rounded-full border-2 border-green-500 object-cover"
-        />
+<tr className="h-24 hover:bg-gray-100 transition duration-200">
+  <th>{index + 1}</th>
+  <td>
+    <div className="flex items-center gap-3 h-full">
+      <div className="avatar">
+        <div className="mask rounded-[50%] h-16 w-16">
+          <img src={profileImage} alt="Avatar" />
+        </div>
       </div>
-
-      {/* Partner Info */}
-      <div className="flex-1 flex flex-col justify-between">
-        <div>
-          <h2 className="text-xl md:text-3xl font-bold text-gray-800">{request.partnerName}</h2>
-          <p className="text-gray-600 mt-1">{request.subject}</p>
-
-          <div className="flex flex-wrap gap-2 mt-3">
-            <span className="text-sm md:text-base font-semibold bg-green-100 text-green-700 px-3 py-1 rounded-full">{request.skill}</span>
-            <span className="text-sm md:text-base font-semibold bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full flex items-center gap-1">
-              <FaRegStar /> {request.rating}
-            </span>
-            <span className="text-sm md:text-base font-semibold bg-blue-100 text-blue-700 px-3 py-1 rounded-full">{request.studyMode}</span>
-          </div>
-        </div>
-
-        {/* Actions */}
-        <div className="flex flex-col md:flex-row gap-4 mt-4 md:mt-6">
-          <button className="w-full md:w-auto btn bg-green-500 text-white hover:bg-white hover:text-green-500 hover:border hover:border-green-500 transition-all duration-300">
-            Update
-          </button>
-          <button className="w-full md:w-auto btn bg-red-500 text-white hover:bg-white hover:text-red-500 hover:border hover:border-red-500 transition-all duration-300">
-            Cancel Request
-          </button>
-        </div>
+      <div className="flex flex-col justify-center">
+        <div className="font-bold">{name}</div>
+        <div className="text-sm opacity-50">{location}</div>
       </div>
     </div>
+  </td>
+  <td>{subject}</td>
+  <td>{studyMode}</td>
+  <td>
+    <button className="btn bg-[#5BBC2E] hover:bg-[#4DA626] text-white transition duration-200">
+      Update
+    </button>
+  </td>
+  <td>
+    <button onClick={handleDelete} className="btn bg-red-700 hover:bg-red-800 text-white transition duration-200">
+      Delete
+    </button>
+  </td>
+</tr>
+
+
   );
 };
 

@@ -40,6 +40,7 @@ export const router = createBrowserRouter([
         },
         {
             path:'/myConnection',
+            loader: () => fetch('http://localhost:3000/request'),
             element:<PrivateRoute>
                 <MyConnection></MyConnection>
             </PrivateRoute>,
