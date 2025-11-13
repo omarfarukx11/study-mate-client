@@ -10,11 +10,16 @@ import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import useAxios from "../../Hooks/useAxios";
+import NotFound from "../../Components/NotFound";
+
 
 const PartnerDetails = () => {
   const partnerDetails = useLoaderData();
   const { user } = useContext(AuthContext);
   const axiosInstance = useAxios();
+
+
+  if (!partnerDetails) return <NotFound></NotFound>
 
   const {
     name,
@@ -31,11 +36,9 @@ const PartnerDetails = () => {
     _id,
   } = partnerDetails;
 
-  // Load requested state from localStorage on mount
   const [requested, setRequested] = useState(() => {
     return localStorage.getItem(`requested_${_id}`) === "true";
   });
-
   const [currentPartnerCount, setCurrentPartnerCount] = useState(partnerCount);
 
   const handleSendRequest = async () => {
@@ -47,7 +50,6 @@ const PartnerDetails = () => {
       if (response.data.success) {
         setCurrentPartnerCount((prev) => prev + 1);
         setRequested(true);
-        // Save to localStorage so refresh keeps state
         localStorage.setItem(`requested_${_id}`, "true");
         Swal.fire("Success", response.data.message, "success");
       }
@@ -63,7 +65,7 @@ const PartnerDetails = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4 md:p-6">
       <div className="w-full max-w-7xl bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-[#5BBC2E]">
-        {/* Profile Image */}
+
         <div className="w-full md:w-1/2 p-4">
           <img
             src={profileImage}
@@ -72,7 +74,7 @@ const PartnerDetails = () => {
           />
         </div>
 
-        {/* Details Section */}
+ 
         <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-between gap-6">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-3 md:mb-4">

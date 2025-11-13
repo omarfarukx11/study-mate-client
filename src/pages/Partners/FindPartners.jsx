@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
 import PartnerCard from "./PartnerCard";
 import { FcSearch } from "react-icons/fc";
+import Loader from "../../Components/Loader";
+import useAxios from "../../Hooks/useAxios";
+import NotFound from "../../Components/NotFound";
+import PartnerNotFound from "../../Components/PartnerNotFound";
 
 const FindPartner = () => {
   const [partners, setPartners] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("");
+  const [loading, setLoading] = useState(false);
+  const axiosInstance = useAxios();
 
   useEffect(() => {
-    fetch("http://localhost:3000/findPartner")
-      .then((res) => res.json())
-      .then((data) => setPartners(data))
+    axiosInstance("/findPartner")
+      .then((data) => setPartners(data.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [axiosInstance]);
 
   const filteredPartners = partners
     .filter((p) =>
@@ -31,7 +36,7 @@ const FindPartner = () => {
     });
 
   return (
-    <div className="min-h-screen 2xl:w-[1536px] mx-auto bg-gray-100 p-6 md:p-10">
+    <div className="min-h-screen 2xl:w-[1536px] mx-auto 0 p-6 md:p-10">
       {/* Header */}
       <h1 className="text-3xl md:text-5xl font-bold text-center text-gray-800 mb-8">
         Find Your Study Partner
@@ -64,18 +69,19 @@ const FindPartner = () => {
         </select>
       </div>
 
-      {/* Partner Cards */}
-      <div className="grid xl:grid-cols-3 grid-cols-1 gap-8">
-        {filteredPartners.length > 0 ? (
-          filteredPartners.map((partner) => (
-            <PartnerCard key={partner._id} partner={partner} />
-          ))
-        ) : (
-          <p className="text-center text-gray-500 text-lg">
-            No matching partners found.
-          </p>
-        )}
-      </div>
+
+      {loading ? (
+        <Loader></Loader>
+      ) : filteredPartners.length > 0 ? 
+        <div className="grid xl:grid-cols-3 grid-cols-1 gap-8">
+          {
+          filteredPartners.map(partner => 
+          <PartnerCard key={partner._id} partner={partner} /> )
+        }
+        </div>
+      : 
+        <PartnerNotFound></PartnerNotFound>
+      }
     </div>
   );
 };
