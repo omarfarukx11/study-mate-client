@@ -10,17 +10,19 @@ import Profile from "../pages/Profile/Profile";
 import PrivateRoute from "../AuthContext/PrivateRoute";
 import PartnerDetails from "../pages/Partners/PartnerDetails";
 import NotFound from "../Components/NotFound";
+import Loader from "../Components/Loader";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    hydrateFallback: <div>Loading...</div>,
+    hydrateFallback: <Loader></Loader>,
     children: [
       {
         index: true,
         loader: () => fetch("http://localhost:3000/studyPartner"),
         Component: Home,
+        hydrateFallback: <Loader></Loader>,
       },
       {
         path: "/register",
@@ -50,6 +52,7 @@ export const router = createBrowserRouter([
             <MyConnection></MyConnection>
           </PrivateRoute>
         ),
+        hydrateFallback: <Loader></Loader>,
       },
       {
         path: "/profile",
@@ -64,14 +67,15 @@ export const router = createBrowserRouter([
             <PartnerDetails></PartnerDetails>
           </PrivateRoute>
         ),
-      },
-      {
-        path: "/partnerDetails/*",
-        Component: NotFound,
+        hydrateFallback: <Loader></Loader>,
       },
     ],
   },
-
+  
+  {
+    path: "/partnerDetails/:/*",
+    Component: NotFound,
+  },
   {
     path: "/*",
     Component: NotFound,

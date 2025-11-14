@@ -12,14 +12,14 @@ import { AuthContext } from "../../AuthContext/AuthContext";
 import useAxios from "../../Hooks/useAxios";
 import NotFound from "../../Components/NotFound";
 
-
 const PartnerDetails = () => {
   const partnerDetails = useLoaderData();
   const { user } = useContext(AuthContext);
   const axiosInstance = useAxios();
 
-
-  if (!partnerDetails) return <NotFound></NotFound>
+  if (!partnerDetails || !partnerDetails._id) {
+    return <NotFound />;
+  }
 
   const {
     name,
@@ -65,7 +65,6 @@ const PartnerDetails = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4 md:p-6">
       <div className="w-full max-w-7xl bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-[#5BBC2E]">
-
         <div className="w-full md:w-1/2 p-4">
           <img
             src={profileImage}
@@ -74,7 +73,6 @@ const PartnerDetails = () => {
           />
         </div>
 
- 
         <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-between gap-6">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-3 md:mb-4">
@@ -110,7 +108,6 @@ const PartnerDetails = () => {
             <div className="my-6 border-t-3 border-[#5BBC2E] rounded-full"></div>
           </div>
 
-          {/* Info Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-4 text-gray-700 text-sm sm:text-base md:text-lg">
             <div className="flex items-center gap-2 md:gap-3">
               <FaEnvelope className="text-[#5BBC2E]" /> {email}
@@ -126,7 +123,6 @@ const PartnerDetails = () => {
             </div>
           </div>
 
-          {/* Connect Button */}
           <div className="mt-6 md:mt-8">
             <button
               onClick={handleSendRequest}

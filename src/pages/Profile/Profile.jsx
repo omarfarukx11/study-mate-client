@@ -50,6 +50,9 @@ const Profile = () => {
   };
 
   return (
+    
+    <div className=" flex items-center justify-center w-full ">
+
     <div className="md:w-[50%] w-[80%] mx-auto bg-white border border-green-500/30 shadow-xl rounded-2xl p-6 text-center md:mt-10 overflow-hidden">
       
       {/* Profile Image */}
@@ -113,6 +116,7 @@ const Profile = () => {
 
       {/* Error */}
       {error && <p className="text-red-500 mt-3 text-sm">{error}</p>}
+    </div>
     </div>
   );
 };

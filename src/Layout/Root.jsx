@@ -5,8 +5,8 @@ import Footer from "../Components/Footer";
 import Loader from "../Components/Loader";
 
 const Root = () => {
-  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -16,7 +16,7 @@ const Root = () => {
       } else {
         setLoading(false);
       }
-    }, 500);
+    }, 400);
 
     const timeoutClear = () => clearTimeout(timerSet);
     return timeoutClear;
@@ -25,11 +25,13 @@ const Root = () => {
   return (
     <div>
       {loading ? (
-        <Loader></Loader>
+        <div className="mx-auto mt-[100px] min-h-[80vh] flex justify-center items-center transition-opacity duration-300">
+          <Loader></Loader>
+        </div>
       ) : (
         <>
           <Navbar />
-          <div className="mx-auto min-h-screen mt-[100px] transition-opacity duration-300">
+          <div className="mx-auto mt-[100px] min-h-[80vh] flex justify-center items-center transition-opacity duration-300">
             <Outlet />
           </div>
           <Footer />

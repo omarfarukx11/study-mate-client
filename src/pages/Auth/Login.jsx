@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
@@ -7,6 +8,8 @@ import Swal from "sweetalert2";
 const Login = () => {
   const { singInWithGoogle, loginWithEmail, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleGoogleSignIn = (e) => {
     e.preventDefault();
@@ -62,21 +65,35 @@ const Login = () => {
         <div className="card bg-white w-full max-w-lg lg:p-8 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-300">
           <div className="card-body flex flex-col gap-4">
             <form onSubmit={handleEmailSignIn}>
+
+              {/* Email */}
               <label className="label font-semibold text-gray-700">Email</label>
               <input
                 name="email"
                 type="email"
                 className="input input-bordered w-full rounded-lg px-4 py-2"
                 placeholder="Email"
+                required
               />
 
-              <label className="label font-semibold text-gray-700">Password</label>
-              <input
-                name="password"
-                type="password"
-                className="input input-bordered w-full rounded-lg px-4 py-2"
-                placeholder="Password"
-              />
+              {/* Password */}
+              <label className="label font-semibold text-gray-700 mt-3">Password</label>
+              <div className="relative">
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  className="input input-bordered w-full rounded-lg px-4 py-2 pr-10"
+                  placeholder="Password"
+                  required
+                />
+                
+                <span
+                  className="absolute right-3 top-3 cursor-pointer text-gray-600 hover:text-gray-800"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+                </span>
+              </div>
 
               <p className="text-sm text-right text-gray-500 mb-4 cursor-pointer hover:text-green-500">
                 Forgot Password?
@@ -105,6 +122,7 @@ const Login = () => {
                   Register
                 </Link>
               </p>
+
             </form>
           </div>
         </div>
