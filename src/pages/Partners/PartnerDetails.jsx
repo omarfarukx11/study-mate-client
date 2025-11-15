@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   FaRegStar,
   FaEnvelope,
@@ -36,10 +36,22 @@ const PartnerDetails = () => {
     _id,
   } = partnerDetails;
 
-  const [requested, setRequested] = useState(() => {
-    return localStorage.getItem(`requested_${_id}`) === "true";
-  });
+  const [requested, setRequested] = useState(false);
   const [currentPartnerCount, setCurrentPartnerCount] = useState(partnerCount);
+
+  useEffect(() => {
+    const checkRequest = async () => {
+      try {
+        const res = await axiosInstance.get(`/request/check/${_id}`, {
+          params: { email: user.email },
+        });
+        setRequested(res.data.requested);
+      } catch (err) {
+        console.error("Error checking request:", err);
+      }
+    };
+    checkRequest();
+  }, [axiosInstance, _id, user.email]);
 
   const handleSendRequest = async () => {
     try {
@@ -50,7 +62,6 @@ const PartnerDetails = () => {
       if (response.data.success) {
         setCurrentPartnerCount((prev) => prev + 1);
         setRequested(true);
-        localStorage.setItem(`requested_${_id}`, "true");
         Swal.fire("Success", response.data.message, "success");
       }
     } catch (err) {
@@ -63,8 +74,8 @@ const PartnerDetails = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4 md:p-6">
-      <div className="w-full max-w-7xl bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-[#5BBC2E]">
+    <div className="flex items-center justify-center p-4 my-20 md:p-6">
+      <div className="w-[1500px] mx-auto h-[600px] bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-[#5BBC2E]">
         <div className="w-full md:w-1/2 p-4">
           <img
             src={profileImage}

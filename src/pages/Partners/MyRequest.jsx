@@ -15,7 +15,6 @@ const MyRequest = ({ data, index }) => {
       .catch((err) => console.error("Error fetching partner:", err));
   }, [axiosInstance, id]);
 
-
   const handleDelete = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -37,7 +36,6 @@ const MyRequest = ({ data, index }) => {
     });
   };
 
-
   const handleUpdate = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -48,18 +46,15 @@ const MyRequest = ({ data, index }) => {
       studyMode: form.studyMode.value,
       location: form.location.value,
     };
-    try {
-      const res = await axiosInstance.patch(`/updatePartner/${id}`, updatedData);
-      if (res.data.success) {
-        Swal.fire("Updated!", "Partner info updated successfully.", "success");
-        setReqData((prev) => ({ ...prev, ...updatedData }));
-        setIsModalOpen(false);
-      } else {
-        Swal.fire("No changes made!", res.data.message, "info");
-      }
-    } catch (error) {
-      console.error("Error updating partner:", error);
-      Swal.fire("Error!", "Failed to update partner info.", "error");
+
+    const res = await axiosInstance.patch(`/updatePartner/${id}`, updatedData);
+
+    if (res.data.success) {
+      Swal.fire("Updated!", "Partner info updated successfully.", "success");
+      setReqData((prev) => ({ ...prev, ...updatedData }));
+      setIsModalOpen(false);
+    } else {
+      Swal.fire("No changes made!", res.data.message, "info");
     }
   };
 
@@ -69,8 +64,7 @@ const MyRequest = ({ data, index }) => {
 
   return (
     <>
-
-      <tr className="h-24 hover:bg-gray-100 transition duration-200">
+      <tr className="h-24 bg-gray-100 transition duration-200">
         <th>{index + 1}</th>
         <td>
           <div className="flex items-center gap-3 h-full">
@@ -90,7 +84,7 @@ const MyRequest = ({ data, index }) => {
         <td>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="btn bg-[#5BBC2E] hover:bg-[#4DA626] text-white transition duration-200"
+            className="btn border border-[#5bbc3e] text-[#5bbc2e] hover:bg-[#5BBC2E]  hover:text-white transition duration-200"
           >
             Update
           </button>
@@ -98,7 +92,7 @@ const MyRequest = ({ data, index }) => {
         <td>
           <button
             onClick={handleDelete}
-            className="btn bg-red-700 hover:bg-red-800 text-white transition duration-200"
+            className="btn hover:bg-red-600 hover:text-white border border-red-600 text-red-600 transition duration-200"
           >
             Delete
           </button>
@@ -107,7 +101,7 @@ const MyRequest = ({ data, index }) => {
 
       {isModalOpen && (
         <dialog open className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box border-2 border-[#5BBC2E]">
+          <div className="modal-box border-2 border-[#5BBC2E] max-h-[90vh] sm:max-h-[80vh] overflow-y-auto">
             <h3 className="font-bold text-lg text-[#5BBC2E] mb-4">
               Update Partner Info
             </h3>
@@ -118,7 +112,7 @@ const MyRequest = ({ data, index }) => {
                 name="name"
                 defaultValue={name}
                 placeholder="Full Name"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full outline-none focus:border-[#5BBC2E]"
               />
 
               <input
@@ -126,7 +120,7 @@ const MyRequest = ({ data, index }) => {
                 name="profileImage"
                 defaultValue={profileImage}
                 placeholder="Profile Image URL"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full outline-none focus:border-[#5BBC2E]"
               />
 
               <input
@@ -134,13 +128,13 @@ const MyRequest = ({ data, index }) => {
                 name="subject"
                 defaultValue={subject}
                 placeholder="Subject"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full outline-none focus:border-[#5BBC2E]"
               />
 
               <select
                 name="studyMode"
                 defaultValue={studyMode}
-                className="select select-bordered w-full"
+                className="select select-bordered w-full outline-none focus:border-[#5BBC2E]"
               >
                 <option value="Online">Online</option>
                 <option value="Offline">Offline</option>
@@ -151,20 +145,20 @@ const MyRequest = ({ data, index }) => {
                 name="location"
                 defaultValue={location}
                 placeholder="Location"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full outline-none focus:border-[#5BBC2E]"
               />
 
               <div className="modal-action">
                 <button
                   type="submit"
-                  className="btn bg-[#5BBC2E] hover:bg-[#4DA626] text-white"
+                  className="btn border border-[#5bbc3e] text-[#5bbc2e] hover:bg-[#5BBC2E]  hover:text-white transition duration-200"
                 >
                   Save Changes
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="btn  bg-red-700 hover:bg-red-800 text-white "
+                  className="btn hover:bg-red-600 hover:text-white border border-red-600 text-red-600 transition duration-200"
                 >
                   Cancel
                 </button>

@@ -49,7 +49,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen  flex items-center justify-center p-4">
       <div className="flex flex-col lg:flex-row-reverse items-center gap-10 w-full max-w-7xl">
         
         {/* Left Text */}

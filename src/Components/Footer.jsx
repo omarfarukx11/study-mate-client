@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="w-full bg-black text-white">
       <div className="2xl:w-[1536px] mx-auto px-6 py-12 grid lg:grid-cols-3 gap-8">
-        {/* Logo & Description */}
+
         <div className="flex flex-col space-y-4">
           <h1 className="text-2xl font-bold">
             Study<span className="text-[#5BBC2E]">Mate</span>
@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Services */}
+
         <div className="flex flex-col space-y-2">
           <h6 className="font-semibold text-white mb-2">Services</h6>
           <a href="#" className="hover:text-[#5BBC2E] transition-colors duration-300">Branding</a>
@@ -39,7 +39,7 @@ const Footer = () => {
           <a href="#" className="hover:text-[#5BBC2E] transition-colors duration-300">Advertisement</a>
         </div>
 
-        {/* Company */}
+
         <div className="flex flex-col space-y-2">
           <h6 className="font-semibold text-white mb-2">Company</h6>
           <a href="#" className="hover:text-[#5BBC2E] transition-colors duration-300">About Us</a>
@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
+
       <div className="border-t-2 border-[#5BBC2E]"></div>
       <div className="bg-[#5BBC2E] mt-3 py-4 text-center text-white text-sm">
         &copy; {new Date().getFullYear()} StudyMate. All rights reserved.

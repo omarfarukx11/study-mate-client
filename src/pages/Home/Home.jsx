@@ -11,7 +11,7 @@ const Home = () => {
   const topPartner = useLoaderData();
 
   return (
-    <div className="mx-auto">
+    <div className="w-full">
       <div className="lg:h-[300px] lg:py-0 py-10 my-5 bg-[#f5f5f5] flex items-center justify-center flex-col rounded-sm">
         <h1 className="lg:text-6xl text-2xl font-bold ">
           Study <span className="text-[#5BBC2E]">Mate</span>
@@ -35,7 +35,7 @@ const Home = () => {
         </p>
       </div>
 
-      <div className="2xl:w-[1536px] mx-auto grid grid-cols-1 gap-5 xl:grid-cols-3 rounded-sm my-20 p-5">
+      <div className="2xl:w-[1536px] mx-auto grid grid-cols-1 gap-5 xl:grid-cols-3 rounded-sm my-20 lg:p-0 p-5">
         {topPartner.map((data) => (
           <TopPartners key={data._id} data={data}></TopPartners>
         ))}

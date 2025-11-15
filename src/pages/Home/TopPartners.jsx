@@ -3,13 +3,13 @@ import { FaRegStar } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 const TopPartners = ({ data }) => {
-  const { _id, name, skill, subject, rating } = data;
+  const { _id, name, skill, subject, rating , profileImage } = data;
 
   return (
     <div className="flex flex-col md:flex-row rounded-lg overflow-hidden shadow-2xl hover:shadow-2xl transition-transform hover:scale-105 duration-300 bg-white w-full max-w-4xl mx-auto">
       <div className="w-full h-64 md:h-auto ">
         <img
-          src="https://i.ibb.co/Z6kJVWq4/pexels-gabby-k-6237989.jpg"
+          src={profileImage}
           alt={name}
           className="w-full h-full object-cover rounded-sm"
         />

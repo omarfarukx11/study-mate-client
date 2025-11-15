@@ -1,64 +1,59 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import useAxios from "../../Hooks/useAxios";
 import Swal from "sweetalert2";
+import Loader from "../../Components/Loader";
 
 const CreatePartnerProfile = () => {
   const { user } = useContext(AuthContext);
   const axiosInstance = useAxios();
 
+  const [pageLoading, setPageLoading] = useState(true);
+  const [submitLoading, setSubmitLoading] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setPageLoading(false), 400);
+    return () => clearTimeout(t);
+  }, []);
+
+  if (pageLoading || submitLoading) {
+    return <Loader fullScreen={true} />;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitLoading(true);
 
     const form = e.target;
-    const name = form.name.value;
-    const profileImage = form.profileImage.value;
-    const subject = form.subject.value;
-    const skill = form.skill.value; 
-    const studyMode = form.studyMode.value;
-    const availabilityTime = form.availabilityTime.value;
-    const location = form.location.value;
-    const experienceLevel = form.experienceLevel.value;
-    const rating = form.rating.value;
-    const email = user?.email || "";
-    const partnerCount = 0;
 
     const newPartner = {
-      name,
-      profileImage,
-      subject,
-      skill,
-      studyMode,
-      availabilityTime,
-      location,
-      experienceLevel,
-      rating,
-      email,
-      partnerCount,
+      name: form.name.value,
+      profileImage: form.profileImage.value,
+      subject: form.subject.value,
+      skill: form.skill.value,
+      studyMode: form.studyMode.value,
+      availabilityTime: form.availabilityTime.value,
+      location: form.location.value,
+      experienceLevel: form.experienceLevel.value,
+      rating: form.rating.value,
+      email: user?.email || "",
+      partnerCount: 0,
     };
 
-    axiosInstance.post("/studyPartner", newPartner).then((data) => {
-      if (data.data.insertedId) {
-        Swal.fire({
-          title: "Do you want to save the changes?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Save",
-          denyButtonText: `Don't save`,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire("Saved!", "", "success");
-          } else if (result.isDenied) {
-            Swal.fire("Changes are not saved", "", "info");
-          }
-        });
+    try {
+      const res = await axiosInstance.post("/studyPartner", newPartner);
+
+      if (res.data.insertedId) {
+        Swal.fire("Profile Created!", "", "success");
+        form.reset();
       }
-      e.target.reset();
-    });
+    } finally {
+      setSubmitLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100 py-10 px-4">
+    <div className="min-h-screen flex justify-center items-center py-10 px-4">
       <div className="w-full max-w-3xl bg-white shadow-2xl border-2 border-[#5BBC2E] rounded-xl p-8 md:p-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#5BBC2E] mb-8">
           Create Your Study Partner Profile
@@ -69,7 +64,6 @@ const CreatePartnerProfile = () => {
           id="createProfileForm"
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Full Name
@@ -82,7 +76,6 @@ const CreatePartnerProfile = () => {
               placeholder="Enter your full name"
             />
           </div>
-
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
@@ -97,7 +90,6 @@ const CreatePartnerProfile = () => {
             />
           </div>
 
-
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Subject
@@ -111,7 +103,6 @@ const CreatePartnerProfile = () => {
             />
           </div>
 
-
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Skill
@@ -124,7 +115,6 @@ const CreatePartnerProfile = () => {
               placeholder="e.g. Communication, Problem Solving"
             />
           </div>
-
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
@@ -141,7 +131,6 @@ const CreatePartnerProfile = () => {
             </select>
           </div>
 
- 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Availability Time
@@ -155,7 +144,6 @@ const CreatePartnerProfile = () => {
             />
           </div>
 
-
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Location
@@ -168,7 +156,6 @@ const CreatePartnerProfile = () => {
               placeholder="City, Area or preferred place"
             />
           </div>
-
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
@@ -186,7 +173,6 @@ const CreatePartnerProfile = () => {
             </select>
           </div>
 
-
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Rating
@@ -203,7 +189,6 @@ const CreatePartnerProfile = () => {
             />
           </div>
 
-     
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Email (Read Only)
@@ -217,7 +202,6 @@ const CreatePartnerProfile = () => {
             />
           </div>
         </form>
-
 
         <div className="mt-10">
           <button

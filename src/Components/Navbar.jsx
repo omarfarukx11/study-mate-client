@@ -9,18 +9,32 @@ const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
 
   const handleLogout = () => {
-    logOutUser()
-      .then(() => {
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "Log Out Successful",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((error) => error);
-  };
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "Do you want to log out?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, log me out!',
+    cancelButtonText: 'No, stay logged in'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      logOutUser()
+        .then(() => {
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Log Out Successful',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((error) => console.error(error));
+    }
+  });
+};
+
 
   const links = (
     <>
@@ -74,21 +88,21 @@ const Navbar = () => {
                 <img
                   src={user.photoURL}
                   alt="User"
-                  className="w-[50px] h-[50px] rounded-full"
+                  className="w-[30px] h-[30px] rounded-full"
                 />
               </div>
               <ul className="dropdown-content flex flex-col bg-white rounded-box z-10 w-52 p-3 gap-2 shadow-sm">
                 <li>
                   <Link
                     to={"/profile"}
-                    className="w-full px-4 py-2 rounded-sm hover:bg-[#5BBC2E] hover:text-white transition-colors duration-300"
+                    className="btn w-full text-[#5bbc2e] border border-[#5bbc2e] px-4 py-2 rounded-sm hover:bg-[#5BBC2E] hover:text-white transition-colors duration-300"
                   >
                     Profile
                   </Link>
                 </li>
                 <li
                   onClick={handleLogout}
-                  className="w-full px-4 py-2 rounded-sm hover:bg-[#5BBC2E] hover:text-white transition-colors duration-300 cursor-pointer"
+                  className="btn w-full  text-[#5bbc2e] border border-[#5bbc2e] px-4 py-2 rounded-sm hover:bg-[#5BBC2E] hover:text-white transition-colors duration-300 cursor-pointer"
                 >
                   LogOut
                 </li>
@@ -97,14 +111,13 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* RIGHT SIDE ELEMENTS ALWAYS VISIBLE (Small Device Included) */}
         <div className="flex items-center gap-3 lg:gap-5">
-          {/* Theme Button - Always Visible */}
+
           <button className="p-2 rounded-full bg-gray-200 text-gray-700 lg:hidden">
             <FaMoon />
           </button>
 
-          {/* Profile Image - Always Visible if logged in */}
+        
           {user && (
             <img
               src={user.photoURL}
@@ -113,7 +126,7 @@ const Navbar = () => {
             />
           )}
 
-          {/* Mobile Menu Button */}
+ 
           <div className="dropdown dropdown-end lg:hidden">
             <div tabIndex={0} role="button" className="btn btn-ghost">
               <FcMenu />

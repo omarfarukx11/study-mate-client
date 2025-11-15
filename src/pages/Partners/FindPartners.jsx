@@ -9,8 +9,18 @@ const FindPartner = () => {
   const [filteredPartners, setFilteredPartners] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [pageLoading, setPageLoading] = useState(true); 
+  const [loading, setLoading] = useState(false); 
   const axiosInstance = useAxios();
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageLoading(false);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, []);
+
 
   useEffect(() => {
     setLoading(true);
@@ -22,6 +32,7 @@ const FindPartner = () => {
       .catch(console.log)
       .finally(() => setLoading(false));
   }, [axiosInstance]);
+
 
   useEffect(() => {
     setLoading(true);
@@ -44,13 +55,18 @@ const FindPartner = () => {
 
       setFilteredPartners(filtered);
       setLoading(false);
-    }, 300);
+    }, 400);
 
     return () => clearTimeout(timer);
   }, [searchTerm, sortOption, partners]);
 
+
+  if (pageLoading) {
+    return <Loader fullScreen={true} />;
+  }
+
   return (
-    <div className="min-h-screen 2xl:w-[1536px] mx-auto p-6 md:p-10">
+    <div className="min-h-screen 2xl:w-[1536px] mx-auto p-6 md:p-10 relative">
       <h1 className="text-3xl md:text-5xl font-bold text-center text-gray-800 mb-8">
         Find Your Study Partner
       </h1>
@@ -77,7 +93,7 @@ const FindPartner = () => {
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center h-64">
+        <div className="flex justify-center items-center">
           <Loader />
         </div>
       ) : filteredPartners.length > 0 ? (
