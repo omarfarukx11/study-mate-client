@@ -7,7 +7,7 @@ const PartnerCard = ({ partner }) => {
 
   return (
     <div className="flex flex-col md:flex-row rounded-lg overflow-hidden shadow-2xl hover:shadow-2xl transition-transform hover:scale-105 duration-300 bg-white w-full max-w-4xl mx-auto">
-      <div className="w-full h-64 md:h-auto">
+      <div className="w-full h-full">
         <img
           src={profileImage}
           alt={name}
@@ -15,7 +15,7 @@ const PartnerCard = ({ partner }) => {
         />
       </div>
 
-      <div className="w-full p-4 flex flex-col justify-center gap-2 mt-4 md:mt-0">
+      <div className="w-full  p-4 flex flex-col justify-center gap-2 mt-4 md:mt-0">
         <h1 className="text-xl md:text-2xl font-bold text-gray-800">{name}</h1>
 
         <div className="my-3 border-t-4 border-[#5BBC2E] rounded-full"></div>

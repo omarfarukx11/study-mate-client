@@ -74,8 +74,8 @@ const PartnerDetails = () => {
   };
 
   return (
-    <div className="flex items-center justify-center p-4 my-20 md:p-6">
-      <div className="w-[1500px] mx-auto h-[600px] bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-[#5BBC2E]">
+    <div className="flex items-center justify-center p-4 my-20 md:p-6 ">
+      <div className="w-[1500px] h-[600px] mx-auto bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-[#5BBC2E]">
         <div className="w-full md:w-1/2 p-4">
           <img
             src={profileImage}
@@ -84,7 +84,7 @@ const PartnerDetails = () => {
           />
         </div>
 
-        <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-between gap-6">
+        <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-between">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-3 md:mb-4">
               {name}
@@ -92,7 +92,7 @@ const PartnerDetails = () => {
 
             <div className="my-6 border-t-3 border-[#5BBC2E] rounded-full"></div>
 
-            <div className="flex flex-wrap gap-2 md:gap-4 mb-4 md:mb-6">
+            <div className="flex gap-2 mb-4">
               <span className="text-xs sm:text-sm md:text-lg font-semibold border-2 border-[#5BBC2E] text-[#5BBC2E] px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
                 {subject}
               </span>
@@ -116,10 +116,10 @@ const PartnerDetails = () => {
               <strong>{studyMode}</strong> study sessions.
             </p>
 
-            <div className="my-6 border-t-3 border-[#5BBC2E] rounded-full"></div>
+            <div className="= my-4 border-t-3 border-[#5BBC2E] rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-4 text-gray-700 text-sm sm:text-base md:text-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-gray-700 text-sm sm:text-base md:text-lg">
             <div className="flex items-center gap-2 md:gap-3">
               <FaEnvelope className="text-[#5BBC2E]" /> {email}
             </div>
@@ -134,7 +134,7 @@ const PartnerDetails = () => {
             </div>
           </div>
 
-          <div className="mt-6 md:mt-8">
+          <div className="mt-6 md:mt-8 ">
             <button
               onClick={handleSendRequest}
               disabled={requested}
