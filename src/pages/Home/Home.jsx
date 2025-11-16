@@ -12,6 +12,7 @@ const Home = () => {
 
   return (
     <div className="w-full">
+      <title>StudyMate - Home</title>
       <div className="lg:h-[300px] lg:py-0 py-10 my-5 bg-[#f5f5f5] flex items-center justify-center flex-col rounded-sm">
         <h1 className="lg:text-6xl text-2xl font-bold ">
           Study <span className="text-[#5BBC2E]">Mate</span>

@@ -79,6 +79,7 @@ const Register = () => {
 
   return (
     <div className="min-h-screen  flex items-center justify-center p-4">
+      <title>StudyMate - Register</title>
       <div className="flex flex-col lg:flex-row-reverse items-center gap-10 w-full max-w-7xl">
         <div className="text-center lg:text-left max-w-lg">
           <h1 className="text-5xl font-bold text-gray-800 mb-4">
@@ -121,7 +122,7 @@ const Register = () => {
                 placeholder="Photo URL"
               />
 
-              {/* Password Input + Show/Hide */}
+
               <label className="label font-semibold text-gray-700">
                 Password
               </label>
@@ -134,26 +135,25 @@ const Register = () => {
                   required
                 />
 
-                {/* Eye Icon */}
+
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-3 text-gray-600 z-10"
                 >
                   {showPassword ? (
-                    <FaEyeSlash size={20} />
-                  ) : (
                     <FaEye size={20} />
+                  ) : (
+                    <FaEyeSlash size={20} />
                   )}
                 </button>
               </div>
 
-              {/* Error text */}
               {passwordError && (
                 <p className="text-red-500 text-sm mt-1">{passwordError}</p>
               )}
 
-              {/* Google SignUp */}
+
               <button
                 type="button"
                 onClick={handleGoogleSignUp}
@@ -162,7 +162,7 @@ const Register = () => {
                 <FcGoogle size={24} /> Register with Google
               </button>
 
-              {/* Email Register */}
+
               <button
                 type="submit"
                 className="w-full bg-green-500 text-white font-semibold py-3 rounded-lg shadow hover:bg-white hover:text-green-500 hover:border hover:border-green-500 transition-all duration-300 mb-2"

@@ -1,13 +1,16 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyDvY0nrJuh0mPv-5W_Wy4uNT_iBqdnpE2M",
-  authDomain: "study-mate-x11.firebaseapp.com",
-  projectId: "study-mate-x11",
-  storageBucket: "study-mate-x11.firebasestorage.app",
-  messagingSenderId: "25648744127",
-  appId: "1:25648744127:web:5d179e53812bb3059ae80a"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
+
+export default firebaseConfig;
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

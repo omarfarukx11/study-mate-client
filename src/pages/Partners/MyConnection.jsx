@@ -9,6 +9,7 @@ const MyConnection = () => {
 
   return (
     <div className=" 2xl:w-[1536px] min-h-screen px-5 lg:px-0 mx-auto mb-10 ">
+      <title>StudyMate - MyConnection</title>
       <div className="lg:h-[200px] lg:py-0 py-10  my-5 bg-[#f5f5f5] flex items-center justify-center flex-col rounded-sm">
         <h1 className="lg:text-6xl text-2xl font-bold text-center ">
           My <span className="text-[#5BBC2E]">Connections</span>

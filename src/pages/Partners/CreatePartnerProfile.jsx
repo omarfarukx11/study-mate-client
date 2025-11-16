@@ -54,6 +54,7 @@ const CreatePartnerProfile = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-center py-10 px-4">
+     <title>StudyMate - Create Partner Profile</title>
       <div className="w-full max-w-3xl bg-white shadow-2xl border-2 border-[#5BBC2E] rounded-xl p-8 md:p-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#5BBC2E] mb-8">
           Create Your Study Partner Profile
