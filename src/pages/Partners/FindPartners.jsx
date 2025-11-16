@@ -9,10 +9,9 @@ const FindPartner = () => {
   const [filteredPartners, setFilteredPartners] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("");
-  const [pageLoading, setPageLoading] = useState(true); 
-  const [loading, setLoading] = useState(false); 
+  const [pageLoading, setPageLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const axiosInstance = useAxios();
-
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -20,7 +19,6 @@ const FindPartner = () => {
     }, 400);
     return () => clearTimeout(timer);
   }, []);
-
 
   useEffect(() => {
     setLoading(true);
@@ -32,7 +30,6 @@ const FindPartner = () => {
       .catch(console.log)
       .finally(() => setLoading(false));
   }, [axiosInstance]);
-
 
   useEffect(() => {
     setLoading(true);
@@ -60,52 +57,53 @@ const FindPartner = () => {
     return () => clearTimeout(timer);
   }, [searchTerm, sortOption, partners]);
 
-
   if (pageLoading) {
     return <Loader fullScreen={true} />;
   }
 
   return (
-    <div className="min-h-screen 2xl:w-[1536px] mx-auto p-6 md:p-10 relative">
-     <title>StudyMate - Find Partners</title>
-      <h1 className="text-3xl md:text-5xl font-bold text-center text-primary my-20">
-        Find Your Study Partner
-      </h1>
+    <div className="w-full bg-secondary">
+      <div className="min-h-screen w-[1536px] mx-auto p-6 md:p-10 relative text-neutral-content">
+        <title>StudyMate - Find Partners</title>
+        <h1 className="text-3xl md:text-5xl font-bold text-center text-primary my-20">
+          Find Your Study Partner
+        </h1>
 
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-20">
-        <input
-          type="text"
-          placeholder="Search by name, skill, or subject..."
-          className="w-full md:w-2/3 px-4 py-2 border-2 border-primary rounded-sm focus:outline-none focus:border-primary text-sm md:text-base"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-20">
+          <input
+            type="text"
+            placeholder="Search by name, skill, or subject..."
+            className="w-full md:w-2/3 px-4 py-2 border-2 border-primary rounded-sm focus:outline-none focus:border-primary text-sm md:text-base"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
 
-        <select
-          className="w-full md:w-1/4 px-3 py-2 border-2 rounded-sm text-sm md:text-base outline-none focus:ring-0 border-primary hover:border-[#45A527] hover:bg-[#F0FFF0] transition-colors duration-200 ease-in-out"
-          value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-        >
-          <option value="">Sort By</option>
-          <option value="rating">Rating</option>
-          <option value="name">Name</option>
-          <option value="experience">Experience</option>
-        </select>
+          <select
+            className="w-full select select-bordered md:w-1/4 px-3 py-2 border-2 rounded-sm text-sm md:text-base outline-none focus:ring-0 border-primary transition-colors duration-200 ease-in-out text-neutral-content"
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+          >
+            <option value="">Sort By</option>
+            <option value="rating">Rating</option>
+            <option value="name">Name</option> 
+            <option value="experience">Experience</option>
+          </select>
+        </div>
+
+        {loading ? (
+          <div className="flex justify-center items-center">
+            <Loader />
+          </div>
+        ) : filteredPartners.length > 0 ? (
+          <div className="grid xl:grid-cols-3 grid-cols-1 gap-8">
+            {filteredPartners.map((partner) => (
+              <PartnerCard key={partner._id} partner={partner} />
+            ))}
+          </div>
+        ) : (
+          <PartnerNotFound />
+        )}
       </div>
-
-      {loading ? (
-        <div className="flex justify-center items-center">
-          <Loader />
-        </div>
-      ) : filteredPartners.length > 0 ? (
-        <div className="grid xl:grid-cols-3 grid-cols-1 gap-8">
-          {filteredPartners.map((partner) => (
-            <PartnerCard key={partner._id} partner={partner} />
-          ))}
-        </div>
-      ) : (
-        <PartnerNotFound />
-      )}
     </div>
   );
 };

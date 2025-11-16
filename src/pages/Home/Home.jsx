@@ -11,7 +11,7 @@ const Home = () => {
   const topPartner = useLoaderData();
 
   return (
-    <div className="w-full">
+    <div className="w-full text-neutral-content">
       <title>StudyMate - Home</title>
       <div className="lg:h-[300px] lg:py-0 py-10 my-5 bg-secondary flex items-center justify-center flex-col rounded-sm">
         <h1 className="lg:text-6xl text-2xl font-bold ">
@@ -24,7 +24,9 @@ const Home = () => {
           together.
         </p>
       </div>
+
       <Banner></Banner>
+
       <div className="lg:h-[300px] lg:py-0 py-10  my-5 bg-secondary flex items-center justify-center flex-col rounded-sm">
         <h1 className="lg:text-6xl text-2xl font-bold text-center ">
           Top Study <span className="text-primary">Partners</span>
@@ -45,9 +47,9 @@ const Home = () => {
         <AboutStudy></AboutStudy>
 
 
-      <div className="bg-secondary my-20 lg:py-20 py-5">
+      <div className="bg-secondary my-20 lg:py-20 py-5 ">
         <div className="w-full text-center my-10">
-          <h2 className="lg:text-6xl text-2xl font-bold text-gray-800">
+          <h2 className="lg:text-6xl text-2xl font-bold ">
             What Our Users Say
           </h2>
           <p className="md:text-xl text-sm text-gray-500 lg:mt-4 mt-2">

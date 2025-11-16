@@ -6,7 +6,7 @@ const TopPartners = ({ data }) => {
   const { _id, name, skill, subject, rating , profileImage } = data;
 
   return (
-    <div className="flex flex-col md:flex-row border border-gray-100  rounded-lg overflow-hidden shadow-2xl hover:shadow-2xl transition-transform hover:scale-105 duration-300 bg-base-100 w-full max-w-4xl mx-auto">
+    <div className="flex flex-col md:flex-row border text-neutral-content border-gray-100  rounded-lg overflow-hidden shadow-2xl hover:shadow-2xl transition-transform hover:scale-105 duration-300 bg-base-100 w-full max-w-4xl mx-auto">
       <div className="w-full h-64 md:h-auto ">
         <img
           src={profileImage}
@@ -16,7 +16,7 @@ const TopPartners = ({ data }) => {
       </div>
 
       <div className="w-full p-4 flex flex-col justify-center gap-2 mt-4 md:mt-0">
-        <h1 className="text-xl md:text-2xl font-bold text-gray-800">{name}</h1>
+        <h1 className="text-xl md:text-2xl font-bold text-neutral-content capitalize">{name}</h1>
 
         <div className="my-3 border-t-4 border-primary rounded-full"></div>
 

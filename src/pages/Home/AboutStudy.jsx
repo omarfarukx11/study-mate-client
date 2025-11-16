@@ -5,7 +5,7 @@ import { IoPersonAddSharp } from "react-icons/io5";
 
 const AboutStudy = () => {
   return (
-    <section className="bg-secondary py-16 my-10">
+    <section className="bg-secondary py-16 my-10 ">
       <div className="2xl:w-[1536px] mx-auto p-5">
         
         <div className="text-center mb-12">

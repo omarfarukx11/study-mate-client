@@ -78,7 +78,8 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen  flex items-center justify-center p-4">
+    <div className="bg-secondary w-full text-neutral-content">
+      <div className="min-h-screen  flex items-center justify-center p-4">
       <title>StudyMate - Register</title>
       <div className="flex flex-col lg:flex-row-reverse items-center gap-10 w-full max-w-7xl">
         <div className="text-center lg:text-left max-w-lg">
@@ -94,43 +95,43 @@ const Register = () => {
         <div className="card bg-base-100 w-full max-w-lg lg:p-8 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-300">
           <div className="card-body flex flex-col gap-4">
             <form onSubmit={handleEmailSignUp}>
-              <label className="label font-semibold text-gray-700">Name</label>
+              <label className="label font-semibold pb-2 ">Name</label>
               <input
                 name="name"
                 type="text"
-                className="outline-none input input-bordered w-full rounded-lg px-4 py-2"
+                className="outline-none input  border border-gray-300 w-full rounded-lg px-4 py-2"
                 placeholder="Name"
                 required
               />
 
-              <label className="label font-semibold text-gray-700">Email</label>
+              <label className="label font-semibold py-2">Email</label>
               <input
                 name="email"
                 type="email"
-                className="outline-none input input-bordered w-full rounded-lg px-4 py-2"
+                className="outline-none input  border border-gray-300 w-full rounded-lg px-4 py-2"
                 placeholder="Email"
                 required
               />
 
-              <label className="label font-semibold text-gray-700">
+              <label className="label font-semibold py-2">
                 Photo URL
               </label>
               <input
                 name="photoURL"
                 type="url"
-                className="outline-none input input-bordered w-full rounded-lg px-4 py-2"
+                className="outline-none input  border border-gray-300  w-full rounded-lg px-4 py-2"
                 placeholder="Photo URL"
               />
 
 
-              <label className="label font-semibold text-gray-700">
+              <label className="label font-semibold py-2">
                 Password
               </label>
               <div className="relative overflow-visible">
                 <input
                   name="password"
                   type={showPassword ? "text" : "password"}
-                  className="outline-none input input-bordered w-full rounded-lg px-4 py-2 pr-12"
+                  className="outline-none input border border-gray-300 w-full rounded-lg px-4 py-2 pr-12"
                   placeholder="Password"
                   required
                 />
@@ -183,6 +184,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

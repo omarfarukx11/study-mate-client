@@ -64,7 +64,7 @@ const MyRequest = ({ data, index }) => {
 
   return (
     <>
-      <tr className="h-24 bg-gray-300 border-primary">
+      <tr className="h-24 bg-secondary border-primary">
         <th>{index + 1}</th>
         <td className="flex justify-center items-center">
           <div className="flex items-center py-1 flex-col justify-center gap-2 sm:gap-3">

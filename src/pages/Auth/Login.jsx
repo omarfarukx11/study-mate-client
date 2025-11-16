@@ -49,14 +49,15 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="bg-secondary w-full text-neutral-content">
+    <div className="min-h-screen flex items-center justify-center p-4 ">
       <title>StudyMate - Login</title>
 
       <div className="flex flex-col lg:flex-row-reverse items-center gap-10 w-full max-w-7xl">
 
 
         <div className="text-center lg:text-left max-w-lg">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">Login now!</h1>
+          <h1 className="text-5xl font-bold  mb-4">Login now!</h1>
           <p className="text-gray-600 text-lg">
             Access your StudyMate account to find learning partners, <br />
             manage your connections, and continue your study journey.
@@ -69,22 +70,22 @@ const Login = () => {
 
             <form onSubmit={handleEmailSignIn}>
 
-              <label className="label font-semibold text-gray-700">Email</label>
+              <label className="label font-semibold pb-2">Email</label>
               <input
                 name="email"
                 type="email"
-                className="input input-bordered w-full rounded-lg px-4 py-2 
+                className="input  border border-gray-300 w-full rounded-lg px-4 py-2 
                        outline-none focus:outline-none focus:ring-0"
                 placeholder="Email"
                 required
               />
 
-              <label className="label font-semibold text-gray-700 mt-3">Password</label>
+              <label className="label font-semibold py-2 mt-3">Password</label>
               <div className="relative">
                 <input
                   name="password"
                   type={showPassword ? "text" : "password"}
-                  className="input input-bordered w-full rounded-lg px-4 py-2 pr-12
+                  className="input  border border-gray-300 w-full rounded-lg px-4 py-2 pr-12
                          outline-none focus:outline-none focus:ring-0"
                   placeholder="Password"
                   required
@@ -109,7 +110,7 @@ const Login = () => {
                 type="button"
                 onClick={handleGoogleSignIn}
                 className="flex items-center justify-center gap-2 w-full bg-base-100 border 
-                       border-gray-300 text-black font-semibold py-3 rounded-lg shadow 
+                       border-gray-300  font-semibold py-3 rounded-lg shadow 
                        hover:bg-gray-100 transition-all duration-300 mb-3"
               >
                 <FcGoogle size={24} /> Login with Google
@@ -140,6 +141,7 @@ const Login = () => {
         </div>
 
       </div>
+    </div>
     </div>
   );
 };

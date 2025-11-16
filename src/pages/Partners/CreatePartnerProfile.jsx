@@ -53,7 +53,7 @@ const CreatePartnerProfile = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center py-10 px-4">
+    <div className="min-h-screen flex justify-center items-center py-10 px-4 text-neutral-content w-full bg-secondary">
      <title>StudyMate - Create Partner Profile</title>
       <div className="w-full max-w-3xl bg-base-100 shadow-2xl border-2 border-primary rounded-xl p-8 md:p-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-primary mb-8">
@@ -124,7 +124,7 @@ const CreatePartnerProfile = () => {
             <select
               name="studyMode"
               required
-              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
+              className="select select-bordered w-full text-neutral-content bg-base-100 focus:border-primary focus:ring-1 focus:ring-primary"
             >
               <option value="">Select Mode</option>
               <option value="Online">Online</option>
@@ -165,7 +165,7 @@ const CreatePartnerProfile = () => {
             <select
               name="experienceLevel"
               required
-              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
+              className="select select-bordered w-full text-neutral-content bg-base-100 focus:border-primary focus:ring-1 focus:ring-primary"
             >
               <option value="">Select Level</option>
               <option value="Beginner">Beginner</option>
@@ -208,7 +208,7 @@ const CreatePartnerProfile = () => {
           <button
             type="submit"
             form="createProfileForm"
-            className="w-full bg-primary text-white font-semibold text-lg py-3 rounded-sm hover:bg-base-100 hover:text-primary hover:border-2 hover:border-primary transition-all duration-300"
+            className="w-full  hover:text-white hover:bg-primary font-semibold text-lg py-3 rounded-sm bg-base-100 text-primary border-2 border-primary transition-all duration-300"
           >
             Create Profile
           </button>
