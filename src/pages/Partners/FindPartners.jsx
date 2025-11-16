@@ -68,21 +68,21 @@ const FindPartner = () => {
   return (
     <div className="min-h-screen 2xl:w-[1536px] mx-auto p-6 md:p-10 relative">
      <title>StudyMate - Find Partners</title>
-      <h1 className="text-3xl md:text-5xl font-bold text-center text-gray-800 mb-8">
+      <h1 className="text-3xl md:text-5xl font-bold text-center text-primary my-20">
         Find Your Study Partner
       </h1>
 
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-20">
         <input
           type="text"
           placeholder="Search by name, skill, or subject..."
-          className="w-full md:w-2/3 px-4 py-2 border-2 border-[#5BBC2E] rounded-sm focus:outline-none focus:border-[#5BBC2E] text-sm md:text-base"
+          className="w-full md:w-2/3 px-4 py-2 border-2 border-primary rounded-sm focus:outline-none focus:border-primary text-sm md:text-base"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
 
         <select
-          className="w-full md:w-1/4 px-3 py-2 border-2 rounded-sm text-sm md:text-base outline-none focus:ring-0 border-[#5BBC2E] hover:border-[#45A527] hover:bg-[#F0FFF0] transition-colors duration-200 ease-in-out"
+          className="w-full md:w-1/4 px-3 py-2 border-2 rounded-sm text-sm md:text-base outline-none focus:ring-0 border-primary hover:border-[#45A527] hover:bg-[#F0FFF0] transition-colors duration-200 ease-in-out"
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
         >

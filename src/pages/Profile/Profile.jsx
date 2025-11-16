@@ -83,14 +83,14 @@ const Profile = () => {
             <input
               type="text"
               name="name"
-              className="input input-bordered w-full bg-white border-green-500/50 outline-none focus:bg-[#5BBC2E] focus:border-[#5BBC2E]"
+              className="input input-bordered w-full bg-white border-green-500/50 outline-none focus:bg-primary focus:border-primary"
               placeholder="Enter new name"
               required
             />
             <input
               type="text"
               name="photo"
-              className="input input-bordered w-full bg-white border-green-500/50 outline-none focus:bg-[#5BBC2E] focus:border-[#5BBC2E]"
+              className="input input-bordered w-full bg-white border-green-500/50 outline-none focus:bg-primary focus:border-primary"
               placeholder="Enter new photo URL"
               required
             />

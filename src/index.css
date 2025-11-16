@@ -2,11 +2,53 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-*{
+* {
   font-family: "Inter", sans-serif;
 }
 
 a.active {
-  color:#5BBC2E;
+  color: #5BBC2E;
+}
+
+/* DaisyUI themes */
+@plugin "daisyui/theme" {
+  name: 'studyMateLight';
+  default: true;
+
+  --color-base-100: #ffffff;       /* main background */
+  --color-base-200: #f5f5f5;       /* secondary background */
+  --color-base-300: #e5e5e5;       /* subtle background */
+  
+  --color-primary: #5bbc2e;        /* main green */
+  --color-primary-content: #ffffff; /* text on primary */
+  
+  --color-secondary: #f5f5f5;      /* light secondary */
+  --color-secondary-content: #03373d; /* text on secondary */
+  
+  --color-accent: #e7000b;         /* extra red accent */
+  --color-accent-content: #ffffff;  /* text on accent */
+  
+  --color-neutral: #374151;        /* dark text */
+  --color-neutral-content: #f5f5f5; /* content text */
+}
+
+@plugin "daisyui/theme" {
+  name: 'studyMateDark';
+
+  --color-base-100: #0f111a;       /* dark main background */
+  --color-base-200: #1a1c29;       /* secondary background (opposite of light #f5f5f5) */
+  --color-base-300: #27293f;       /* subtle background (opposite of light #e5e5e5) */
+
+  --color-primary: #5bbc2e;        /* primary same */
+  --color-primary-content: #000000; /* text on primary */
+
+  --color-secondary: #1a1c29;      /* opposite of light secondary #f5f5f5 */
+  --color-secondary-content: #f5f5f5; /* text on secondary */
+
+  --color-accent: #e7000b;         /* accent same */
+  --color-accent-content: #ffffff;  /* text on accent */
+
+  --color-neutral: #d1d5db;        /* opposite of light neutral #374151 */
+  --color-neutral-content: #0f111a; /* text on neutral */
 }
 

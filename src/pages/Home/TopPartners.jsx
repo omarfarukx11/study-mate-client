@@ -18,16 +18,16 @@ const TopPartners = ({ data }) => {
       <div className="w-full p-4 flex flex-col justify-center gap-2 mt-4 md:mt-0">
         <h1 className="text-xl md:text-2xl font-bold text-gray-800">{name}</h1>
 
-        <div className="my-3 border-t-4 border-[#5BBC2E] rounded-full"></div>
+        <div className="my-3 border-t-4 border-primary rounded-full"></div>
 
         <div className="grid grid-cols-1 gap-2 mt-2">
-          <span className="text-sm font-semibold border-2 border-[#5BBC2E] text-[#5BBC2E] px-2 py-1 rounded-full text-center">
+          <span className="text-sm font-semibold border-2 border-primary text-primary px-2 py-1 rounded-full text-center">
             {subject}
           </span>
-          <span className="text-sm font-semibold bg-[#E8F8E2] text-[#5BBC2E] px-2 py-1 rounded-full text-center">
+          <span className="text-sm font-semibold bg-[#E8F8E2] text-primary px-2 py-1 rounded-full text-center">
             {skill}
           </span>
-          <span className="text-sm font-semibold bg-[#5BBC2E] text-white px-2 py-1 rounded-full flex items-center justify-center gap-1">
+          <span className="text-sm font-semibold bg-primary text-white px-2 py-1 rounded-full flex items-center justify-center gap-1">
             <FaRegStar className="text-xs" /> {rating}
           </span>
         </div>
@@ -38,7 +38,7 @@ const TopPartners = ({ data }) => {
 
         <Link
           to={`/partnerDetails/${_id}`}
-          className="w-full btn md:w-auto border-2 border-[#5BBC2E] bg-white text-[#5BBC2E] font-semibold px-4 py-2 rounded-sm shadow-md transition-all duration-300 hover:bg-[#5BBC2E] hover:text-white text-sm md:text-base"
+          className="w-full btn md:w-auto border-2 border-primary bg-white text-primary font-semibold px-4 py-2 rounded-sm shadow-md transition-all duration-300 hover:bg-primary hover:text-white text-sm md:text-base"
         >
           View Profile
         </Link>

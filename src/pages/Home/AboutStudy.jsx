@@ -5,12 +5,12 @@ import { IoPersonAddSharp } from "react-icons/io5";
 
 const AboutStudy = () => {
   return (
-    <section className="bg-[#F5F5F5] py-16 my-10">
+    <section className="bg-secondary py-16 my-10">
       <div className="2xl:w-[1536px] mx-auto p-5">
         
         <div className="text-center mb-12">
           <h2 className="lg:text-6xl text-2xl font-bold mb-3">How It Works</h2>
-          <p className="text-gray-500 text-sm  mx-auto">
+          <p className="text-gray-500 text-sm md:text-xl  mx-auto">
             Study Mate makes it easy to find your ideal partner and stay productive together. 
             Here’s how it works in just a few simple steps:
           </p>

@@ -64,7 +64,7 @@ const MyRequest = ({ data, index }) => {
 
   return (
     <>
-      <tr className="h-24 bg-gray-100 border-[#5bbc2e]">
+      <tr className="h-24 bg-gray-100 border-primary">
         <th>{index + 1}</th>
         <td className="flex justify-center items-center">
           <div className="flex items-center py-1 flex-col justify-center gap-2 sm:gap-3">
@@ -84,7 +84,7 @@ const MyRequest = ({ data, index }) => {
         <td>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="sm:btn p-1 border border-[#5bbc3e] text-[#5bbc2e] hover:bg-[#5BBC2E] hover:text-white transition duration-200 text-[10px] sm:text-sm"
+            className="sm:btn p-1 border border-[#5bbc3e] text-primary hover:bg-primary hover:text-white transition duration-200 text-[10px] sm:text-sm"
           >
             Update
           </button>
@@ -101,8 +101,8 @@ const MyRequest = ({ data, index }) => {
 
       {isModalOpen && (
         <dialog open className="modal modal-center sm:modal-middle">
-          <div className="modal-box border-2 border-[#5BBC2E] max-h-[90vh] sm:max-h-[80vh] overflow-y-auto">
-            <h3 className="font-bold text-lg text-[#5BBC2E] mb-4">
+          <div className="modal-box border-2 border-primary max-h-[90vh] sm:max-h-[80vh] overflow-y-auto">
+            <h3 className="font-bold text-lg text-primary mb-4">
               Update Partner Info
             </h3>
 
@@ -112,7 +112,7 @@ const MyRequest = ({ data, index }) => {
                 name="name"
                 defaultValue={name}
                 placeholder="Full Name"
-                className="input input-bordered w-full outline-none focus:border-[#5BBC2E] text-xs sm:text-sm"
+                className="input input-bordered w-full outline-none focus:border-primary text-xs sm:text-sm"
               />
 
               <input
@@ -120,7 +120,7 @@ const MyRequest = ({ data, index }) => {
                 name="profileImage"
                 defaultValue={profileImage}
                 placeholder="Profile Image URL"
-                className="input input-bordered w-full outline-none focus:border-[#5BBC2E] text-xs sm:text-sm"
+                className="input input-bordered w-full outline-none focus:border-primary text-xs sm:text-sm"
               />
 
               <input
@@ -128,13 +128,13 @@ const MyRequest = ({ data, index }) => {
                 name="subject"
                 defaultValue={subject}
                 placeholder="Subject"
-                className="input input-bordered w-full outline-none focus:border-[#5BBC2E] text-xs sm:text-sm"
+                className="input input-bordered w-full outline-none focus:border-primary text-xs sm:text-sm"
               />
 
               <select
                 name="studyMode"
                 defaultValue={studyMode}
-                className="select select-bordered w-full outline-none focus:border-[#5BBC2E] text-xs sm:text-sm"
+                className="select select-bordered w-full outline-none focus:border-primary text-xs sm:text-sm"
               >
                 <option value="Online">Online</option>
                 <option value="Offline">Offline</option>
@@ -145,13 +145,13 @@ const MyRequest = ({ data, index }) => {
                 name="location"
                 defaultValue={location}
                 placeholder="Location"
-                className="input input-bordered w-full outline-none focus:border-[#5BBC2E] text-xs sm:text-sm"
+                className="input input-bordered w-full outline-none focus:border-primary text-xs sm:text-sm"
               />
 
               <div className="modal-action flex flex-col sm:flex-row gap-2 sm:gap-4">
                 <button
                   type="submit"
-                  className="btn border border-[#5bbc3e] text-[#5bbc2e] hover:bg-[#5BBC2E] hover:text-white transition duration-200 text-xs sm:text-sm"
+                  className="btn border border-[#5bbc3e] text-primary hover:bg-primary hover:text-white transition duration-200 text-xs sm:text-sm"
                 >
                   Save Changes
                 </button>

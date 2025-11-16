@@ -55,8 +55,8 @@ const CreatePartnerProfile = () => {
   return (
     <div className="min-h-screen flex justify-center items-center py-10 px-4">
      <title>StudyMate - Create Partner Profile</title>
-      <div className="w-full max-w-3xl bg-white shadow-2xl border-2 border-[#5BBC2E] rounded-xl p-8 md:p-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#5BBC2E] mb-8">
+      <div className="w-full max-w-3xl bg-white shadow-2xl border-2 border-primary rounded-xl p-8 md:p-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-primary mb-8">
           Create Your Study Partner Profile
         </h2>
 
@@ -73,7 +73,7 @@ const CreatePartnerProfile = () => {
               type="text"
               name="name"
               required
-              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
               placeholder="Enter your full name"
             />
           </div>
@@ -86,7 +86,7 @@ const CreatePartnerProfile = () => {
               type="url"
               name="profileImage"
               required
-              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
               placeholder="Paste your profile image link"
             />
           </div>
@@ -99,7 +99,7 @@ const CreatePartnerProfile = () => {
               type="text"
               name="subject"
               required
-              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
               placeholder="e.g. Math, English, Programming"
             />
           </div>
@@ -112,7 +112,7 @@ const CreatePartnerProfile = () => {
               type="text"
               name="skill"
               required
-              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
               placeholder="e.g. Communication, Problem Solving"
             />
           </div>
@@ -124,7 +124,7 @@ const CreatePartnerProfile = () => {
             <select
               name="studyMode"
               required
-              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
             >
               <option value="">Select Mode</option>
               <option value="Online">Online</option>
@@ -140,7 +140,7 @@ const CreatePartnerProfile = () => {
               type="text"
               name="availabilityTime"
               required
-              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
               placeholder="e.g. Evening 6–9 PM"
             />
           </div>
@@ -153,7 +153,7 @@ const CreatePartnerProfile = () => {
               type="text"
               name="location"
               required
-              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
               placeholder="City, Area or preferred place"
             />
           </div>
@@ -165,7 +165,7 @@ const CreatePartnerProfile = () => {
             <select
               name="experienceLevel"
               required
-              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
             >
               <option value="">Select Level</option>
               <option value="Beginner">Beginner</option>
@@ -185,7 +185,7 @@ const CreatePartnerProfile = () => {
               max="5"
               step="0.1"
               required
-              className="w-full border-2 border-gray-300 focus:border-[#5BBC2E] rounded-sm px-4 py-2 outline-none"
+              className="w-full border-2 border-gray-300 focus:border-primary rounded-sm px-4 py-2 outline-none"
               placeholder="e.g. 4.5"
             />
           </div>
@@ -199,7 +199,7 @@ const CreatePartnerProfile = () => {
               name="email"
               value={user?.email || ""}
               readOnly
-              className="w-full border-2 border-[#5BBC2E] bg-gray-100 text-gray-700 rounded-sm px-4 py-2 cursor-not-allowed"
+              className="w-full border-2 border-primary bg-gray-100 text-gray-700 rounded-sm px-4 py-2 cursor-not-allowed"
             />
           </div>
         </form>
@@ -208,7 +208,7 @@ const CreatePartnerProfile = () => {
           <button
             type="submit"
             form="createProfileForm"
-            className="w-full bg-[#5BBC2E] text-white font-semibold text-lg py-3 rounded-sm hover:bg-white hover:text-[#5BBC2E] hover:border-2 hover:border-[#5BBC2E] transition-all duration-300"
+            className="w-full bg-primary text-white font-semibold text-lg py-3 rounded-sm hover:bg-white hover:text-primary hover:border-2 hover:border-primary transition-all duration-300"
           >
             Create Profile
           </button>

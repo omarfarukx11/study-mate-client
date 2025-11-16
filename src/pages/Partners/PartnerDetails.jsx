@@ -75,7 +75,7 @@ const PartnerDetails = () => {
 
   return (
     <div className="flex items-center justify-center p-4 my-20 md:p-6 ">
-      <div className="w-[1500px] h-[600px] mx-auto bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-[#5BBC2E]">
+      <div className="w-[1500px] h-[600px] mx-auto bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-primary">
         <div className="w-full md:w-1/2 p-4">
           <img
             src={profileImage}
@@ -90,16 +90,16 @@ const PartnerDetails = () => {
               {name}
             </h1>
 
-            <div className="my-6 border-t-3 border-[#5BBC2E] rounded-full"></div>
+            <div className="my-6 border-t-3 border-primary rounded-full"></div>
 
             <div className="flex gap-2 mb-4">
-              <span className="text-xs sm:text-sm md:text-lg font-semibold border-2 border-[#5BBC2E] text-[#5BBC2E] px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
+              <span className="text-xs sm:text-sm md:text-lg font-semibold border-2 border-primary text-primary px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
                 {subject}
               </span>
-              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-[#E8F8E2] text-[#5BBC2E] px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
+              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-[#E8F8E2] text-primary px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
                 {skill}
               </span>
-              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-[#5BBC2E] text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full flex items-center gap-1 md:gap-2">
+              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-primary text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full flex items-center gap-1 md:gap-2">
                 <FaRegStar className="text-sm sm:text-base md:text-lg" /> {rating}
               </span>
               <span className="text-xs sm:text-sm md:text-lg font-semibold bg-blue-100 text-blue-700 px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
@@ -116,12 +116,12 @@ const PartnerDetails = () => {
               <strong>{studyMode}</strong> study sessions.
             </p>
 
-            <div className="= my-4 border-t-3 border-[#5BBC2E] rounded-full"></div>
+            <div className="= my-4 border-t-3 border-primary rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-gray-700 text-sm sm:text-base md:text-lg">
             <div className="flex items-center gap-2 md:gap-3">
-              <FaEnvelope className="text-[#5BBC2E]" /> {email}
+              <FaEnvelope className="text-primary" /> {email}
             </div>
             <div className="flex items-center gap-2 md:gap-3">
               <FaMapMarkerAlt className="text-red-500" /> {location}
@@ -142,7 +142,7 @@ const PartnerDetails = () => {
               ${
                 requested
                   ? "bg-gray-400 border-gray-400 text-white cursor-not-allowed"
-                  : "bg-white border-[#5BBC2E] text-[#5BBC2E] hover:bg-[#5BBC2E] hover:text-white"
+                  : "bg-white border-primary text-primary hover:bg-primary hover:text-white"
               }`}
             >
               {requested ? "Request Sent" : `Connect with ${name}`}
