@@ -6,7 +6,7 @@ const TopPartners = ({ data }) => {
   const { _id, name, skill, subject, rating , profileImage } = data;
 
   return (
-    <div className="flex flex-col md:flex-row rounded-lg overflow-hidden shadow-2xl hover:shadow-2xl transition-transform hover:scale-105 duration-300 bg-white w-full max-w-4xl mx-auto">
+    <div className="flex flex-col md:flex-row border border-gray-100  rounded-lg overflow-hidden shadow-2xl hover:shadow-2xl transition-transform hover:scale-105 duration-300 bg-base-100 w-full max-w-4xl mx-auto">
       <div className="w-full h-64 md:h-auto ">
         <img
           src={profileImage}
@@ -38,7 +38,7 @@ const TopPartners = ({ data }) => {
 
         <Link
           to={`/partnerDetails/${_id}`}
-          className="w-full btn md:w-auto border-2 border-primary bg-white text-primary font-semibold px-4 py-2 rounded-sm shadow-md transition-all duration-300 hover:bg-primary hover:text-white text-sm md:text-base"
+          className="w-full btn md:w-auto border-2 border-primary bg-base-100 text-primary font-semibold px-4 py-2 rounded-sm shadow-md transition-all duration-300 hover:bg-primary hover:text-white text-sm md:text-base"
         >
           View Profile
         </Link>

@@ -75,7 +75,7 @@ const PartnerDetails = () => {
 
   return (
     <div className="flex items-center justify-center p-4 my-20 md:p-6 ">
-      <div className="w-[1500px] h-[600px] mx-auto bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-primary">
+      <div className="w-[1500px] h-[600px] mx-auto bg-base-100 rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-primary">
         <div className="w-full md:w-1/2 p-4">
           <img
             src={profileImage}
@@ -142,7 +142,7 @@ const PartnerDetails = () => {
               ${
                 requested
                   ? "bg-gray-400 border-gray-400 text-white cursor-not-allowed"
-                  : "bg-white border-primary text-primary hover:bg-primary hover:text-white"
+                  : "bg-base-100 border-primary text-primary hover:bg-primary hover:text-white"
               }`}
             >
               {requested ? "Request Sent" : `Connect with ${name}`}

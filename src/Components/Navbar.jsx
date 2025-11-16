@@ -98,7 +98,7 @@ const Navbar = () => {
               <div tabIndex={0} role="button">
                 <img src={user.photoURL} alt="User" className="w-[30px] h-[30px] rounded-full" />
               </div>
-              <ul className="dropdown-content flex flex-col bg-white dark:bg-base-100 rounded-box z-10 w-52 p-3 gap-2 shadow-sm">
+              <ul className="dropdown-content flex flex-col bg-base-100 dark:bg-base-100 rounded-box z-10 w-52 p-3 gap-2 shadow-sm">
                 <li>
                   <Link
                     to={"/profile"}
@@ -134,7 +134,7 @@ const Navbar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost">
               <FcMenu />
             </div>
-            <ul className="menu menu-sm dropdown-content bg-white dark:bg-base-100 rounded-box z-10 mt-3 w-52 p-2 gap-2 shadow">
+            <ul className="menu menu-sm dropdown-content bg-base-100 dark:bg-base-100 rounded-box z-10 mt-3 w-52 p-2 gap-2 shadow">
               {links}
             </ul>
           </div>

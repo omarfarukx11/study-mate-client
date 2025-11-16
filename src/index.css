@@ -7,8 +7,9 @@
 }
 
 a.active {
-  color: #5BBC2E;
+  color: #5BBC2E; /* explicit, will not be affected */
 }
+
 
 /* DaisyUI themes */
 @plugin "daisyui/theme" {

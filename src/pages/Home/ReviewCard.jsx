@@ -9,7 +9,7 @@ const ReviewCard = ({ comment }) => {
   );
 
   return (
-    <div className="card bg-white shadow-xl p-6 lg:w-[500px] w-[200px] space-x-5 lg:h-[300px] h-[200px] mx-auto">
+    <div className="card bg-base-100 shadow-xl p-6 lg:w-[500px] w-[200px] space-x-5 lg:h-[300px] h-[200px] mx-auto">
       <div className="flex flex-col items-center text-center">
         <img
           src={image}

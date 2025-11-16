@@ -64,7 +64,7 @@ const MyRequest = ({ data, index }) => {
 
   return (
     <>
-      <tr className="h-24 bg-gray-100 border-primary">
+      <tr className="h-24 bg-gray-300 border-primary">
         <th>{index + 1}</th>
         <td className="flex justify-center items-center">
           <div className="flex items-center py-1 flex-col justify-center gap-2 sm:gap-3">
@@ -84,7 +84,7 @@ const MyRequest = ({ data, index }) => {
         <td>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="sm:btn p-1 border border-[#5bbc3e] text-primary hover:bg-primary hover:text-white transition duration-200 text-[10px] sm:text-sm"
+            className="sm:btn sm:p-4 p-1 border border-[#5bbc3e] text-primary hover:bg-primary hover:text-white transition duration-200 text-[10px] sm:text-sm"
           >
             Update
           </button>
@@ -92,7 +92,7 @@ const MyRequest = ({ data, index }) => {
         <td>
           <button
             onClick={handleDelete}
-            className="sm:btn p-1 hover:bg-red-600 hover:text-white border border-red-600 text-red-600 transition duration-200 text-[10px] sm:text-sm"
+            className="sm:btn sm:p-4 p-1 hover:bg-red-600 hover:text-white border border-red-600 text-red-600 transition duration-200 text-[10px] sm:text-sm"
           >
             Delete
           </button>

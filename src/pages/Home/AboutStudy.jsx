@@ -18,7 +18,7 @@ const AboutStudy = () => {
 
         <div className="grid lg:grid-cols-3 gap-8">
 
-          <div className="card bg-white shadow-xl border border-gray-100 hover:shadow-2xl transition-transform hover:scale-105 duration-300">
+          <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-transform hover:scale-105 duration-300">
             <div className="card-body items-center text-center p-8 md:my-10">
               <div className="md:text-6xl text-3xl text-primary mb-4">
                 <IoPersonAddSharp />
@@ -33,7 +33,7 @@ const AboutStudy = () => {
           </div>
 
 
-          <div className="card bg-white shadow-xl border border-gray-100 hover:shadow-2xl transition-transform hover:scale-105 duration-300">
+          <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-transform hover:scale-105 duration-300">
             <div className="card-body items-center text-center p-8 md:my-10">
               <div className="md:text-6xl text-3xl text-primary mb-4">
                 <FcSearch />
@@ -47,7 +47,7 @@ const AboutStudy = () => {
             </div>
           </div>
 
-          <div className="card bg-white shadow-xl border border-gray-100 hover:shadow-2xl transition-transform hover:scale-105 duration-300">
+          <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-transform hover:scale-105 duration-300">
             <div className="card-body items-center text-center p-8 md:my-10">
               <div className="md:text-6xl text-3xl text-primary mb-4">
                 <FaBook />

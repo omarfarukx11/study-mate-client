@@ -5,7 +5,7 @@ const Loader = ({ fullScreen = false }) => {
     <div
       className={`flex items-center justify-center ${
         fullScreen
-          ? "fixed inset-0 bg-white/70 backdrop-blur-sm z-50"
+          ? "fixed inset-0 bg-base-100/70 backdrop-blur-sm z-50"
           : "w-full h-64"
       }`}
     >

@@ -56,7 +56,7 @@ const Profile = () => {
   return (
     <div className="flex items-center justify-center w-full my-10">
       <title>StudyMate - Profile</title>
-      <div className="md:w-[50%] w-[80%] mx-auto bg-white border border-green-500/30 shadow-xl rounded-2xl p-6 text-center overflow-hidden">
+      <div className="md:w-[50%] w-[80%] mx-auto bg-base-100 border border-green-500/30 shadow-xl rounded-2xl p-6 text-center overflow-hidden">
 
         <div className="flex flex-col items-center mb-4">
           <img
@@ -72,7 +72,7 @@ const Profile = () => {
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
-            className="mt-6 px-6 py-2 rounded-lg bg-green-500 hover:bg-white hover:text-green-500 hover:border hover:border-green-500 transition-all duration-300 text-white"
+            className="mt-6 px-6 py-2 rounded-lg bg-green-500 hover:bg-base-100 hover:text-green-500 hover:border hover:border-green-500 transition-all duration-300 text-white"
           >
             Update
           </button>
@@ -83,14 +83,14 @@ const Profile = () => {
             <input
               type="text"
               name="name"
-              className="input input-bordered w-full bg-white border-green-500/50 outline-none focus:bg-primary focus:border-primary"
+              className="input input-bordered w-full bg-base-100 border-green-500/50 outline-none focus:bg-primary focus:border-primary"
               placeholder="Enter new name"
               required
             />
             <input
               type="text"
               name="photo"
-              className="input input-bordered w-full bg-white border-green-500/50 outline-none focus:bg-primary focus:border-primary"
+              className="input input-bordered w-full bg-base-100 border-green-500/50 outline-none focus:bg-primary focus:border-primary"
               placeholder="Enter new photo URL"
               required
             />
@@ -98,7 +98,7 @@ const Profile = () => {
             <div className="flex flex-col gap-2 mt-2">
               <button
                 type="submit"
-                className="btn w-full bg-green-500 text-white hover:bg-white hover:text-green-500 hover:border hover:border-green-500 transition-all duration-300"
+                className="btn w-full bg-green-500 text-white hover:bg-base-100 hover:text-green-500 hover:border hover:border-green-500 transition-all duration-300"
               >
                 Update Info
               </button>

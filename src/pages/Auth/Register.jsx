@@ -91,7 +91,7 @@ const Register = () => {
           </p>
         </div>
 
-        <div className="card bg-white w-full max-w-lg lg:p-8 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-300">
+        <div className="card bg-base-100 w-full max-w-lg lg:p-8 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-300">
           <div className="card-body flex flex-col gap-4">
             <form onSubmit={handleEmailSignUp}>
               <label className="label font-semibold text-gray-700">Name</label>
@@ -157,7 +157,7 @@ const Register = () => {
               <button
                 type="button"
                 onClick={handleGoogleSignUp}
-                className="flex items-center justify-center gap-2 w-full bg-white border border-gray-300 text-black font-semibold py-3 rounded-lg shadow hover:bg-gray-100 transition-all duration-300 mb-3 mt-3"
+                className="flex items-center justify-center gap-2 w-full bg-base-100 border border-gray-300 text-black font-semibold py-3 rounded-lg shadow hover:bg-gray-100 transition-all duration-300 mb-3 mt-3"
               >
                 <FcGoogle size={24} /> Register with Google
               </button>
@@ -165,7 +165,7 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="w-full bg-green-500 text-white font-semibold py-3 rounded-lg shadow hover:bg-white hover:text-green-500 hover:border hover:border-green-500 transition-all duration-300 mb-2"
+                className="w-full bg-green-500 text-white font-semibold py-3 rounded-lg shadow hover:bg-base-100 hover:text-green-500 hover:border hover:border-green-500 transition-all duration-300 mb-2"
               >
                 Register
               </button>
