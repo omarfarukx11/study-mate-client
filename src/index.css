@@ -2,22 +2,22 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* Global font */
+
 * {
   font-family: "Inter", sans-serif;
 }
 
-/* Active link color stays */
+
 a.active {
   color: #5BBC2E;
 }
 
-/* Normal text follows --color-neutral-content automatically */
+
 .text-neutral-content {
   color: var(--color-neutral-content);
 }
 
-/* DaisyUI themes */
+
 @plugin "daisyui/theme" {
   name: 'studyMateLight';
   default: true;
@@ -36,7 +36,7 @@ a.active {
   --color-accent-content: #ffffff;
 
   --color-neutral: #374151;
-  --color-neutral-content: #000000; /* normal text dark in light mode */
+  --color-neutral-content: #000000; 
 }
 
 @plugin "daisyui/theme" {
@@ -56,5 +56,5 @@ a.active {
   --color-accent-content: #ffffff;
 
   --color-neutral: #d1d5db;
-  --color-neutral-content: #ffffff; /* normal text white in dark mode */
+  --color-neutral-content: #ffffff; 
 }

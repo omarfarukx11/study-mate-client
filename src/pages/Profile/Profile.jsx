@@ -6,7 +6,7 @@ import { getAuth, updateProfile } from "firebase/auth";
 const Profile = () => {
   const { user, setUser } = useContext(AuthContext);
   const [showForm, setShowForm] = useState(false);
-  const [error, setError] = useState(""); // local error state
+  const [error, setError] = useState(""); 
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -23,13 +23,13 @@ const Profile = () => {
 
     try {
       const auth = getAuth();
-      const currentUser = auth.currentUser; // Firebase user object
+      const currentUser = auth.currentUser;
       if (!currentUser) throw new Error("No user logged in");
 
-      // Update Firebase profile
+
       await updateProfile(currentUser, { displayName: name, photoURL: photo });
 
-      // Update context so UI changes immediately
+ 
       setUser({ ...currentUser, displayName: name, photoURL: photo });
 
       setShowForm(false);
@@ -44,7 +44,7 @@ const Profile = () => {
       });
     } catch (err) {
       console.error(err);
-      setError(err.message); // show error in card
+      setError(err.message); 
       Swal.fire({
         icon: "error",
         title: "Update Failed",

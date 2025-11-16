@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:3000/studyPartner"),
+        loader: () => fetch("https://study-mate-server-tau.vercel.app/studyPartner"),
         Component: Home,
         hydrateFallback: <Loader></Loader>,
       },
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myConnection",
-        loader: () => fetch("http://localhost:3000/request"),
+        loader: () => fetch("https://study-mate-server-tau.vercel.app/request"),
         element: (
           <PrivateRoute>
             <MyConnection></MyConnection>
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
       {
         path: "/partnerDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/studyPartner/${params.id}`),
+          fetch(`https://study-mate-server-tau.vercel.app/studyPartner/${params.id}`),
         element: (
           <PrivateRoute>
             <PartnerDetails></PartnerDetails>
