@@ -8,7 +8,7 @@ const MyConnection = () => {
   const allPartners = useLoaderData();
 
   return (
-    <div className=" 2xl:w-[1536px] min-h-screen px-5 lg:px-0 mx-auto mb-10 ">
+    <div className="w-[1536px] min-h-screen px-5 lg:px-0 mx-auto mb-10 rounded-lg ">
       <title>StudyMate - MyConnection</title>
       <div className="lg:h-[200px] lg:py-0 py-10  my-5 bg-[#f5f5f5] flex items-center justify-center flex-col rounded-sm">
         <h1 className="lg:text-6xl text-2xl font-bold text-center ">
@@ -23,9 +23,9 @@ const MyConnection = () => {
         </p>
       </div>
 
-      <table className="table full  ">
-        <thead className="h-[100px] bg-[#5BBC2E] text-white lg:text-2xl text-[10px]">
-          <tr>
+      <table className="w-full roulg">
+        <thead className="h-[100px] bg-[#5BBC2E] text-white lg:text-2xl sm:text-sm text-[10px]">
+          <tr className="text-[10px] sm:text-sm">
             <th>SL</th>
             <th>Partner Name</th>
             <th>Subject</th>
@@ -35,7 +35,7 @@ const MyConnection = () => {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className="text-center">
           {allPartners.map((data, index) => (
             <MyRequest key={data._id} index={index} data={data}></MyRequest>
           ))}

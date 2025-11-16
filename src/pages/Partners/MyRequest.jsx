@@ -64,27 +64,27 @@ const MyRequest = ({ data, index }) => {
 
   return (
     <>
-      <tr className="h-24 bg-gray-100 transition duration-200">
+      <tr className="h-24 bg-gray-100 border-[#5bbc2e]">
         <th>{index + 1}</th>
-        <td>
-          <div className="flex items-center gap-2 sm:gap-3">
+        <td className="flex justify-center items-center">
+          <div className="flex items-center py-1 flex-col justify-center gap-2 sm:gap-3">
             <div className="avatar">
-              <div className="mask rounded-full h-10 w-10 sm:h-16 sm:w-16">
+              <div className="mask rounded-full h-6 w-6 sm:h-10 sm:w-10">
                 <img src={profileImage} alt="Avatar" />
               </div>
             </div>
-            <div className="flex flex-col justify-center">
-              <div className="font-bold text-sm sm:text-base">{name}</div>
-              <div className="text-xs sm:text-sm opacity-50">{location}</div>
+            <div className="flex flex-col justify-center items-center">
+              <div className="font-bold text-[10px] sm:text-base">{name}</div>
+              <div className="text-[10px] sm:text-sm opacity-50">{location}</div>
             </div>
           </div>
         </td>
-        <td className="text-xs sm:text-sm">{subject}</td>
-        <td className="text-xs sm:text-sm">{studyMode}</td>
+        <td className="text-[10px] sm:text-sm">{subject}</td>
+        <td className="text-[10px] sm:text-sm">{studyMode}</td>
         <td>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="btn border border-[#5bbc3e] text-[#5bbc2e] hover:bg-[#5BBC2E] hover:text-white transition duration-200 text-xs sm:text-sm"
+            className="sm:btn p-1 border border-[#5bbc3e] text-[#5bbc2e] hover:bg-[#5BBC2E] hover:text-white transition duration-200 text-[10px] sm:text-sm"
           >
             Update
           </button>
@@ -92,7 +92,7 @@ const MyRequest = ({ data, index }) => {
         <td>
           <button
             onClick={handleDelete}
-            className="btn hover:bg-red-600 hover:text-white border border-red-600 text-red-600 transition duration-200 text-xs sm:text-sm"
+            className="sm:btn p-1 hover:bg-red-600 hover:text-white border border-red-600 text-red-600 transition duration-200 text-[10px] sm:text-sm"
           >
             Delete
           </button>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../AuthContext/AuthContext";
 import { FcMenu } from "react-icons/fc";
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -7,33 +7,36 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
+  const navigate = useNavigate(); // <-- added
 
   const handleLogout = () => {
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "Do you want to log out?",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, log me out!',
-    cancelButtonText: 'No, stay logged in'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      logOutUser()
-        .then(() => {
-          Swal.fire({
-            position: 'top-center',
-            icon: 'success',
-            title: 'Log Out Successful',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        })
-        .catch((error) => console.error(error));
-    }
-  });
-};
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Do you want to log out?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, log me out!',
+      cancelButtonText: 'No, stay logged in'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOutUser()
+          .then(() => {
+            Swal.fire({
+              position: 'top-center',
+              icon: 'success',
+              title: 'Log Out Successful',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+
+            navigate("/");
+          })
+          .catch((error) => console.error(error));
+      }
+    });
+  };
 
 
   const links = (
