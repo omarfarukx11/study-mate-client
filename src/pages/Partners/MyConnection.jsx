@@ -6,6 +6,8 @@ import MyRequest from "./MyRequest";
 
 const MyConnection = () => {
   const allPartners = useLoaderData();
+  
+  console.log(allPartners.length)
 
   return (
     <div className="w-[1536px] min-h-screen px-5 lg:px-0 mx-auto mb-10 rounded-lg ">
@@ -15,7 +17,7 @@ const MyConnection = () => {
           My <span className="text-[#5BBC2E]">Connections</span>
         </h1>
         <p className="text-center lg:py-5 py-2 text-gray-500 text-sm">
-          ChatGPT said: You can manage your partner requests easily. Edit the
+          You can manage your partner requests easily. Edit the
           details of any request whenever you need. <br />
            Delete requests that are no
           longer relevant. Keep your study partners list up-to-date and
@@ -23,7 +25,9 @@ const MyConnection = () => {
         </p>
       </div>
 
-      <table className="w-full roulg">
+      {
+        allPartners.length === 0 ? <p className="bg-[#5bbc2e] lg:text-5xl text-center font-semibold my-10 text-white p-10 rounded-sm"> You don’t have any connections yet.</p> :
+        <table className="w-full roulg">
         <thead className="h-[100px] bg-[#5BBC2E] text-white lg:text-2xl sm:text-sm text-[10px]">
           <tr className="text-[10px] sm:text-sm">
             <th>SL</th>
@@ -41,6 +45,7 @@ const MyConnection = () => {
           ))}
         </tbody>
       </table>
+      }
     </div>
   );
 };

@@ -100,7 +100,7 @@ const MyRequest = ({ data, index }) => {
       </tr>
 
       {isModalOpen && (
-        <dialog open className="modal modal-bottom sm:modal-middle">
+        <dialog open className="modal modal-center sm:modal-middle">
           <div className="modal-box border-2 border-[#5BBC2E] max-h-[90vh] sm:max-h-[80vh] overflow-y-auto">
             <h3 className="font-bold text-lg text-[#5BBC2E] mb-4">
               Update Partner Info
