@@ -2,15 +2,19 @@ import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../AuthContext/AuthContext";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate, useLocation } from "react-router";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { singInWithGoogle, loginWithEmail, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation(); 
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(""); // ✅ Add error state
+
+  // ✅ Page to redirect after login (default to home)
+  const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = (e) => {
     e.preventDefault();
@@ -24,11 +28,11 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        navigate(from, { replace: true }); 
       })
       .catch((error) => {
         console.log(error);
-        setError("Google login failed. Please try again."); // Show error
+        setError("Google login failed. Please try again."); 
       });
   };
 
@@ -40,7 +44,7 @@ const Login = () => {
     loginWithEmail(email, password)
       .then((res) => {
         setUser(res.user);
-        setError(""); // clear error on success
+        setError("");
         Swal.fire({
           position: "top-center",
           icon: "success",
@@ -48,11 +52,11 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        navigate('/'); 
       })
       .catch((error) => {
         console.log(error);
-        setError("Invalid email or password"); // ✅ Set error message
+        setError("Invalid email or password"); 
       });
   };
 
@@ -104,7 +108,7 @@ const Login = () => {
                   </span>
                 </div>
 
-                {error && <p className="text-red-500 text-sm mt-1">{error}</p>} {/* ✅ Show error */}
+                {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
                 <p className="text-sm text-right text-gray-500 mb-4 cursor-pointer hover:text-green-500">
                   Forgot Password?
