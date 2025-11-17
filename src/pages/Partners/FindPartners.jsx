@@ -63,7 +63,7 @@ const FindPartner = () => {
 
   return (
     <div className="w-full bg-secondary">
-      <div className="min-h-screen w-[1536px] mx-auto p-6 md:p-10 relative text-neutral-content">
+      <div className="min-h-screen 2xl:w-[1536px] mx-auto p-6 md:p-10 relative text-neutral-content">
         <title>StudyMate - Find Partners</title>
         <h1 className="text-3xl md:text-5xl font-bold text-center text-primary my-20">
           Find Your Study Partner

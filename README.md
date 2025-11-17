@@ -3,7 +3,7 @@
 StudyMate is a MERN Stack web platform designed to help students connect and collaborate for better learning outcomes. This client-side repository contains the React application, which provides the user interface and handles routing, authentication, and theme management.
 
 ## Live Site
-[Insert your live client URL here]
+https://study-mate-app-x11.web.app
 
 ## Features
 - **Responsive Design:** Works perfectly on mobile, tablet, and desktop.

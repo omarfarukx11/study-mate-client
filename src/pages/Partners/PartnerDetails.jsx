@@ -17,6 +17,8 @@ const PartnerDetails = () => {
   const { user } = useContext(AuthContext);
   const axiosInstance = useAxios();
 
+  console.log(partnerDetails)
+
   if (!partnerDetails || !partnerDetails._id) {
     return <NotFound />;
   }
@@ -74,9 +76,11 @@ const PartnerDetails = () => {
   };
 
   return (
-    <div className="flex items-center justify-center p-4 my-20 md:p-6 ">
-      <div className="w-[1500px] h-[600px] mx-auto bg-base-100 rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-primary">
-        <div className="w-full md:w-1/2 p-4">
+    <div className="bg-secondary w-full">
+      <div className="flex items-center justify-center p-4 my-20 md:p-6 text-neutral-content">
+      <title>Partner Details</title>
+      <div className="2xl:w-[1500px] 2xl:h-[600px] mx-auto bg-base-100 rounded-lg shadow-2xl overflow-hidden flex flex-col lg:flex-row border-2 border-primary">
+        <div className="w-full lg:w-1/2 p-4">
           <img
             src={profileImage}
             alt={name}
@@ -84,33 +88,33 @@ const PartnerDetails = () => {
           />
         </div>
 
-        <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-between">
+        <div className="w-full lg:w-1/2 p-6 md:p-12 flex flex-col justify-between">
           <div>
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-3 md:mb-4">
+            <h1 className="text-3xl md:text-5xl font-bold mb-3 lg:mb-4">
               {name}
             </h1>
 
             <div className="my-6 border-t-3 border-primary rounded-full"></div>
 
-            <div className="flex gap-2 mb-4">
-              <span className="text-xs sm:text-sm md:text-lg font-semibold border-2 border-primary text-primary px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
+            <div className="flex gap-2 mb-4 flex-wrap 2xl:flex-nowrap">
+              <span className="text-xs sm:text-sm md:text-lg font-semibold border-2 border-primary text-primary px-2 sm:px-3 lg:px-4 py-1 lg:py-2 rounded-full">
                 {subject}
               </span>
-              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-[#E8F8E2] text-primary px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
+              <span className="text-xs sm:text-sm lg:text-lg font-semibold bg-[#E8F8E2] text-primary px-2 sm:px-3 lg:px-4 py-1 lg:py-2 rounded-full">
                 {skill}
               </span>
-              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-primary text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full flex items-center gap-1 md:gap-2">
-                <FaRegStar className="text-sm sm:text-base md:text-lg" /> {rating}
+              <span className="text-xs sm:text-sm lg:text-lg font-semibold bg-primary text-white px-2 sm:px-3 lg:px-4 py-1 lg:py-2 rounded-full flex items-center gap-1 lg:gap-2">
+                <FaRegStar className="text-sm sm:text-base lg:text-lg" /> {rating}
               </span>
-              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-blue-100 text-blue-700 px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
+              <span className="text-xs sm:text-sm lg:text-lg font-semibold bg-blue-100 text-blue-700 px-2 sm:px-3 lg:px-4 py-1 lg:py-2 rounded-full">
                 {experienceLevel}
               </span>
-              <span className="text-xs sm:text-sm md:text-lg font-semibold bg-purple-100 text-purple-700 px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full">
+              <span className="text-xs sm:text-sm lg:text-lg font-semibold bg-purple-100 text-purple-700 px-2 sm:px-3 lg:px-4 py-1 lg:py-2 rounded-full">
                 {studyMode}
               </span>
             </div>
 
-            <p className="text-gray-700 text-sm sm:text-base md:text-xl">
+            <p className="text-gray-500 text-sm sm:text-base md:text-xl">
               {name} is a highly skilled partner in <strong>{skill}</strong> and
               specializes in <strong>{subject}</strong>. Available for{" "}
               <strong>{studyMode}</strong> study sessions.
@@ -119,7 +123,7 @@ const PartnerDetails = () => {
             <div className="= my-4 border-t-3 border-primary rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-gray-700 text-sm sm:text-base md:text-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-sm sm:text-base md:text-lg">
             <div className="flex items-center gap-2 md:gap-3">
               <FaEnvelope className="text-primary" /> {email}
             </div>
@@ -150,6 +154,7 @@ const PartnerDetails = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

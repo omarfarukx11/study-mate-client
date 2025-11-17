@@ -32,7 +32,6 @@ const Register = () => {
 
   const handleEmailSignUp = (e) => {
     e.preventDefault();
-
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photoURL = e.target.photoURL.value;
@@ -83,7 +82,7 @@ const Register = () => {
       <title>StudyMate - Register</title>
       <div className="flex flex-col lg:flex-row-reverse items-center gap-10 w-full max-w-7xl">
         <div className="text-center lg:text-left max-w-lg">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-5xl font-bold  mb-4">
             Register Now!
           </h1>
           <p className="text-gray-600 text-lg">
@@ -158,7 +157,7 @@ const Register = () => {
               <button
                 type="button"
                 onClick={handleGoogleSignUp}
-                className="flex items-center justify-center gap-2 w-full bg-base-100 border border-gray-300 text-black font-semibold py-3 rounded-lg shadow hover:bg-gray-100 transition-all duration-300 mb-3 mt-3"
+                className="flex items-center justify-center gap-2 w-full bg-base-100 border border-gray-300  font-semibold py-3 rounded-lg shadow hover:bg-gray-100 transition-all duration-300 mb-3 mt-3"
               >
                 <FcGoogle size={24} /> Register with Google
               </button>
