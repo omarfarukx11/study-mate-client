@@ -9,10 +9,7 @@ const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
-
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
 
   useEffect(() => {
     if (darkMode) {
@@ -56,14 +53,12 @@ const Navbar = () => {
     <>
       <li><NavLink to="/">Home</NavLink></li>
       <li><NavLink to="/findPartner">Find Partners</NavLink></li>
-
       {!user && (
         <>
           <li><NavLink to="/login">Login</NavLink></li>
           <li><NavLink to="/register">Register</NavLink></li>
         </>
       )}
-
       {user && (
         <>
           <li><NavLink to="/createPP">Create Partner Profile</NavLink></li>
@@ -81,20 +76,15 @@ const Navbar = () => {
         </h1>
 
         <div className="hidden lg:flex items-center ml-auto justify-end gap-5">
-          <ul className="flex justify-between gap-5 text-lg font-semibold text-neutral-content">
-            {links}
-          </ul>
-
-
+          <ul className="flex justify-between gap-5 text-lg font-semibold text-neutral-content">{links}</ul>
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full  bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 transition-colors duration-300"
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 transition-colors duration-300"
           >
-            {darkMode ? <FaSun className="" /> : <FaMoon />}
+            {darkMode ? <FaSun /> : <FaMoon />}
           </button>
-
           {user && (
-            <div className="dropdown dropdown-end ">
+            <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button">
                 <img src={user.photoURL} alt="User" className="w-[30px] h-[30px] rounded-full" />
               </div>
@@ -127,7 +117,27 @@ const Navbar = () => {
           </button>
 
           {user && (
-            <img src={user.photoURL} alt="User" className="lg:w-[45px] lg:h-[45px] w-[20px] h-[20px] rounded-full lg:hidden" />
+            <div className="dropdown dropdown-end lg:hidden">
+              <div tabIndex={0} role="button">
+                <img src={user.photoURL} alt="User" className="lg:w-[45px] lg:h-[45px] w-[20px] h-[20px] rounded-full" />
+              </div>
+              <ul className="dropdown-content flex flex-col bg-base-100 dark:bg-base-100 rounded-box z-10 w-52 p-3 gap-2 shadow-sm">
+                <li>
+                  <Link
+                    to={"/profile"}
+                    className="btn w-full text-primary border border-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white transition-colors duration-300"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li
+                  onClick={handleLogout}
+                  className="btn w-full text-primary border border-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer"
+                >
+                  LogOut
+                </li>
+              </ul>
+            </div>
           )}
 
           <div className="dropdown dropdown-end lg:hidden">

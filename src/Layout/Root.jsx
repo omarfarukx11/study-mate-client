@@ -16,7 +16,7 @@ const Root = () => {
       } else {
         setLoading(false);
       }
-    }, 400);
+    }, 300);
 
     const timeoutClear = () => clearTimeout(timerSet);
     return timeoutClear;

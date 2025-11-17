@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { FaRegStar } from "react-icons/fa";
 import { useLoaderData } from "react-router";
@@ -6,7 +6,14 @@ import MyRequest from "./MyRequest";
 
 const MyConnection = () => {
   const allPartners = useLoaderData();
-  
+   const { user } = use(AuthContext)
+
+
+  const filteredRequests = allPartners.filter(
+    req => req.userEmail === user.email
+  );
+
+  console.log(filteredRequests)
 
   return (
     <div className="w-[1536px] min-h-screen px-5 lg:px-0 mx-auto mb-10 rounded-lg text-neutral-content">
@@ -39,7 +46,7 @@ const MyConnection = () => {
         </thead>
 
         <tbody className="text-center">
-          {allPartners.map((data, index) => (
+          {filteredRequests.map((data, index) => (
             <MyRequest key={data._id} index={index} data={data}></MyRequest>
           ))}
         </tbody>

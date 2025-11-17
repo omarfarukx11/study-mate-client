@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthContext/AuthContext";
 
 const MyRequest = ({ data, index }) => {
   const { partnerId: id, _id: ID } = data;
   const axiosInstance = useAxios();
   const [reqData, setReqData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+ 
 
   useEffect(() => {
     axiosInstance
@@ -64,10 +68,10 @@ const MyRequest = ({ data, index }) => {
 
   return (
     <>
-      <tr className="h-24 bg-secondary border-primary">
+      <tr className="h-24 bg-secondary border-b border-primary">
         <th>{index + 1}</th>
         <td className="flex justify-center items-center">
-          <div className="flex items-center py-1 flex-col justify-center gap-2 sm:gap-3">
+          <div className="flex items-center py-2 flex-col justify-center gap-2 sm:gap-3">
             <div className="avatar">
               <div className="mask rounded-full h-6 w-6 sm:h-10 sm:w-10">
                 <img src={profileImage} alt="Avatar" />
