@@ -3,7 +3,7 @@
 <img width="840" height="832" alt="Screenshot 2025-12-31 124434" src="https://github.com/user-attachments/assets/8b0b710d-08ea-4eba-8166-c03949298cda" />
 
 
-
+## 📖 Project Overview
 StudyMate is a modern **MERN Stack** web platform designed to bridge the gap between students. It allows users to connect, collaborate, and find the perfect study partners to achieve better learning outcomes together.
 
 🔗 **Live Site:** https://study-mate-app-x11.web.app
