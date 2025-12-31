@@ -24,3 +24,6 @@ https://study-mate-app-x11.web.app
 - Axios for API requests
 - React-Icons
 
+👤 Author
+- GitHub: https://github.com/omarfarukx11
+- linkedin : www.linkedin.com/in/omar-farukx57
