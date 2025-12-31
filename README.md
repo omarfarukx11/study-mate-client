@@ -40,10 +40,6 @@ StudyMate is a modern **MERN Stack** web platform designed to bridge the gap bet
 
 ---
 
-## 🚀 Getting Started (Local Setup)
-
-To get a local copy up and running, follow these steps:
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/omarfarukx11/studymate-client.git](https://github.com/omarfarukx11/studymate-client.git)
+👤 Author
+- GitHub: https://github.com/omarfarukx11
+- linkedin : www.linkedin.com/in/omar-farukx57
