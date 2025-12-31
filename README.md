@@ -1,11 +1,7 @@
 # 🎓 StudyMate - Collaborative Learning Platform
+![Uploading Screenshot 2025-12-31 124434.png…]()
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" />
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
-</p>
+
 
 StudyMate is a modern **MERN Stack** web platform designed to bridge the gap between students. It allows users to connect, collaborate, and find the perfect study partners to achieve better learning outcomes together.
 
