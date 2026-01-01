@@ -1,26 +1,42 @@
-# StudyMate (Client-side)
+# 🎓 StudyMate - Collaborative Learning Platform
 
-StudyMate is a MERN Stack web platform designed to help students connect and collaborate for better learning outcomes. This client-side repository contains the React application, which provides the user interface and handles routing, authentication, and theme management.
+<img width="840" height="832" alt="Screenshot 2025-12-31 124434" src="https://github.com/user-attachments/assets/8b0b710d-08ea-4eba-8166-c03949298cda" />
 
-## Live Site
-https://study-mate-app-x11.web.app
 
-## Features
-- **Responsive Design:** Works perfectly on mobile, tablet, and desktop.
-- **Authentication:** Supports email/password login, registration, and Google social login.
-- **Private Routes:** Logged-in users can create profiles, send partner requests, and view connections.
-- **Theme Toggle:** Light and Dark mode support across all pages.
-- **Dynamic Data Display:** Fetches study partner profiles from the backend and shows ratings, subjects, and other details.
-- **Search and Sort:** Users can search for partners by subject and sort by experience level.
-- **SweetAlert2 Integration:** Success, error, and confirmation messages are displayed using SweetAlert2 for a polished user experience.
-- **Reusable Components:** Navbar, Footer, Cards, and forms maintain consistent UI across the app.
+## 📖 Project Overview
+StudyMate is a modern **MERN Stack** web platform designed to bridge the gap between students. It allows users to connect, collaborate, and find the perfect study partners to achieve better learning outcomes together.
 
-## Tech Stack
-- React.js
-- Tailwind CSS & DaisyUI
-- Firebase Authentication
-- React Router
-- SweetAlert2
-- Axios for API requests
-- React-Icons
+🔗 **Live Site:** https://study-mate-app-x11.web.app
 
+---
+
+## ✨ Key Features
+
+- 📱 **Fully Responsive:** Optimized for a seamless experience on Mobile, Tablet, and Desktop.
+- 🔐 **Secure Authentication:** Integrated with Firebase for Email/Password and Google Social Login.
+- 🛡️ **Private Routes:** Secure access for users to manage profiles, send partner requests, and view connections.
+- 🌓 **Theme Toggle:** Effortless switching between **Light and Dark mode** for user comfort.
+- 🔍 **Search & Filter:** Advanced search by subject and sorting options based on experience level.
+- 📊 **Dynamic Profiles:** Real-time data fetching for partner profiles, ratings, and subjects.
+- 🔔 **Interactive UI:** Polished user feedback with **SweetAlert2** notifications and **Framer Motion** animations.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Framework:** React.js
+- **Styling:** Tailwind CSS & DaisyUI
+- **Icons:** React-Icons & FontAwesome
+
+### Functionality & Integration
+- **Authentication:** Firebase Auth
+- **Routing:** React Router 7
+- **Data Fetching:** Axios
+- **Notifications:** SweetAlert2
+
+---
+
+👤 Author
+- GitHub: https://github.com/omarfarukx11
+- linkedin : www.linkedin.com/in/omar-farukx57
