@@ -17,7 +17,7 @@ const images = [
 
 const Banner = () => {
   return (
-    <div className="2xl:w-[1536px] mx-auto">
+    <div className="2xl:w-[1536px] lg:px-10 mx-auto">
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ dynamicBullets: true }}

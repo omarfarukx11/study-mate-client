@@ -11,9 +11,9 @@ const Login = () => {
   const location = useLocation(); 
 
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(""); // ✅ Add error state
+  const [error, setError] = useState("");
 
-  // ✅ Page to redirect after login (default to home)
+
   const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = (e) => {

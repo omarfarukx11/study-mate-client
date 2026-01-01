@@ -11,6 +11,7 @@ import PrivateRoute from "../AuthContext/PrivateRoute";
 import PartnerDetails from "../pages/Partners/PartnerDetails";
 import NotFound from "../Components/NotFound";
 import Loader from "../Components/Loader";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,8 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("https://study-mate-server-tau.vercel.app/studyPartner"),
+        loader: () =>
+          fetch("https://study-mate-server-tau.vercel.app/studyPartner"),
         Component: Home,
         hydrateFallback: <Loader></Loader>,
       },
@@ -29,16 +31,16 @@ export const router = createBrowserRouter([
         Component: Register,
       },
       {
+        path: "/aboutUs",
+        Component: AboutUs,
+      },
+      {
         path: "/login",
         Component: Login,
       },
       {
         path: "/findPartner",
-        element: (
-          <PrivateRoute>
-            <FindPartners></FindPartners>
-          </PrivateRoute>
-        ),
+        element:<FindPartners></FindPartners>
       },
       {
         path: "/createPP",
@@ -61,17 +63,14 @@ export const router = createBrowserRouter([
       {
         path: "/partnerDetails/:id",
         loader: ({ params }) =>
-          fetch(`https://study-mate-server-tau.vercel.app/studyPartner/${params.id}`),
-        element: (
-          <PrivateRoute>
-            <PartnerDetails></PartnerDetails>
-          </PrivateRoute>
-        ),
-        hydrateFallback: <Loader></Loader>,
+          fetch(
+            `https://study-mate-server-tau.vercel.app/studyPartner/${params.id}`
+          ),
+        Component: PartnerDetails,
       },
     ],
   },
-  
+
   {
     path: "/partnerDetails/:/*",
     Component: NotFound,

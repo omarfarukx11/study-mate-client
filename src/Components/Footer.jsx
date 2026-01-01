@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -42,7 +43,7 @@ const Footer = () => {
 
         <div className="flex flex-col space-y-2">
           <h6 className="font-semibold text-white mb-2">Company</h6>
-          <a href="#" className="hover:text-primary transition-colors duration-300">About Us</a>
+          <Link  to={"/aboutUs"} className="hover:text-primary transition-colors duration-300">About Us</Link>
           <a href="#" className="hover:text-primary transition-colors duration-300">Contact</a>
           <a href="#" className="hover:text-primary transition-colors duration-300">Jobs</a>
           <a href="#" className="hover:text-primary transition-colors duration-300">Press Kit</a>

@@ -31,7 +31,7 @@ const Root = () => {
       ) : (
         <>
           <Navbar />
-          <div className="mt-[100px]  flex justify-center items-center transition-opacity duration-300">
+          <div className="mt-[100px] bg-secondary flex justify-center items-center transition-opacity duration-300">
             <Outlet />
           </div>
           <Footer />

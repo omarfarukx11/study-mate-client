@@ -1,49 +1,53 @@
-import React from 'react';
-import { FaRegStar } from 'react-icons/fa';
-import { Link } from 'react-router';
+import React from "react";
+import { FaRegStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 const TopPartners = ({ data }) => {
-  const { _id, name, skill, subject, rating , profileImage } = data;
+  const { _id, name, skill, subject, rating, profileImage } = data;
 
   return (
-    <div className="flex flex-col md:flex-row border text-neutral-content border-gray-100  rounded-lg overflow-hidden shadow-2xl hover:shadow-2xl transition-transform hover:scale-105 duration-300 bg-base-100 w-full max-w-4xl mx-auto">
-      <div className="w-full h-64 md:h-auto ">
-        <img
-          src={profileImage}
-          alt={name}
-          className="w-full h-full object-cover rounded-sm"
-        />
-      </div>
-
-      <div className="w-full p-4 flex flex-col justify-center gap-2 mt-4 md:mt-0">
-        <h1 className="text-xl md:text-2xl font-bold text-neutral-content capitalize">{name}</h1>
-
-        <div className="my-3 border-t-4 border-primary rounded-full"></div>
-
-        <div className="grid grid-cols-1 gap-2 mt-2">
-          <span className="text-sm font-semibold border-2 border-primary text-primary px-2 py-1 rounded-full text-center">
-            {subject}
-          </span>
-          <span className="text-sm font-semibold bg-[#E8F8E2] text-primary px-2 py-1 rounded-full text-center">
-            {skill}
-          </span>
-          <span className="text-sm font-semibold bg-primary text-white px-2 py-1 rounded-full flex items-center justify-center gap-1">
-            <FaRegStar className="text-xs" /> {rating}
-          </span>
-        </div>
-
-        <p className="text-gray-600 text-sm mt-2">
-          This partner is highly skilled in <strong>{skill}</strong> and specializes in <strong>{subject}</strong>.
-        </p>
-
-        <Link
-          to={`/partnerDetails/${_id}`}
-          className="w-full btn md:w-auto border-2 border-primary bg-base-100 text-primary font-semibold px-4 py-2 rounded-sm shadow-md transition-all duration-300 hover:bg-primary hover:text-white text-sm md:text-base"
-        >
-          View Profile
-        </Link>
-      </div>
+   <div className="group flex flex-col bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-lg overflow-hidden hover:shadow-sm transition-all duration-300 h-full">
+  
+  <div className="relative aspect-3/2 overflow-hidden">
+    <img
+      src={profileImage}
+      alt={name}
+      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    <div className="absolute top-3 right-3">
+       <span className="flex items-center gap-1 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-xs font-bold text-slate-800 shadow-sm">
+         <FaRegStar className="text-amber-500 fill-amber-500" /> {rating}
+       </span>
     </div>
+  </div>
+
+  {/* Content Section */}
+  <div className="p-4 flex flex-col grow">
+    <div className="mb-3">
+      <h2 className="text-lg font-bold text-slate-800 dark:text-zinc-100 truncate capitalize">
+        {name}
+      </h2>
+      <p className="text-primary text-xs font-semibold tracking-wide uppercase">
+        {subject}
+      </p>
+    </div>
+
+    {/* Description - Clamped to 2 lines to prevent height stretching */}
+    <p className="text-slate-500 dark:text-zinc-400 text-xs leading-relaxed line-clamp-2 mb-4">
+      Expert in {skill}. Professional support and specialized guidance in {subject}.
+    </p>
+
+    {/* Footer Section - Pushed to bottom */}
+    <div className="mt-auto pt-3 border-t border-slate-50 dark:border-zinc-800">
+      <Link
+        to={`/partnerDetails/${_id}`}
+        className="w-full inline-flex items-center justify-center bg-slate-900 dark:bg-primary text-white text-xs font-bold py-2.5 rounded-lg transition-all hover:bg-primary dark:hover:bg-primary/80 active:scale-95"
+      >
+        View Profile
+      </Link>
+    </div>
+  </div>
+</div>
   );
 };
 
