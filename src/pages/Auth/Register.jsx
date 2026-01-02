@@ -34,7 +34,6 @@ const Register = () => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
-    const photoURL = e.target.photoURL.value;
     const password = e.target.password.value;
 
     let errors = [];
@@ -61,7 +60,7 @@ const Register = () => {
     singWithEmail(email, password)
       .then((res) => {
         const user = res.user;
-        setUser({ ...user, displayName: name, photoURL: photoURL });
+        setUser({ ...user, displayName: name });
 
         Swal.fire({
           position: "top-center",
@@ -71,7 +70,7 @@ const Register = () => {
           timer: 1500,
         });
 
-        navigate("/");
+        navigate("/login");
       })
       .catch((err) => console.log(err));
   };
@@ -111,17 +110,6 @@ const Register = () => {
                 placeholder="Email"
                 required
               />
-
-              <label className="label font-semibold py-2">
-                Photo URL
-              </label>
-              <input
-                name="photoURL"
-                type="url"
-                className="outline-none input  border border-gray-300  w-full rounded-lg px-4 py-2"
-                placeholder="Photo URL"
-              />
-
 
               <label className="label font-semibold py-2">
                 Password

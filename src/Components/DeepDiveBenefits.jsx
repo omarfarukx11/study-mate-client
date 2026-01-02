@@ -132,7 +132,7 @@ const DeepDiveBenefits = () => {
                 </ul>
               </div>
 
-              <div className="p-8 border border-base-300 rounded-[2rem] bg-base-200/50">
+              <div className="p-8 border border-base-300 rounded-4xl bg-base-200/50">
                 <h4 className="text-xl font-bold mb-4 text-neutral">The "Double-Win" Strategy</h4>
                 <p className="text-sm text-neutral/60 leading-relaxed">
                   Study partnering isn't just about getting help; it's about giving it. The act of clarifying a concept for your partner solidifies your own neural pathways, making the memory permanent. It is a mutually beneficial ecosystem of growth.
