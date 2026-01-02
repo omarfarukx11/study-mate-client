@@ -6,6 +6,7 @@ import AboutStudy from "./AboutStudy";
 import Comment from "./Comment";
 import { useLoaderData } from "react-router";
 import { motion } from "framer-motion";
+import Trust from "./Trust";
 
 const Home = () => {
   const topPartner = useLoaderData();
@@ -121,6 +122,10 @@ const Home = () => {
           <Comment />
         </div>
       </motion.div>
+
+      <div  className="2xl:w-[1536px] mx-auto">
+        <Trust></Trust>
+      </div>
     </div>
   );
 };

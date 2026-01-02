@@ -12,6 +12,9 @@ import PartnerDetails from "../pages/Partners/PartnerDetails";
 import NotFound from "../Components/NotFound";
 import Loader from "../Components/Loader";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import Trust from "../pages/Home/Trust";
+import ContactSection from "../pages/Contract/ContractSection";
+import Dashboard from "../Layout/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -30,14 +33,20 @@ export const router = createBrowserRouter([
         path: "/register",
         Component: Register,
       },
+       {
+        path: "/login",
+        Component: Login,
+      },
       {
         path: "/aboutUs",
         Component: AboutUs,
       },
+     
       {
-        path: "/login",
-        Component: Login,
+        path: "/contract",
+        Component: ContactSection,
       },
+     
       {
         path: "/findPartner",
         element:<FindPartners></FindPartners>
@@ -69,6 +78,13 @@ export const router = createBrowserRouter([
         Component: PartnerDetails,
       },
     ],
+  },
+  {
+    path:"/dahboard",
+    Component:Dashboard,
+    children : [
+   
+    ]
   },
 
   {

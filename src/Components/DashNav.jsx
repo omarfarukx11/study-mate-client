@@ -8,7 +8,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { SlPeople } from "react-icons/sl";
 import { FaUsersViewfinder } from "react-icons/fa6";
 
-const Navbar = () => {
+const DasNav = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -54,34 +54,43 @@ const Navbar = () => {
     });
   };
 
-  const links = (
-    <>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/findPartner"> Find Partners</NavLink>
-      </li>
-      <li>
-        <NavLink to="/aboutUs"> About Us</NavLink>
-      </li>
-      <li>
-        <NavLink to="/contract">Contract Us</NavLink>
-      </li>
-    </>
-  );
+//   const links = (
+//     <>
+//       <li>
+//         <NavLink to="/" >
+//           Home
+//         </NavLink>
+//       </li>
+//       <li>
+//         <NavLink to="/findPartner" > Find Partners</NavLink>
+//       </li>
+//       <li>
+//         <NavLink to="/aboutUs"  > About Us</NavLink>
+//       </li>
+//       <li>
+//         <NavLink to="/contract" >Contract Us</NavLink>
+//       </li>
+//       {!user && (
+//         <>
+//           <li>
+//             <NavLink to="/login">Sign In</NavLink>
+//           </li>
+//         </>
+//       )}
+
+//     </>
+//   );
+
   return (
     <nav className="w-full bg-base-100 dark:bg-base-100 h-[100px] flex items-center shadow-sm fixed top-0 z-100 left-0 right-0 transition-colors duration-300">
       <div className="flex justify-between items-center lg:px-10 px-5 w-full lg: 2xl:w-[1536px] mx-auto">
-        <div>
-          <h1 className="text-4xl font-bold text-neutral-content">
-            Study<span className="text-primary">Mate</span>
-          </h1>
-        </div>
+        <h1 className="text-4xl font-bold text-neutral-content">
+          Study<span className="text-primary">Mate</span>
+        </h1>
 
         <div className="hidden lg:flex items-center ml-auto justify-end gap-5">
           <ul className="flex justify-between gap-5 text-lg font-semibold text-neutral-content">
-            {links}
+            {/* {links} */}
           </ul>
           <button
             onClick={() => setDarkMode(!darkMode)}
@@ -125,14 +134,14 @@ const Navbar = () => {
           >
             {darkMode ? <FaSun /> : <FaMoon />}
           </button>
-          {user && <button className="btn btn-primary"> <NavLink to="/dahboard">Dashboard</NavLink></button>}
+
           {user && (
             <div className="dropdown dropdown-end lg:hidden">
               <div tabIndex={0} role="button">
                 <img
                   src={user.photoURL}
                   alt="User"
-                  className="lg:w-[45px] lg:h-[45px] w-[20px] h-[20px] rounded-full"
+                  className="lg:w-[45px] lg:h-[45px] w-5 h-5 rounded-full"
                 />
               </div>
               <ul className="dropdown-content flex flex-col bg-base-100 dark:bg-base-100 rounded-box z-10 w-52 p-3 gap-2 shadow-sm">
@@ -163,15 +172,13 @@ const Navbar = () => {
               <GiHamburgerMenu />
             </div>
             <ul className="menu menu-sm dropdown-content bg-base-100 dark:bg-base-100 rounded-box z-10 mt-3 w-52 p-2 gap-2 shadow text-neutral-content">
-              {links}
+              {/* {links} */}
             </ul>
           </div>
         </div>
-
-        
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default DasNav;
