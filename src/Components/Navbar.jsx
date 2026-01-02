@@ -71,106 +71,68 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="w-full bg-base-100 dark:bg-base-100 h-[100px] flex items-center shadow-sm fixed top-0 z-100 left-0 right-0 transition-colors duration-300">
-      <div className="flex justify-between items-center lg:px-10 px-5 w-full lg: 2xl:w-[1536px] mx-auto">
-        <div>
-          <h1 className="text-4xl font-bold text-neutral-content">
-            Study<span className="text-primary">Mate</span>
-          </h1>
-        </div>
-
-        <div className="hidden lg:flex items-center ml-auto justify-end gap-5">
-          <ul className="flex justify-between gap-5 text-lg font-semibold text-neutral-content">
-            {links}
-          </ul>
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 transition-colors duration-300"
-          >
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </button>
-          {user && (
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button">
-                <img
-                  src={user.photoURL}
-                  alt="User"
-                  className="w-[30px] h-[30px] rounded-full"
-                />
-              </div>
-              <ul className="dropdown-content flex flex-col bg-base-100 dark:bg-base-100 rounded-box z-10 w-52 p-3 gap-2 shadow-sm">
-                <li>
-                  <Link
-                    to={"/profile"}
-                    className="btn w-full text-primary border border-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white transition-colors duration-300"
-                  >
-                    Profile
-                  </Link>
-                </li>
-                <li
-                  onClick={handleLogout}
-                  className="btn w-full text-primary border border-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer"
-                >
-                  LogOut
-                </li>
-              </ul>
+   <nav className="w-full bg-base-100 py-6 flex items-center shadow-sm fixed top-0 z-100 left-0 right-0 transition-colors duration-300 px-4 lg:px-10">
+  <div className="w-full max-w-[1536px] mx-auto flex justify-between items-center">
+    <div className="shrink-0">
+      <h1 className="text-2xl lg:text-4xl font-bold text-neutral-content">
+        Study<span className="text-primary">Mate</span>
+      </h1>
+    </div>
+    <div className="hidden lg:flex items-center">
+      <ul className="flex gap-8 text-lg font-semibold text-neutral-content">
+        {links}
+      </ul>
+    </div>
+    <div className="flex items-center gap-3 lg:gap-5">
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="hidden lg:flex p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 transition-colors duration-300"
+      >
+        {darkMode ? <FaSun /> : <FaMoon />}
+      </button>
+      {user && (
+        <NavLink 
+          to="/dashboard" 
+          className="btn btn-primary btn-sm lg:btn-md rounded-sm hidden md:flex"
+        >
+          Dashboard
+        </NavLink>
+      )}
+      {user && (
+        <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="avatar">
+            <div className="w-8 lg:w-11 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src={user.photoURL} alt="User" />
             </div>
-          )}
-        </div>
-
-        <div className="flex items-center gap-3 lg:gap-5">
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full text-[10px] bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 lg:hidden transition-colors duration-300"
-          >
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </button>
-          {user && <button className="btn btn-primary"> <NavLink to="/dahboard">Dashboard</NavLink></button>}
-          {user && (
-            <div className="dropdown dropdown-end lg:hidden">
-              <div tabIndex={0} role="button">
-                <img
-                  src={user.photoURL}
-                  alt="User"
-                  className="lg:w-[45px] lg:h-[45px] w-[20px] h-[20px] rounded-full"
-                />
-              </div>
-              <ul className="dropdown-content flex flex-col bg-base-100 dark:bg-base-100 rounded-box z-10 w-52 p-3 gap-2 shadow-sm">
-                <li>
-                  <Link
-                    to={"/profile"}
-                    className="btn w-full text-primary border border-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white transition-colors duration-300"
-                  >
-                    Profile
-                  </Link>
-                </li>
-                <li
-                  onClick={handleLogout}
-                  className="btn w-full text-primary border border-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer"
-                >
-                  LogOut
-                </li>
-              </ul>
-            </div>
-          )}
-
-          <div className="dropdown dropdown-end lg:hidden">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost text-sm sm:text-lg text-neutral-content"
-            >
-              <GiHamburgerMenu />
-            </div>
-            <ul className="menu menu-sm dropdown-content bg-base-100 dark:bg-base-100 rounded-box z-10 mt-3 w-52 p-2 gap-2 shadow text-neutral-content">
-              {links}
-            </ul>
           </div>
+          <ul tabIndex={0} className="dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 gap-2 flex flex-col">
+            <li><Link to="/profile" className="btn btn-outline btn-primary btn-sm w-full">Profile</Link></li>
+            <li><button onClick={handleLogout} className="btn btn-primary btn-sm w-full">LogOut</button></li>
+          </ul>
         </div>
-
+      )}
+      <div className="flex lg:hidden items-center gap-2">
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+        >
+          {darkMode ? <FaSun size={14}/> : <FaMoon size={14}/>}
+        </button>
         
+        <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden p-0">
+            <GiHamburgerMenu size={24} />
+          </div>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-neutral-content">
+            {links}
+            {user && <li><NavLink to="/dashboard">Dashboard</NavLink></li>}
+          </ul>
+        </div>
       </div>
-    </nav>
+
+    </div>
+  </div>
+</nav>
   );
 };
 

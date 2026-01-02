@@ -47,33 +47,27 @@ const Home = () => {
   },
 };
   return (
-    <div className="w-full text-neutral-content mt-5 overflow-x-hidden">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={quickSlide}
-      >
-        <Banner />
-      </motion.div>
+   <div className="w-full text-neutral-content overflow-x-hidden relative">
+
+      <Banner /> 
 
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={fastFadeUp}
-        className="lg:h-[300px] lg:py-0 py-10 lg:px-10 my-5 bg-secondary flex items-center justify-center flex-col rounded-sm"
+        className="lg:h-[300px] lg:py-0 py-10 lg:px-10 bg-secondary flex items-center justify-center flex-col rounded-sm"
       >
         <h1 className="lg:text-6xl text-2xl font-bold text-center text-secondary-content">
           Top Study <span className="text-primary">Partners</span>
         </h1>
         <p className="text-center lg:py-5 py-2 text-secondary-content/70 md:text-xl text-sm max-w-3xl px-5">
-          Meet the most active and dedicated learners from our community. Browse
-          their profiles, discover your ideal match, and start collaborating
-          today!
+          Meet the most active and dedicated learners from our community.
         </p>
       </motion.div>
 
+
+      
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -93,6 +87,7 @@ const Home = () => {
         ))}
       </motion.div>
 
+
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -102,7 +97,7 @@ const Home = () => {
         <AboutStudy />
       </motion.div>
 
-      {/* 5. Testimonials Section with Scale Effect */}
+      {/* Comments Section */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -114,17 +109,15 @@ const Home = () => {
           <h2 className="lg:text-6xl text-2xl font-bold text-secondary-content">
             What Our Users Say
           </h2>
-          <p className="md:text-xl text-sm text-secondary-content/60 lg:mt-4 mt-2">
-            Read the reviews and feedback from our study partners.
-          </p>
         </div>
         <div className="2xl:w-[1536px] mx-auto">
           <Comment />
         </div>
       </motion.div>
 
-      <div  className="2xl:w-[1536px] mx-auto">
-        <Trust></Trust>
+
+      <div className="2xl:w-[1536px] mx-auto pb-10">
+        <Trust />
       </div>
     </div>
   );
