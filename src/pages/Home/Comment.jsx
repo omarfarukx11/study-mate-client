@@ -17,7 +17,7 @@ const Comment = () => {
   const marqueeItems = [...comments, ...comments];
 
   return (
-    <div className="2xl:w-[1536px] mx-auto my-20">
+    <div className="2xl:w-[1536px] mx-auto">
       <Marquee pauseOnHover={true} speed={50} gradient={false}>
         <div className="flex gap-8">
           {marqueeItems.map((comment, index) => (

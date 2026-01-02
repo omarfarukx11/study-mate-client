@@ -54,7 +54,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex items-center justify-center w-full my-10">
+    <div className="flex items-center justify-center w-full min-h-[calc(100vh-402px)]">
       <title>StudyMate - Profile</title>
       <div className="md:w-[50%] w-[80%] mx-auto bg-base-100 border border-green-500/30 shadow-xl rounded-2xl p-6 text-center overflow-hidden">
 

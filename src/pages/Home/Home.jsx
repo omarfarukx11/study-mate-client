@@ -7,6 +7,7 @@ import Comment from "./Comment";
 import { useLoaderData } from "react-router";
 import { motion } from "framer-motion";
 import Trust from "./Trust";
+import DeepDiveBenefits from "../../Components/DeepDiveBenefits";
 
 const Home = () => {
   const topPartner = useLoaderData();
@@ -56,7 +57,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={fastFadeUp}
-        className="lg:h-[300px] lg:py-0 py-10 lg:px-10 bg-secondary flex items-center justify-center flex-col rounded-sm"
+        className="lg:h-[300px] py-30 lg:px-10 bg-secondary flex items-center justify-center flex-col rounded-sm  "
       >
         <h1 className="lg:text-6xl text-2xl font-bold text-center text-secondary-content">
           Top Study <span className="text-primary">Partners</span>
@@ -73,13 +74,12 @@ const Home = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="2xl:w-[1536px] lg:px-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:grid-cols-4 rounded-sm my-20 lg:p-0 p-5 overflow-hidden"
+        className="2xl:w-[1536px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:grid-cols-4 rounded-sm  lg:p-0 p-5 overflow-hidden"
       >
         {topPartner.map((data) => (
           <motion.div
             key={data._id}
             variants={fastFadeUp}
-            whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <TopPartners data={data} />
@@ -87,6 +87,7 @@ const Home = () => {
         ))}
       </motion.div>
 
+         <DeepDiveBenefits></DeepDiveBenefits>
 
       <motion.div
         initial="hidden"
@@ -103,10 +104,10 @@ const Home = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="bg-secondary my-20 lg:py-20 py-5"
+        className="bg-secondary"
       >
-        <div className="w-full text-center my-10 px-5">
-          <h2 className="lg:text-6xl text-2xl font-bold text-secondary-content">
+        <div className="w-full text-center px-5 ">
+          <h2 className="lg:text-6xl text-2xl py-30 font-bold text-secondary-content">
             What Our Users Say
           </h2>
         </div>
@@ -115,8 +116,9 @@ const Home = () => {
         </div>
       </motion.div>
 
+       
 
-      <div className="2xl:w-[1536px] mx-auto pb-10">
+      <div className="2xl:w-[1536px] mx-auto">
         <Trust />
       </div>
     </div>

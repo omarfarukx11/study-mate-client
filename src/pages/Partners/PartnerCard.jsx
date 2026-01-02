@@ -6,7 +6,7 @@ const PartnerCard = ({ partner }) => {
   const { _id, name, skill, subject, rating ,profileImage} = partner;
 
   return (
-      <div className="group flex flex-col bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+      <div className="group flex flex-col bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl overflow-hidden hover:shadow-sm transition-all duration-300 h-full">
      
      <div className="relative aspect-3/2 overflow-hidden">
        <img

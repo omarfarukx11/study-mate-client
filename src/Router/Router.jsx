@@ -15,6 +15,7 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import Trust from "../pages/Home/Trust";
 import ContactSection from "../pages/Contract/ContractSection";
 import Dashboard from "../Layout/Dashboard";
+import Blogs from "../pages/blogs/Blogs";
 
 export const router = createBrowserRouter([
   {
@@ -46,24 +47,14 @@ export const router = createBrowserRouter([
         path: "/contract",
         Component: ContactSection,
       },
+      {
+        path: "/blogs",
+        Component: Blogs,
+      },
      
       {
         path: "/findPartner",
         element:<FindPartners></FindPartners>
-      },
-      {
-        path: "/createPP",
-        Component: CreatePartnerProfile,
-      },
-      {
-        path: "/myConnection",
-        loader: () => fetch("https://study-mate-server-tau.vercel.app/request"),
-        element: (
-          <PrivateRoute>
-            <MyConnection></MyConnection>
-          </PrivateRoute>
-        ),
-        hydrateFallback: <Loader></Loader>,
       },
       {
         path: "/profile",
@@ -79,11 +70,30 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
   {
-    path:"/dahboard",
+    path:"/dashboard",
     Component:Dashboard,
     children : [
-   
+      {
+        path: "/dashboard/myConnection",
+        loader: () => fetch("https://study-mate-server-tau.vercel.app/request"),
+        element: (
+          <PrivateRoute>
+            <MyConnection></MyConnection>
+          </PrivateRoute>
+        ),
+        hydrateFallback: <Loader></Loader>,
+      },
+      {
+        path: "/dashboard/create-partner",
+        element: (
+          <PrivateRoute>
+            <CreatePartnerProfile></CreatePartnerProfile>
+          </PrivateRoute>
+        ),
+        hydrateFallback: <Loader></Loader>,
+      },
     ]
   },
 

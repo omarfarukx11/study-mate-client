@@ -82,7 +82,7 @@ const DasNav = () => {
 //   );
 
   return (
-    <nav className="w-full bg-base-100 dark:bg-base-100 h-[100px] flex items-center shadow-sm fixed top-0 z-100 left-0 right-0 transition-colors duration-300">
+    <nav className="w-full bg-base-100 dark:bg-base-100 py-6 flex items-center shadow-sm fixed top-0 z-100 left-0 right-0 transition-colors duration-300">
       <div className="flex justify-between items-center lg:px-10 px-5 w-full lg: 2xl:w-[1536px] mx-auto">
         <h1 className="text-4xl font-bold text-neutral-content">
           Study<span className="text-primary">Mate</span>
