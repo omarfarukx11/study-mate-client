@@ -49,7 +49,6 @@ const Banner = () => {
 
   const slideVariants = {
     initial: (direction) => ({
-      // Direction 0 mane prothombar, tokhon x: 0 thakbe (kono slide hobe na)
       x: direction === 0 ? 0 : direction > 0 ? "100%" : "-100%",
     }),
     animate: {
@@ -70,7 +69,6 @@ const Banner = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      {/* initial={true} thakbe jate text animate hoy, kintu direction logic image slide bondho rakhbe */}
       <AnimatePresence initial={true} custom={direction} mode="popLayout">
         <motion.div
           key={index}
@@ -90,7 +88,7 @@ const Banner = () => {
           </div>
           
           {/* Black Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/30 to-black/60" />
 
           {/* TEXT ANIMATIONS - First visit e eituku e animate hobe */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-20 px-4">

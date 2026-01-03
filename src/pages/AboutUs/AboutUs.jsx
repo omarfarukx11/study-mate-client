@@ -1,7 +1,19 @@
 import React from 'react';
-import { IoRocketOutline, IoPeopleOutline, IoLibraryOutline, IoCheckmarkCircleOutline } from "react-icons/io5";
+import { FaBook, FaGraduationCap, FaUsers } from 'react-icons/fa';
+import { IoRocketOutline, IoPeopleOutline, IoLibraryOutline, IoCheckmarkCircleOutline, IoChatbubblesOutline } from "react-icons/io5";
+import { motion } from 'framer-motion';
+
 
 const AboutUs = () => {
+
+
+   const stats = [
+      { icon: <FaUsers />, count: "10K+", label: "Active Learners" },
+      { icon: <FaBook />, count: "500+", label: "Study Groups" },
+      { icon: <FaGraduationCap />, count: "120+", label: "Subjects Covered" },
+      { icon: <IoChatbubblesOutline />, count: "50K+", label: "Messages Sent" },
+    ];
+
   return (
     <div className="bg-base-100 py-16 px-4 md:px-8">
       <div className=" w-full lg:px-10 2xl:w-[1536px] mx-auto">
@@ -46,24 +58,29 @@ const AboutUs = () => {
         </div>
 
         {/* Section 2: Stats (The Numbers) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 px-6 bg-secondary rounded-3xl text-secondary-content mb-24">
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-1">50K+</div>
-            <div className="text-sm opacity-80 uppercase tracking-tighter">Active Users</div>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="bg-primary/10 rounded-3xl p-12 mb-32 border border-primary/20"
+        >
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            {stats.map((stat, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1, type: "spring" }}
+                viewport={{ once: true }}
+              >
+                <div className="text-primary text-4xl mb-2 flex justify-center">{stat.icon}</div>
+                <div className="text-4xl font-black text-secondary-content">{stat.count}</div>
+                <div className="text-secondary-content/60 font-medium uppercase tracking-wider text-sm">{stat.label}</div>
+              </motion.div>
+            ))}
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-1">120+</div>
-            <div className="text-center uppercase text-sm opacity-80 tracking-tighter">Countries</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-1">1M+</div>
-            <div className="text-sm opacity-80 uppercase tracking-tighter">Notes Shared</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-1">24/7</div>
-            <div className="text-sm opacity-80 uppercase tracking-tighter">Support</div>
-          </div>
-        </div>
+        </motion.div>
 
         {/* Section 3: Values Grid */}
         <div className="text-center mb-12">

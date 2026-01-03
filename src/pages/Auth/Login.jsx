@@ -60,6 +60,9 @@ const Login = () => {
       });
   };
 
+  const email = "hello@gamil.com"
+  const password = "Welcome"
+
   return (
     <div className="bg-secondary w-full text-neutral-content">
       <div className="min-h-screen flex items-center justify-center p-4 ">
@@ -85,6 +88,8 @@ const Login = () => {
                     error ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Email"
+                  defaultValue={email}
+
                   required
                 />
 
@@ -97,6 +102,7 @@ const Login = () => {
                       error ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Password"
+                    defaultValue={password}
                     required
                   />
 

@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../AuthContext/AuthContext";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaMoon, FaSun } from "react-icons/fa";
-import Swal from "sweetalert2";
 
 const DasNav = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -17,37 +16,50 @@ const DasNav = () => {
   }, [darkMode]);
 
   return (
-    <nav className="fixed top-0 z-100 w-full lg:w-[calc(100%-18rem)] border-b border-base-200 transition-all duration-300">
-
-      <div className="max-w-[1800px] mx-auto px-4 lg:px-8 h-[70px] flex justify-between items-center bg-base-100">
+    <nav className="absolute top-0 left-0 w-full z-100 border-b border-base-300 bg-base-100 py-1">
+      <div className="px-4 lg:px-8 h-[70px] flex justify-between items-center">
         
         <div className="flex items-center gap-3">
-          <label htmlFor="dashboard-sidebar" className="btn btn-ghost btn-sm lg:hidden">
+        <label htmlFor="dashboard-sidebar" className="btn btn-ghost btn-sm lg:hidden">
             <GiHamburgerMenu size={24} className="text-primary" />
           </label>
+          
+          {/* Mobile Logo */}
           <Link to="/" className="lg:hidden text-2xl font-black tracking-tighter">
             Study<span className="text-primary">Mate</span>
           </Link>
           
+          {/* Desktop Title */}
           <h2 className="hidden lg:block text-xl font-bold text-neutral">Dashboard</h2>
         </div>
 
         <div className="flex items-center gap-4">
+          {/* Theme Toggle */}
           <button onClick={() => setDarkMode(!darkMode)} className="btn btn-ghost btn-circle btn-sm">
             {darkMode ? <FaSun className="text-yellow-400 text-lg" /> : <FaMoon className="text-lg" />}
           </button>
 
+          {/* User Profile Dropdown */}
           {user && (
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="avatar shadow-sm">
+              <div tabIndex={0} role="button" className="avatar shadow-sm cursor-pointer">
                 <div className="w-9 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-base-100">
                   <img src={user.photoURL || "/avatar.png"} alt="User" />
                 </div>
               </div>
-              <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-xl border border-base-200 mt-3">
+              <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-xl border border-base-200 mt-3">
+                <li className="px-4 py-2 font-semibold text-xs text-gray-500 uppercase">Account</li>
                 <li><Link to="/profile">Profile</Link></li>
+                <li><Link to="/settings">Settings</Link></li>
                 <div className="divider my-0"></div>
-                <li><button onClick={() => logOutUser().then(() => navigate("/"))} className="text-error font-bold">Logout</button></li>
+                <li>
+                  <button 
+                    onClick={() => logOutUser().then(() => navigate("/"))} 
+                    className="text-error font-bold"
+                  >
+                    Logout
+                  </button>
+                </li>
               </ul>
             </div>
           )}

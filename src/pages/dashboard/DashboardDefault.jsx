@@ -34,7 +34,7 @@ const DashboardDefault = () => {
   ];
 
   return (
-    <div className="p-6 space-y-8">
+    <div className="p-6 space-y-8 min-h-[calc(100vh-70px)] border-2 border-red-700">
       {/* Header Section */}
       <motion.div 
         initial={{ opacity: 0, x: -20 }} 
