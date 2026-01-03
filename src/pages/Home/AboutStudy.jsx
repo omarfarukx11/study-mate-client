@@ -1,17 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 import { IoPersonAddSharp, IoChatbubblesOutline } from "react-icons/io5";
-import { FaBook, FaSearch, FaUsers, FaGraduationCap, FaArrowRight } from "react-icons/fa";
-import { Link } from 'react-router';
+import {
+  FaBook,
+  FaSearch,
+} from "react-icons/fa";
+import { Link } from "react-router";
 
 const AboutStudy = () => {
-  // Existing Animations
   const floatAnimation = {
     initial: { y: 0 },
     animate: {
       y: [0, -15, 0],
-      transition: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-    }
+      transition: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+    },
   };
 
   const cardVariants = {
@@ -19,178 +21,127 @@ const AboutStudy = () => {
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.8, type: "spring", stiffness: 100 }
-    })
-  };
-
-  // New Stagger Animation for the Grid Containers
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        delay: i * 0.1,
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+      },
+    }),
   };
 
   const steps = [
-    { icon: <IoPersonAddSharp />, title: "1. Create Your Profile", desc: "Sign up and share your study interests, goals, and skills to match with the right partner." },
-    { icon: <FaSearch />, title: "2. Find a Partner", desc: "Browse through our study community and connect with learners who match your goals." },
-    { icon: <FaBook />, title: "3. Study Together", desc: "Chat, collaborate, and achieve your study goals together — anytime, anywhere." },
-    { icon: <IoPersonAddSharp />, title: "1. Create Your Profile", desc: "Sign up and share your study interests, goals, and skills to match with the right partner." },
-    { icon: <FaSearch />, title: "2. Find a Partner", desc: "Browse through our study community and connect with learners who match your goals." },
-    { icon: <FaBook />, title: "3. Study Together", desc: "Chat, collaborate, and achieve your study goals together — anytime, anywhere." },
+    {
+      icon: <IoPersonAddSharp />,
+      title: "Create Your Profile",
+      desc: "Your journey starts by defining who you are as a learner. List your subjects, study habits, and academic goals.",
+      longDesc:
+        "Detailed profiles help our algorithm understand your learning style—whether you're a night owl or a visual learner.",
+    },
+    {
+      icon: <FaSearch />,
+      title: "Find Your Match",
+      desc: "Filter through thousands of active students based on location, subject, or availability. Our community is diverse and global.",
+      longDesc:
+        "Use advanced filters to find people studying the same specific topics as you, from Physics to Creative Writing.",
+    },
+    {
+      icon: <IoChatbubblesOutline />,
+      title: "Instant Collaboration",
+      desc: "Once you match, jump into a secure chat to set your schedule. Use integrated tools to share resources.",
+      longDesc:
+        "Communication is key. Our platform provides a safe space to discuss session agendas before you meet.",
+    },
+    {
+      icon: <FaBook />,
+      title: "Achieve Goals Together",
+      desc: "Study sessions are more effective when you're not alone. Stay accountable and track your progress as a pair.",
+      longDesc:
+        "Experience the 'Protege Effect'—teaching others is the best way to learn and push each other towards excellence.",
+    },
   ];
 
-  const stats = [
-    { icon: <FaUsers />, count: "10K+", label: "Active Learners" },
-    { icon: <FaBook />, count: "500+", label: "Study Groups" },
-    { icon: <FaGraduationCap />, count: "120+", label: "Subjects Covered" },
-    { icon: <IoChatbubblesOutline />, count: "50K+", label: "Messages Sent" },
-  ];
 
-  const blogs = [
-    { tag: "Productivity", title: "5 Tips for Effective Virtual Study Sessions", author: "Dr. Sarah Chen" },
-    { tag: "Community", title: "How to Find the Perfect Study Partner", author: "Mark Thompson" },
-    { tag: "Science", title: "The Pomodoro Technique: Why it Works", author: "Exam Prep Team" },
-    { tag: "Productivity", title: "5 Tips for Effective Virtual Study Sessions", author: "Dr. Sarah Chen" },
-    { tag: "Community", title: "How to Find the Perfect Study Partner", author: "Mark Thompson" },
-    { tag: "Science", title: "The Pomodoro Technique: Why it Works", author: "Exam Prep Team" },
-    { tag: "Productivity", title: "5 Tips for Effective Virtual Study Sessions", author: "Dr. Sarah Chen" },
-    { tag: "Community", title: "How to Find the Perfect Study Partner", author: "Mark Thompson" },
-   
-  ];
 
   return (
-    <section className="bg-secondary relative overflow-hidden max-w-[1536px] mx-auto">
-
-      <div className="max-w-[1536px] mx-auto relative z-10">
-        
-        <motion.div 
+    <section className="relative overflow-hidden max-w-[1536px] mx-auto text-neutral-content">
+      {/* --- HOW IT WORKS: TIMELINE --- */}
+      <div className="max-w-[1536px] mx-auto px-6 relative z-10">
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center py-20"
+          className="text-center py-24"
         >
-          <h2 className="lg:text-6xl text-4xl font-bold mb-4 text-secondary-content">How It Works</h2>
-          <motion.div 
+          <span className="text-primary font-bold tracking-[0.3em] uppercase text-sm mb-4 block">
+            Our Process
+          </span>
+          <h2 className="lg:text-7xl text-5xl font-black mb-6 text-neutral-content tracking-tighter">
+            How StudyMate Works
+          </h2>
+          <motion.div
             initial={{ width: 0 }}
-            whileInView={{ width: "5rem" }}
+            whileInView={{ width: "8rem" }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="h-1.5 bg-primary mx-auto rounded-full mb-6" 
+            className="h-2 bg-primary mx-auto rounded-full mb-8"
           />
-          <p className="text-secondary-content/80 text-lg md:text-xl max-w-2xl mx-auto">
-            Study Mate makes it easy to find your ideal partner and stay productive together.
+          <p className="text-gray-400 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed">
+            Follow these steps to transform your academic results.
           </p>
         </motion.div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid lg:grid-cols-3 gap-10 mb-32"
-        >
-          {steps.map((step, index) => (
+        <div className="relative py-10">
+          <div
+            className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full hidden md:block bg-linear-to-b from-primary via-primary/20 to-transparent opacity-100"
+            style={{ height: "calc(100% - 100px)" }}
+          ></div>
+
+          {steps.map((step, i) => (
             <motion.div
-              key={index}
-              custom={index}
-              variants={cardVariants}
-              whileHover={{ y: -12, scale: 1.02 }}
-              className="card bg-base-100 hover:shadow-sm border border-primary/5 group relative overflow-hidden"
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              className={`flex flex-col md:flex-row items-center mb-40 last:mb-0 relative ${
+                i % 2 !== 0 ? "md:flex-row-reverse" : ""
+              }`}
             >
-              <div className="card-body items-center text-center p-10">
-                <motion.div variants={floatAnimation} animate="animate" className="md:text-7xl text-5xl text-primary mb-6">
-                  {step.icon}
-                </motion.div>
-                <h3 className="card-title md:text-2xl font-bold mb-4 text-neutral">{step.title}</h3>
-                <p className="text-neutral/60 md:text-lg leading-relaxed">{step.desc}</p>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-black border-2 border-primary rounded-full hidden md:flex items-center justify-center text-primary text-2xl z-20 shadow-[0_0_20px_rgba(var(--p),0.3)]">
+                {step.icon}
               </div>
+
+              <div className="md:w-5/12 w-full">
+                <div className="bg-[#121212] p-10 rounded-xl border border-white/5 hover:border-primary/40 transition-all duration-500 group relative">
+                  {/* Mobile Icon */}
+                  <div className="text-primary text-5xl mb-6 md:hidden">
+                    {step.icon}
+                  </div>
+
+                  <h3 className="text-3xl font-bold mb-4 text-white group-hover:text-primary transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-400 text-lg leading-relaxed mb-6">
+                    {step.desc}
+                  </p>
+                  <p className="text-gray-500 text-sm italic border-l-2 border-primary/30 pl-4">
+                    {step.longDesc}
+                  </p>
+                </div>
+              </div>
+              <div className="md:w-5/12"></div>
             </motion.div>
           ))}
-        </motion.div>
-
-
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-primary/10 rounded-3xl p-12 mb-32 border border-primary/20"
-        >
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1, type: "spring" }}
-                viewport={{ once: true }}
-              >
-                <div className="text-primary text-4xl mb-2 flex justify-center">{stat.icon}</div>
-                <div className="text-4xl font-black text-secondary-content">{stat.count}</div>
-                <div className="text-secondary-content/60 font-medium uppercase tracking-wider text-sm">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        <div className="pb-10">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"
-          >
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-secondary-content mb-4">Latest Insights</h2>
-              <p className="text-secondary-content/70 text-lg">Stay updated with the latest study techniques and community news.</p>
-            </div>
-            <Link to={'/blogs'} className="btn btn-primary btn-outline rounded-full px-8 group">
-               View All Blogs <FaArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
-            </Link>
-          </motion.div>
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8"
-          >
-            {blogs.map((blog, i) => (
-              <motion.div 
-                key={i}
-                variants={cardVariants}
-                custom={i}
-                whileHover={{ scale: 1.03 }}
-                className="bg-base-100 rounded-2xl overflow-hidden hover:shadow-sm flex flex-col h-full border border-base-200"
-              >
-                <div className="h-48 bg-primary/20 flex items-center justify-center text-primary/30 text-6xl">
-                  <FaBook />
-                </div>
-                <div className="p-8 flex flex-col grow">
-                  <span className="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full w-fit mb-4 italic">
-                    {blog.tag}
-                  </span>
-                  <h3 className="text-2xl font-bold text-neutral mb-4 leading-tight">
-                    {blog.title}
-                  </h3>
-                  <div className="mt-auto pt-6 border-t border-gray-100 flex justify-between items-center">
-                    <span className="text-sm text-neutral/50 font-medium">By {blog.author}</span>
-                    <button className="text-primary font-bold flex items-center gap-1 hover:underline">
-                      Read <FaArrowRight size={12} />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
-
       </div>
+
+
+
+
+
+
+    
     </section>
   );
 };

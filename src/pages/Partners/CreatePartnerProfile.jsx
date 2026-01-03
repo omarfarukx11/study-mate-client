@@ -27,6 +27,7 @@ const CreatePartnerProfile = () => {
     }
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitLoading(true);
@@ -85,28 +86,26 @@ const CreatePartnerProfile = () => {
     }
   };
 
-  const inputStyle = "w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all outline-none text-gray-700 bg-white";
-  const labelStyle = "block text-sm font-bold text-gray-700 mb-1.5";
+  const inputStyle = "w-full border border-gray-300 rounded-lg px-4 py-2.5  transition-all outline-none text-neutral-content outline-none";
+  const labelStyle = "block text-sm font-bold text-neutral-content mb-1.5";
 
   if (pageLoading || submitLoading) return <Loader fullScreen={true} />;
 
   return (
-   <div className="min-h-[calc(100vh-120px)] py-6 flex items-center justify-center rounded-lg">
+   <div className="min-h-[calc(100vh-120px)] flex items-center justify-center rounded-lg text-neutral-content ">
     <div className="max-w-4xl mx-auto rounded-xl border bg-base-100 border-gray-100 shadow-sm overflow-hidden">
       
-      <div className="px-8 py-4 border-b border-gray-100 bg-white">
-        <h2 className="text-xl font-bold text-gray-800">Talent Information</h2>
+      <div className="px-8 py-4 border-b border-gray-100 ">
+        <h2 className="text-xl font-bold ">Talent Information</h2>
         <p className="text-gray-500 text-xs">Edit and create your partner profile.</p>
       </div>
 
       <form onSubmit={handleSubmit} className="p-6 space-y-5">
-        
-        {/* Section 1: Identity */}
+
         <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {/* Smaller Photo Box */}
           <div className="md:col-span-1">
             <label className={labelStyle}>Profile Picture</label>
-            <div className="relative group border-2 border-dashed border-gray-300 rounded-lg h-32 flex flex-col items-center justify-center bg-gray-50 hover:bg-gray-100 transition-all overflow-hidden">
+            <div className="relative group border-2 border-dashed border-gray-300 rounded-lg h-32 flex flex-col items-center justify-center  hover:bg-gray-100 transition-all overflow-hidden">
               {imagePreview ? (
                 <img src={imagePreview} alt="Preview" className="h-full w-full object-cover" />
               ) : (
@@ -130,11 +129,11 @@ const CreatePartnerProfile = () => {
           <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3">
              <div className="md:col-span-2">
                 <label className={labelStyle}>Full Name</label>
-                <input type="text" name="name" required className={inputStyle} placeholder="John Doe" />
+                <input type="text" name="name" required className={inputStyle} placeholder="Enter your name" />
              </div>
              <div className="md:col-span-2">
                 <label className={labelStyle}>Email Address</label>
-                <input type="email" value={user?.email || ""} readOnly className={`${inputStyle} bg-gray-50 text-gray-400 cursor-not-allowed`} />
+                <input type="email" value={user?.email || ""} readOnly className={`${inputStyle}  text-gray-400 cursor-not-allowed`} />
              </div>
              <div>
                 <label className={labelStyle}>Location</label>
@@ -162,8 +161,8 @@ const CreatePartnerProfile = () => {
              <div>
                 <label className={labelStyle}>Study Mode</label>
                 <select name="studyMode" required className={inputStyle}>
-                  <option value="Online">Online</option>
-                  <option value="Offline">Offline</option>
+                  <option className="text-black"  value="Online">Online</option>
+                  <option  className="text-black" value="Offline">Offline</option>
                 </select>
              </div>
              <div>

@@ -5,7 +5,7 @@ const Trust = () => {
 
   return (
     <div className="bg-base-100 border-y border-base-300 overflow-hidden rounded-xl my-30 ">
-      <p className="text-center text-3xl text-gray-600 font-bold pb-4  ">
+      <p className="text-center text-3xl text-neutral-content font-bold py-4  ">
         Trusted by students from top institutions
       </p>
       <motion.div 
@@ -14,9 +14,8 @@ const Trust = () => {
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         className="flex whitespace-nowrap gap-20 w-max "
       >
-        {/* Render twice for seamless loop */}
         {[...logos, ...logos].map((logo, i) => (
-          <span key={i} className="text-2xl md:text-6xl font-black text-neutral/20 hover:text-primary transition-colors cursor-default pb-10">
+          <span key={i} className="text-2xl md:text-6xl font-black text-neutral hover:text-primary transition-colors cursor-default pb-10">
             {logo} UNIVERSITY
           </span>
         ))}

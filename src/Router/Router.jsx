@@ -19,6 +19,7 @@ import Blogs from "../pages/blogs/Blogs";
 import DashboardDefault from "../pages/dashboard/DashboardDefault";
 import PrivacyPolicy from "../Components/PrivacyPolicy";
 import CreateBlog from "../pages/dashboard/CreateBlog";
+import BlogDetails from "../pages/blogs/BlogDetails";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,12 @@ export const router = createBrowserRouter([
       {
         path: "/aboutUs",
         Component: AboutUs,
+        hydrateFallback: <Loader />,
+      },
+      {
+        path: "/blog-details/:id",
+        Component: BlogDetails,
+        loader: ({params}) => fetch(`https://study-mate-server-tau.vercel.app/allBlogs/${params.id}`),
         hydrateFallback: <Loader />,
       },
 

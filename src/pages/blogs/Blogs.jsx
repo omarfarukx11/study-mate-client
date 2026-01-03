@@ -1,109 +1,75 @@
-import React, { useState } from 'react';
-import { motion ,AnimatePresence} from 'framer-motion';
-import { FaRegClock, FaRegUser, FaArrowRight, FaSearch } from 'react-icons/fa';
-import { BiCategory } from 'react-icons/bi';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaRegClock, FaRegUser, FaArrowRight, FaInbox } from 'react-icons/fa'; // Added FaInbox
+import { Link } from 'react-router'; 
+import useAxios from '../../Hooks/useAxios';
 
 const Blogs = () => {
+  const axiosInstance = useAxios();
+  const [blogs, setBlogs] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
+  const [loading, setLoading] = useState(true);
 
   const categories = ["All", "Productivity", "Study Tips", "Community", "Tech", "Success Stories"];
 
-  const blogData = [
-    {
-      id: 1,
-      category: "Productivity",
-      title: "The Science of Deep Work: How to Focus in a Distracted World",
-      excerpt: "Understanding the neurological basis of concentration can help you achieve more in less time. Learn the 4 pillars of deep work...",
-      author: "Dr. Ariful Islam",
-      date: "Oct 12, 2025",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800",
-      featured: true
-    },
-    {
-      id: 2,
-      category: "Study Tips",
-      title: "Active Recall vs. Passive Rereading",
-      excerpt: "Why your current study habits might be failing you and how to switch to high-utility techniques supported by cognitive science.",
-      author: "Sarah Chen",
-      date: "Nov 05, 2025",
-      readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      id: 3,
-      category: "Community",
-      title: "Building a Global Study Circle from Your Bedroom",
-      excerpt: "How StudyMate users are connecting across 15 different time zones to prepare for international examinations together.",
-      author: "James Wilson",
-      date: "Dec 01, 2025",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      id: 4,
-      category: "Tech",
-      title: "AI Tools that Actually Help You Learn (Not Cheat)",
-      excerpt: "A curated list of AI-powered research assistants and summarizers that enhance your critical thinking skills.",
-      author: "Rayhan Kabir",
-      date: "Dec 15, 2025",
-      readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      id: 5,
-      category: "Success Stories",
-      title: "From Struggling Student to Dean's List",
-      excerpt: "How accountability partnering helped one student overcome chronic procrastination and find a passion for mathematics.",
-      author: "Emma Watson",
-      date: "Jan 02, 2026",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      id: 6,
-      category: "Study Tips",
-      title: "Note-Taking Systems: Beyond the Cornell Method",
-      excerpt: "Exploring digital obsidian workflows and mind-mapping techniques for complex engineering subjects.",
-      author: "David Miller",
-      date: "Jan 10, 2026",
-      readTime: "12 min read",
-      image: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=800"
-    }
-  ];
+  useEffect(() => {
+    setLoading(true);
+    axiosInstance.get("/allBlogs")
+      .then((res) => {
+        setBlogs(res.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Fetch error:", err);
+        setLoading(false);
+      });
+  }, [axiosInstance]);
 
   const filteredBlogs = activeCategory === "All" 
-    ? blogData 
-    : blogData.filter(blog => blog.category === activeCategory);
+    ? blogs 
+    : blogs.filter(blog => blog.category === activeCategory);
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-4 lg:px-10">
+    <div className="min-h-screen pt-10 pb-20 px-4 lg:px-10 text-neutral-content">
       <div className="max-w-[1536px] mx-auto">
         
-        {/* --- HEADER SECTION --- */}
-        <header className="text-center mb-16">
+        {/* --- HERO SECTION --- */}
+        <header className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-block px-4 py-1.5 mb-6 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-bold tracking-widest uppercase"
+          >
+            The StudyMate Journal
+          </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl lg:text-7xl font-black text-neutral mb-6"
+            transition={{ delay: 0.1 }}
+            className="text-5xl lg:text-8xl font-black mb-6 tracking-tighter"
           >
             Insights & <span className="text-primary">Resources</span>
           </motion.h1>
-          <p className="max-w-2xl mx-auto text-neutral/60 text-lg">
-            Explore our library of academic strategies, community stories, and productivity hacks to supercharge your learning journey.
-          </p>
+          <motion.p 
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             transition={{ delay: 0.2 }}
+             className="max-w-2xl mx-auto opacity-70 text-lg lg:text-xl font-medium"
+          >
+            Explore academic strategies, community stories, and productivity hacks.
+          </motion.p>
         </header>
 
-        {/* --- CATEGORY FILTER --- */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* --- CATEGORY NAVIGATION --- */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-full font-bold transition-all ${
+              className={`px-8 py-3 rounded-2xl font-bold transition-all duration-300 border ${
                 activeCategory === cat 
-                ? "bg-primary text-white shadow-lg scale-105" 
-                : "bg-base-100 text-neutral/70 hover:bg-primary/10"
+                ? "bg-primary text-black border-primary shadow-lg scale-105" 
+                : "bg-white/5 opacity-60 border-white/10 hover:opacity-100 hover:bg-white/10"
               }`}
             >
               {cat}
@@ -111,120 +77,99 @@ const Blogs = () => {
           ))}
         </div>
 
-        {/* --- FEATURED BLOG (Hero Card) --- */}
-        {activeCategory === "All" && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="mb-16 group cursor-pointer"
-          >
-            <div className="bg-base-100 rounded-xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-primary/5">
-              <div className="lg:w-1/2 overflow-hidden">
-                <img 
-                  src={blogData[0].image} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                  alt="Featured" 
-                />
-              </div>
-              <div className="lg:w-1/2 p-8 lg:p-16 flex flex-col justify-center">
-                <span className="text-primary font-black tracking-widest uppercase text-sm mb-4 block">Featured Article</span>
-                <h2 className="text-3xl lg:text-5xl font-bold text-neutral mb-6 leading-tight">
-                  {blogData[0].title}
-                </h2>
-                <p className="text-neutral/60 text-lg mb-8 leading-relaxed">
-                  {blogData[0].excerpt}
-                </p>
-                <div className="flex items-center gap-6 text-sm text-neutral/40 mb-8">
-                   <span className="flex items-center gap-2"><FaRegUser /> {blogData[0].author}</span>
-                   <span className="flex items-center gap-2"><FaRegClock /> {blogData[0].readTime}</span>
-                </div>
-                <button className="btn btn-primary w-fit px-8 rounded-full group">
-                  Read Full Article <FaArrowRight className="ml-2 group-hover:translate-x-2 transition-all" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
         {/* --- BLOG GRID --- */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <AnimatePresence mode='popLayout'>
-            {filteredBlogs.map((blog) => (
-              <motion.div
-                layout
-                key={blog.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                whileHover={{ y: -10 }}
-                className="card bg-base-100 shadow-xl border border-primary/5 overflow-hidden group"
-              >
-                <figure className="relative h-60 overflow-hidden">
-                  <img 
-                    src={blog.image} 
-                    alt="Blog" 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">
-                      {blog.category}
-                    </span>
-                  </div>
-                </figure>
-                
-                <div className="card-body p-8">
-                  <div className="flex items-center gap-4 text-xs text-neutral/40 mb-4">
-                    <span>{blog.date}</span>
-                    <span>•</span>
-                    <span>{blog.readTime}</span>
-                  </div>
-                  <h3 className="card-title text-xl font-bold text-neutral mb-4 group-hover:text-primary transition-colors">
+        {loading ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3].map(n => (
+              <div key={n} className="h-[450px] w-full bg-current opacity-5 animate-pulse rounded-2xl border border-current/10"></div>
+            ))}
+          </div>
+        ) : (
+         <>
+    {/* If data exists, show the grid */}
+    {filteredBlogs.length > 0 ? (
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <AnimatePresence mode='popLayout'>
+          {filteredBlogs.map((blog) => (
+            <motion.div
+              layout
+              key={blog._id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              // Removed whileHover={{ y: -10 }} to stop scale/up effect
+              className="group relative bg-white/5 rounded-2xl border shadow-xl border-white/10 overflow-hidden flex flex-col h-full"
+            >
+              <div className="relative h-64 w-full overflow-hidden">
+                <img 
+                  src={blog.image || "https://via.placeholder.com/800x600"} 
+                  alt={blog.title} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-60"></div>
+                <div className="absolute top-6 left-6">
+                  <span className="bg-black/40 backdrop-blur-md text-primary text-[10px] font-black px-4 py-2 rounded-xl uppercase tracking-widest border border-white/10">
+                    {blog.category || "Insight"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-8 flex flex-col grow">
+                <div className="flex items-center gap-4 text-[10px] font-mono opacity-50 mb-4 tracking-widest uppercase">
+                  <span className="flex items-center gap-1.5"><FaRegClock className="text-primary"/> {blog?.createdAt}</span>
+                </div>
+
+                <Link to={`/blogDetails/${blog._id}`}>
+                  <h3 className="text-xl font-bold mb-4 leading-tight group-hover:text-primary transition-colors cursor-pointer">
                     {blog.title}
                   </h3>
-                  <p className="text-neutral/60 text-sm line-clamp-3 mb-6">
-                    {blog.excerpt}
-                  </p>
-                  <div className="card-actions justify-between items-center mt-auto pt-6 border-t border-base-200">
-                    <span className="text-xs font-bold text-neutral/70 italic flex items-center gap-2">
-                      <FaRegUser className="text-primary" /> {blog.author}
+                </Link>
+                
+                <div className="pt-6 border-t border-white/10 flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
+                      <FaRegUser className="text-primary text-xs" />
+                    </div>
+                    <span className="text-xs font-bold opacity-80">
+                      {blog.authorName || blog.writerName || "Member"}
                     </span>
-                    <button className="text-primary font-black text-sm flex items-center gap-1 hover:underline">
-                      Read <FaArrowRight size={10} />
-                    </button>
                   </div>
+                  
+                  <Link to={`/blog-details/${blog._id}`}>
+                    <button className="flex items-center gap-2 text-sm font-black text-primary hover:gap-3 transition-all">
+                      READ <FaArrowRight />
+                    </button>
+                  </Link>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+    ) : (
+      /* --- NO DATA AVAILABLE STATE --- */
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex flex-col items-center justify-center py-32 px-6 rounded-[3rem] border-2 border-dashed border-white/10 bg-white/5 text-center"
+      >
+        <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+          <FaInbox className="text-primary text-3xl opacity-50" />
         </div>
-
-        {/* --- NEWSLETTER SECTION (To increase height further) --- */}
-        <motion.div 
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          className="mt-32 bg-primary rounded-[3rem] p-12 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-primary/30"
+        <h2 className="text-3xl font-bold mb-2">No Data Available</h2>
+        <p className="opacity-50 max-w-sm mx-auto">
+          We couldn't find any articles in the <span className="text-primary font-bold">"{activeCategory}"</span> category. Please check back later or try a different one.
+        </p>
+        <button 
+          onClick={() => setActiveCategory("All")}
+          className="mt-8 text-primary font-black hover:underline underline-offset-8"
         >
-          <div className="relative z-10">
-            <h2 className="text-4xl lg:text-6xl font-black mb-6">Never Miss a Study Hack</h2>
-            <p className="text-white/80 text-xl max-w-xl mx-auto mb-10">
-              Join 5,000+ learners receiving weekly insights directly in their inbox.
-            </p>
-            <div className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="input input-bordered grow rounded-full text-neutral font-medium px-8 h-14 focus:outline-primary"
-              />
-              <button className="btn bg-neutral text-white border-none hover:bg-neutral/80 h-14 px-10 rounded-full font-black uppercase tracking-wider">
-                Subscribe
-              </button>
-            </div>
-          </div>
-          {/* Decorative Circles */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full -ml-20 -mb-20 blur-3xl"></div>
-        </motion.div>
-
+          View All Categories
+        </button>
+      </motion.div>
+    )}
+  </>
+)}
       </div>
     </div>
   );

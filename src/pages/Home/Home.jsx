@@ -8,6 +8,7 @@ import { useLoaderData } from "react-router";
 import { motion } from "framer-motion";
 import Trust from "./Trust";
 import DeepDiveBenefits from "../../Components/DeepDiveBenefits";
+import WhyChooseUs from "../../Components/WhyChooseUs";
 
 const Home = () => {
   const topPartner = useLoaderData();
@@ -87,8 +88,7 @@ const Home = () => {
         ))}
       </motion.div>
 
-         <DeepDiveBenefits></DeepDiveBenefits>
-
+        
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -98,6 +98,15 @@ const Home = () => {
         <AboutStudy />
       </motion.div>
 
+        
+      <WhyChooseUs></WhyChooseUs>
+
+       <DeepDiveBenefits></DeepDiveBenefits>
+  
+        
+  
+
+  
       {/* Comments Section */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -115,8 +124,6 @@ const Home = () => {
           <Comment />
         </div>
       </motion.div>
-
-       
 
       <div className="2xl:w-[1536px] mx-auto">
         <Trust />
