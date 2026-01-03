@@ -5,38 +5,18 @@ import Loader from "../../Components/Loader";
 import useAxios from "../../Hooks/useAxios";
 import PartnerNotFound from "../../Components/PartnerNotFound";
 
-// 1. Animation Variants for the Grid and Cards
+// Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12, // Time between each card appearing
-      delayChildren: 0.1,
-    },
+  visible: { 
+    opacity: 1, 
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 } 
   },
 };
 
 const cardVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 40,
-    scale: 0.95 
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: {
-      duration: 0.8, // Slower, smoother duration
-      ease: [0.22, 1, 0.36, 1], // Smooth "Out-Expo" easing
-    },
-  },
-  exit: {
-    opacity: 0,
-    scale: 0.9,
-    transition: { duration: 0.4 }
-  }
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const FindPartner = () => {
@@ -44,145 +24,181 @@ const FindPartner = () => {
   const [filteredPartners, setFilteredPartners] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("");
+  
+  // Pagination States
+  const itemsPerPage = 15; 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+  
   const [pageLoading, setPageLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const axiosInstance = useAxios();
 
-  // Page entry loader logic
+  const numberOfPages = Math.ceil(totalCount / itemsPerPage);
+  const pages = [...Array(numberOfPages).keys()];
+
+  // 1. Initial Page Loader
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setPageLoading(false);
-    }, 400);
+    const timer = setTimeout(() => setPageLoading(false), 400);
     return () => clearTimeout(timer);
   }, []);
 
-  // Fetch data
+  // 2. Fetch Data
   useEffect(() => {
     setLoading(true);
-    axiosInstance("/findPartner")
+    setPartners([]); 
+
+    axiosInstance(`/findPartner?page=${currentPage}&size=${itemsPerPage}`)
       .then((res) => {
-        setPartners(res.data);
-        setFilteredPartners(res.data);
+        setPartners(res.data.partners || []);
+        setTotalCount(res.data.count || 0);
       })
-      .catch(console.log)
+      .catch((err) => console.error("Fetch error:", err))
       .finally(() => setLoading(false));
-  }, [axiosInstance]);
+  }, [axiosInstance, currentPage, itemsPerPage]);
 
-  // Filter and Sort logic with Debounce effect
+  // 3. Filter and Sort
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      const filtered = partners
-        .filter((p) =>
-          [p.name, p.skill, p.subject].some((field) =>
-            field?.toLowerCase().includes(searchTerm.toLowerCase())
-          )
+    let result = [...partners];
+
+    if (searchTerm) {
+      result = result.filter((p) =>
+        [p.name, p.skill, p.subject].some((field) =>
+          field?.toLowerCase().includes(searchTerm.toLowerCase())
         )
-        .sort((a, b) => {
-          if (sortOption === "rating") return b.rating - a.rating;
-          if (sortOption === "name") return a.name.localeCompare(b.name);
-          if (sortOption === "experience") {
-            const levels = { Beginner: 1, Intermediate: 2, Advanced: 3 };
-            return (levels[b.experienceLevel] || 0) - (levels[a.experienceLevel] || 0);
-          }
-          return 0;
-        });
+      );
+    }
 
-      setFilteredPartners(filtered);
-      setLoading(false);
-    }, 400);
+    result.sort((a, b) => {
+      if (sortOption === "rating") return b.rating - a.rating;
+      if (sortOption === "name") return a.name.localeCompare(b.name);
+      return 0;
+    });
 
-    return () => clearTimeout(timer);
+    setFilteredPartners(result);
   }, [searchTerm, sortOption, partners]);
 
-  if (pageLoading) {
-    return <Loader fullScreen={true} />;
-  }
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (pageLoading) return <Loader fullScreen={true} />;
 
   return (
     <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
       className="w-full bg-secondary"
     >
-      <div className="min-h-screen 2xl:w-[1536px] mx-auto p-6 md:p-10 relative text-neutral-content">
-        <title>StudyMate - Find Partners</title>
+      <div className="min-h-screen 2xl:w-[1536px] mx-auto p-6 md:p-10 text-neutral-content">
         
-        <motion.h1 
-          initial={{ y: -40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-3xl md:text-5xl font-bold text-center text-primary my-20"
-        >
-          Find Your Study Partner
-        </motion.h1>
+        {/* Header Section */}
+        <div className="text-center mb-10">
+          <motion.h1 
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="text-3xl md:text-5xl font-bold text-primary mb-4"
+          >
+            Find Your Study Partner
+          </motion.h1>
+          
+          <div className="flex flex-col items-center gap-2">
+            <div className="badge badge-primary badge-outline gap-2 p-4">
+              <span className="font-bold">{totalCount}</span> Total Partners
+            </div>
+            {totalCount > 0 && (
+              <p className="text-sm opacity-70">
+                {/* Logic: Showing 12 of 23 on page 1, Showing 11 of 23 on page 2 */}
+                Showing <span className="font-bold text-primary">{filteredPartners.length}</span> of {totalCount}
+              </p>
+            )}
+          </div>
+        </div>
 
-        {/* Filter Section with subtle slide up */}
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-col md:flex-row justify-between items-center gap-4 mb-20"
-        >
+        {/* Filter Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
           <input
             type="text"
-            placeholder="Search by name, skill, or subject..."
-            className="w-full md:w-2/3 px-4 py-2 border-2 border-primary rounded-sm focus:outline-none focus:border-primary text-sm md:text-base bg-transparent transition-all duration-300"
+            placeholder="Search on this page..."
+            className="input input-bordered border-primary w-full md:w-2/3 bg-transparent focus:outline-none"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
 
           <select
-            className="w-full select select-bordered md:w-1/4 px-3 py-2 border-2 rounded-sm text-sm md:text-base outline-none focus:ring-0 border-primary transition-colors duration-200 ease-in-out text-neutral-content bg-secondary"
+            className="select select-bordered border-primary w-full md:w-1/4 bg-secondary text-neutral-content"
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
           >
             <option value="">Sort By</option>
             <option value="rating">Rating</option>
             <option value="name">Name</option>
-            <option value="experience">Experience</option>
           </select>
-        </motion.div>
+        </div>
 
-        {/* Dynamic Content Area */}
+        {/* Grid Area */}
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <Loader />
           </div>
         ) : (
-          <AnimatePresence mode="wait">
-            {filteredPartners.length > 0 ? (
-              <motion.div
-                key="partner-grid"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8"
-              >
-                {filteredPartners.map((partner) => (
-                  <motion.div 
-                    key={partner._id} 
-                    variants={cardVariants}
-                    className="h-full"
-                  >
-                    <PartnerCard partner={partner} />
-                  </motion.div>
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div 
-                key="empty-state"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.6 }}
-              >
+          <>
+            <AnimatePresence mode="wait">
+              {filteredPartners.length > 0 ? (
+                <motion.div
+                  key={currentPage}
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 xl:grid-cols-5"
+                >
+                  {filteredPartners.map((partner) => (
+                    <motion.div key={partner._id} variants={cardVariants}>
+                      <PartnerCard partner={partner} />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              ) : (
                 <PartnerNotFound />
-              </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Pagination UI */}
+            {numberOfPages > 1 && (
+              <div className="flex justify-center mt-16 mb-10">
+                <div className="join shadow-lg border border-primary/20 bg-base-100">
+                  <button
+                    disabled={currentPage === 0}
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    className="join-item btn btn-outline border-primary hover:bg-primary"
+                  >
+                    « Prev
+                  </button>
+
+                  {pages.map((page) => (
+                    <button
+                      key={page}
+                      onClick={() => handlePageChange(page)}
+                      className={`join-item btn btn-outline border-primary ${
+                        currentPage === page ? "bg-primary text-white hover:bg-primary" : ""
+                      }`}
+                    >
+                      {page + 1}
+                    </button>
+                  ))}
+
+                  <button
+                    disabled={currentPage === numberOfPages - 1}
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    className="join-item btn btn-outline border-primary hover:bg-primary"
+                  >
+                    Next »
+                  </button>
+                </div>
+              </div>
             )}
-          </AnimatePresence>
+          </>
         )}
       </div>
     </motion.div>

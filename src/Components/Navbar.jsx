@@ -88,7 +88,7 @@ const Navbar = () => {
 
           {/* <div className="hidden xl:flex items-center gap-3 text-lg font-semibold"></div> */}
           
-          <li className="xl:flex gap-5 list-none hidden">
+          <li className="xl:flex gap-5 list-none hidden text-neutral-content">
             {
               links
             }

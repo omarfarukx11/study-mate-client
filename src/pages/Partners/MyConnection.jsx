@@ -16,7 +16,7 @@ const MyConnection = () => {
 
 
   return (
-    <div className="min-h-[calc(100vh-120px)] bg-green-700 px-5 lg:px-0 mx-auto rounded-lg text-neutral-content">
+    <div className="min-h-[calc(100vh-120px)] bg-base-100 px-5 lg:px-0 mx-auto rounded-lg text-neutral-content">
       <title>StudyMate - MyConnection</title>
       <div className="lg:h-[200px] lg:py-0 py-10  bg-secondary flex items-center justify-center flex-col rounded-sm">
         <h1 className="lg:text-6xl text-2xl font-bold text-center ">

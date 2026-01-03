@@ -34,19 +34,17 @@ const Footer = () => {
 
         <div className="flex flex-col space-y-2">
           <h6 className="font-semibold text-white mb-2">Services</h6>
-          <a href="#" className="hover:text-primary transition-colors duration-300">Branding</a>
-          <a href="#" className="hover:text-primary transition-colors duration-300">Design</a>
-          <a href="#" className="hover:text-primary transition-colors duration-300">Marketing</a>
-          <a href="#" className="hover:text-primary transition-colors duration-300">Advertisement</a>
+          <Link  to={"/findPartner"} className="hover:text-primary transition-colors duration-300">Find Partner</Link>
+          <Link  to={"/dashboard/create-partner"} className="hover:text-primary transition-colors duration-300">Create Partner</Link>
+          <Link  to={"/blogs"} className="hover:text-primary transition-colors duration-300">Blogs</Link>
         </div>
 
 
         <div className="flex flex-col space-y-2">
           <h6 className="font-semibold text-white mb-2">Company</h6>
           <Link  to={"/aboutUs"} className="hover:text-primary transition-colors duration-300">About Us</Link>
-          <a href="#" className="hover:text-primary transition-colors duration-300">Contact</a>
-          <a href="#" className="hover:text-primary transition-colors duration-300">Jobs</a>
-          <a href="#" className="hover:text-primary transition-colors duration-300">Press Kit</a>
+          <Link  to={"/contract"} className="hover:text-primary transition-colors duration-300">Contact</Link>
+          <Link  to={"/privacy-policy"} className="hover:text-primary transition-colors duration-300">Privecy Policy</Link>
         </div>
       </div>
 

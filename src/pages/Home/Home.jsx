@@ -74,7 +74,7 @@ const Home = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="2xl:w-[1536px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:grid-cols-4 rounded-sm  lg:p-0 p-5 overflow-hidden"
+        className="2xl:w-[1536px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 xl:grid-cols-5 rounded-sm  lg:p-0 p-5 overflow-hidden"
       >
         {topPartner.map((data) => (
           <motion.div

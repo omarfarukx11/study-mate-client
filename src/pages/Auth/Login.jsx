@@ -60,8 +60,8 @@ const Login = () => {
       });
   };
 
-  const email = "hello@gamil.com"
-  const password = "Welcome"
+  const email = "guest@gmail.com"
+  const password = "@Guest"
 
   return (
     <div className="bg-secondary w-full text-neutral-content">

@@ -77,7 +77,7 @@ const DeepDiveBenefits = () => {
 
             <motion.section 
               variants={fadeInUp}
-              className="bg-slate-50 dark:bg-zinc-900 p-8 rounded-3xl border-2 border-dashed border-primary/20"
+              className=" dark:bg-zinc-900 p-8 rounded-3xl border-2 border-dashed border-primary/20"
             >
               <h3 className="text-2xl font-bold text-neutral mb-4 flex items-center gap-3">
                 <FaLightbulb className="text-primary" /> 3. Diversified Perspective & Heuristic Problem Solving

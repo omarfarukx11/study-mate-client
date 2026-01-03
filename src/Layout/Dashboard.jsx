@@ -86,7 +86,7 @@ const Dashboard = () => {
 
           {/* PAGE CONTENT */}
           <main className="mt-20">
-            <div className="w-full bg-red-600 p-5">
+            <div className="w-full bg-gray-400 p-5">
               <Outlet />
             </div>
           </main>

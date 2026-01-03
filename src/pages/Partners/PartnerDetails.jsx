@@ -144,11 +144,11 @@ const PartnerDetails = () => {
               <button
                 onClick={handleSendRequest}
                 disabled={requested}
-                className={`w-full md:w-auto border-2 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-sm shadow-md transition-all duration-300 text-sm md:text-base
+                className={`w-full md:w-auto font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-4xl shadow-md transition-all duration-300 text-sm md:text-base
               ${
                 requested
                   ? "bg-gray-400 border-gray-400 text-white cursor-not-allowed"
-                  : "bg-base-100 border-primary text-primary hover:bg-primary hover:text-white"
+                  : " text-base-100 bg-primary hover:bg-neutral hover:text-white"
               }`}
               >
                 {requested ? "Request Sent" : `Connect with ${name}`}

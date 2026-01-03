@@ -17,11 +17,13 @@ import ContactSection from "../pages/Contract/ContractSection";
 import Dashboard from "../Layout/Dashboard";
 import Blogs from "../pages/blogs/Blogs";
 import DashboardDefault from "../pages/dashboard/DashboardDefault";
+import PrivacyPolicy from "../Components/PrivacyPolicy";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    hydrateFallbackElement: <Loader></Loader>,
     hydrateFallback: <Loader></Loader>,
     children: [
       {
@@ -34,15 +36,23 @@ export const router = createBrowserRouter([
       {
         path: "/aboutUs",
         Component: AboutUs,
+        hydrateFallback: <Loader />,
       },
 
       {
         path: "/contract",
         Component: ContactSection,
+        hydrateFallback: <Loader />,
       },
       {
         path: "/blogs",
         Component: Blogs,
+        hydrateFallback: <Loader />,
+      },
+      {
+        path: "/privacy-policy",
+        Component : PrivacyPolicy,
+        hydrateFallback: <Loader />,
       },
 
       {

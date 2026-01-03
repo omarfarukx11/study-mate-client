@@ -6,7 +6,7 @@ const TopPartners = ({ data }) => {
   const { _id, name, skill, subject, rating, profileImage } = data;
 
   return (
-   <div className="group flex flex-col bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-lg overflow-hidden hover:shadow-sm transition-all duration-300 h-full">
+   <div className="group flex flex-col bg-base-100 dark:bg-zinc-900  dark:border-zinc-800 rounded-lg overflow-hidden hover:shadow-sm transition-all duration-300 h-full">
   
   <div className="relative aspect-3/2 overflow-hidden">
     <img
@@ -24,7 +24,7 @@ const TopPartners = ({ data }) => {
   {/* Content Section */}
   <div className="p-4 flex flex-col grow">
     <div className="mb-3">
-      <h2 className="text-lg font-bold text-slate-800 dark:text-zinc-100 truncate capitalize">
+      <h2 className="text-lg font-bold  dark:text-zinc-100 truncate capitalize">
         {name}
       </h2>
       <p className="text-primary text-xs font-semibold tracking-wide uppercase">
@@ -41,7 +41,7 @@ const TopPartners = ({ data }) => {
     <div className="mt-auto pt-3 border-t border-slate-50 dark:border-zinc-800">
       <Link
         to={`/partnerDetails/${_id}`}
-        className="w-full inline-flex items-center justify-center bg-slate-900 dark:bg-primary text-white text-xs font-bold py-2.5 rounded-lg transition-all hover:bg-primary dark:hover:bg-primary/80 active:scale-95"
+        className="w-full inline-flex items-center justify-center bg-primary dark:bg-primary text-base-100 text-xs font-bold py-2.5 rounded-lg transition-all hover:bg-neutral dark:hover:bg-primary/80 active:scale-95"
       >
         View Profile
       </Link>
