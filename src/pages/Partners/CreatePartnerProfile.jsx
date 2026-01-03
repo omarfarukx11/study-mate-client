@@ -91,8 +91,8 @@ const CreatePartnerProfile = () => {
   if (pageLoading || submitLoading) return <Loader fullScreen={true} />;
 
   return (
-   <div className="bg-base-100 min-h-[calc(100vh-120px)] py-6 flex items-center justify-center rounded-lg">
-    <div className="max-w-4xl mx-auto rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+   <div className="min-h-[calc(100vh-120px)] py-6 flex items-center justify-center rounded-lg">
+    <div className="max-w-4xl mx-auto rounded-xl border bg-base-100 border-gray-100 shadow-sm overflow-hidden">
       
       <div className="px-8 py-4 border-b border-gray-100 bg-white">
         <h2 className="text-xl font-bold text-gray-800">Talent Information</h2>

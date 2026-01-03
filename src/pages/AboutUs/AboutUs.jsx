@@ -15,11 +15,10 @@ const AboutUs = () => {
     ];
 
   return (
-    <div className="bg-base-100 py-16 px-4 md:px-8">
+    <div className="py-16 px-4 md:px-8">
       <div className=" w-full lg:px-10 2xl:w-[1536px] mx-auto">
-        
-        {/* Section 1: Hero Intro */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24 bg-base-100 p-4 rounded-xl">
           <div className="order-2 lg:order-1">
             <span className="text-primary font-bold tracking-widest uppercase text-sm">Our Mission</span>
             <h1 className="text-4xl md:text-5xl font-bold text-neutral mt-4 mb-6 leading-tight">
@@ -47,23 +46,22 @@ const AboutUs = () => {
           </div>
 
           <div className="order-1 lg:order-2 relative">
-            {/* Decorative background shape */}
             <div className="absolute -top-4 -right-4 w-72  h-72 bg-primary/10 rounded-full blur-3xl"></div>
             <img 
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
               alt="Students studying" 
-              className="rounded-2xl shadow-2xl relative z-10 border-b-8 border-primary"
+              className="rounded-2xl shadow-sm relative z-10 border-b-8 border-primary"
             />
           </div>
         </div>
 
-        {/* Section 2: Stats (The Numbers) */}
+
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-primary/10 rounded-3xl p-12 mb-32 border border-primary/20"
+          className="bg-primary/10 rounded-xl p-12 mb-32 border border-primary/20"
         >
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
@@ -82,14 +80,13 @@ const AboutUs = () => {
           </div>
         </motion.div>
 
-        {/* Section 3: Values Grid */}
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-neutral">What Drives Us</h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1 */}
-          <div className="card bg-base-200 p-8 border-t-4 border-primary hover:translate-y-[-5px] transition-transform">
+          <div className="card bg-base-100 p-8 border-t-4 border-primary hover:translate-y-[-5px] transition-transform">
             <IoPeopleOutline className="text-primary text-4xl mb-4" />
             <h3 className="text-xl font-bold text-neutral mb-3">Community First</h3>
             <p className="text-neutral/60 text-sm">
@@ -98,7 +95,7 @@ const AboutUs = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="card bg-base-200 p-8 border-t-4 border-primary hover:translate-y-[-5px] transition-transform">
+          <div className="card bg-base-100 p-8 border-t-4 border-primary hover:translate-y-[-5px] transition-transform">
             <IoRocketOutline className="text-primary text-4xl mb-4" />
             <h3 className="text-xl font-bold text-neutral mb-3">Innovation</h3>
             <p className="text-neutral/60 text-sm">
@@ -107,7 +104,7 @@ const AboutUs = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="card bg-base-200 p-8 border-t-4 border-primary hover:translate-y-[-5px] transition-transform">
+          <div className="card bg-base-100 p-8 border-t-4 border-primary hover:translate-y-[-5px] transition-transform">
             <IoLibraryOutline className="text-primary text-4xl mb-4" />
             <h3 className="text-xl font-bold text-neutral mb-3">Accessibility</h3>
             <p className="text-neutral/60 text-sm">

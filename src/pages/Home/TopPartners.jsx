@@ -32,13 +32,11 @@ const TopPartners = ({ data }) => {
       </p>
     </div>
 
-    {/* Description - Clamped to 2 lines to prevent height stretching */}
     <p className="text-slate-500 dark:text-zinc-400 text-xs leading-relaxed line-clamp-2 mb-4">
       Expert in {skill}. Professional support and specialized guidance in {subject}.
     </p>
 
-    {/* Footer Section - Pushed to bottom */}
-    <div className="mt-auto pt-3 border-t border-slate-50 dark:border-zinc-800">
+    <div className="mt-auto pt-3  dark:border-zinc-800">
       <Link
         to={`/partnerDetails/${_id}`}
         className="w-full inline-flex items-center justify-center bg-primary dark:bg-primary text-base-100 text-xs font-bold py-2.5 rounded-lg transition-all hover:bg-neutral dark:hover:bg-primary/80 active:scale-95"

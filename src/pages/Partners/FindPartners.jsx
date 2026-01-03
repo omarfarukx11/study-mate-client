@@ -127,7 +127,7 @@ const FindPartner = () => {
           />
 
           <select
-            className="select select-bordered border-primary w-full md:w-1/4 bg-secondary text-neutral-content"
+            className="select outline-none select-bordered border-primary w-full md:w-1/4 bg-secondary text-neutral-content"
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
           >

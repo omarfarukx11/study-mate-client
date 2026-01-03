@@ -18,6 +18,7 @@ import Dashboard from "../Layout/Dashboard";
 import Blogs from "../pages/blogs/Blogs";
 import DashboardDefault from "../pages/dashboard/DashboardDefault";
 import PrivacyPolicy from "../Components/PrivacyPolicy";
+import CreateBlog from "../pages/dashboard/CreateBlog";
 
 export const router = createBrowserRouter([
   {
@@ -99,6 +100,15 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <CreatePartnerProfile />
+          </PrivateRoute>
+        ),
+        hydrateFallback: <Loader />,
+      },
+      {
+        path: "/dashboard/create-blogs",
+        element: (
+          <PrivateRoute>
+            <CreateBlog></CreateBlog>
           </PrivateRoute>
         ),
         hydrateFallback: <Loader />,

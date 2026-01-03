@@ -4,7 +4,7 @@ const Trust = () => {
   const logos = ["MIT", "Stanford", "Harvard", "Oxford", "CalTech", "IIT"];
 
   return (
-    <div className="bg-base-200/50 border-y border-base-300 overflow-hidden py-30 ">
+    <div className="bg-base-100 border-y border-base-300 overflow-hidden rounded-xl my-30 ">
       <p className="text-center text-3xl text-gray-600 font-bold pb-4  ">
         Trusted by students from top institutions
       </p>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import {
   IoMailSharp,
@@ -8,22 +8,24 @@ import {
   IoLogoTwitter,
   IoLogoInstagram,
 } from "react-icons/io5";
+import { AuthContext } from "../../AuthContext/AuthContext";
 
 const ContactSection = () => {
+  const {user} = useContext(AuthContext);
+
   return (
-    <section className="relative py-24 bg-base-100 overflow-hidden w-full">
+    <section className="relative py-24 overflow-hidden w-full">
       <div className="max-w-[1536px] mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 items-stretch">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-base-100 p-8 rounded-4xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-base-200"
+            className="p-8 rounded-xl bg-base-100 text-neutral-content"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 rounded-full -mr-10 -mt-10 blur-2xl" />
 
             <h2 className="text-4xl font-bold mb-6">Let's Talk!</h2>
-            <p className="opacity-80 text-lg mb-12">
+            <p className="opacity-90 text-lg mb-12">
               Have a question about study partners or want to suggest a feature?
               Drop us a line.
             </p>
@@ -60,7 +62,7 @@ const ContactSection = () => {
                   <motion.a
                     key={idx}
                     whileHover={{ y: -10 }}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-secondary transition-colors cursor-pointer"
+                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary  transition-colors cursor-pointer"
                   >
                     <Icon size={20} />
                   </motion.a>
@@ -73,7 +75,7 @@ const ContactSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:w-2/3 bg-base-100 p-8 md:p-12 rounded-4xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-base-200"
+            className="lg:w-2/3 bg-base-100 p-8 md:p-12 rounded-4xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-base-200 text-neutral-content"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="form-control group">
@@ -85,7 +87,8 @@ const ContactSection = () => {
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="Enter your name"
+                    defaultValue={user?.displayName}
+                    readOnly
                     className="input input-bordered w-full bg-base-200/50 border-none focus:ring-2 focus:ring-primary/20 focus:bg-base-100 transition-all h-14 rounded-xl"
                   />
                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-primary group-focus-within:w-full transition-all duration-300 rounded-b-xl" />
@@ -93,7 +96,7 @@ const ContactSection = () => {
               </div>
 
 
-              <div className="form-control group">
+              <div className="form-control group ">
                 <label className="label">
                   <span className="label-text font-bold text-neutral group-focus-within:text-primary transition-colors">
                     Email Address
@@ -102,7 +105,8 @@ const ContactSection = () => {
                 <div className="relative">
                   <input
                     type="email"
-                    placeholder="email@example.com"
+                    defaultValue={user?.email}
+                    readOnly
                     className="input input-bordered w-full bg-base-200/50 border-none focus:ring-2 focus:ring-primary/20 focus:bg-base-100 transition-all h-14 rounded-xl"
                   />
                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-primary group-focus-within:w-full transition-all duration-300 rounded-b-xl" />

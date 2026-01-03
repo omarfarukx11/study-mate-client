@@ -77,7 +77,7 @@ const Blogs = () => {
     : blogData.filter(blog => blog.category === activeCategory);
 
   return (
-    <div className="bg-base-200 min-h-screen pt-32 pb-20 px-4 lg:px-10">
+    <div className="min-h-screen pt-32 pb-20 px-4 lg:px-10">
       <div className="max-w-[1536px] mx-auto">
         
         {/* --- HEADER SECTION --- */}
@@ -118,7 +118,7 @@ const Blogs = () => {
             whileInView={{ opacity: 1 }}
             className="mb-16 group cursor-pointer"
           >
-            <div className="bg-base-100 rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-primary/5">
+            <div className="bg-base-100 rounded-xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-primary/5">
               <div className="lg:w-1/2 overflow-hidden">
                 <img 
                   src={blogData[0].image} 

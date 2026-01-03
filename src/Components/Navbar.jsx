@@ -106,7 +106,7 @@ const Navbar = () => {
 
             {user && (
               <button>
-                <NavLink to="/dashboard" className="btn btn-primary  btn-sm">
+                <NavLink to="/dashboard" className="btn btn-primary rounded-4xl hover:bg-neutral border-none btn-sm">
                   Dashboard
                 </NavLink>
               </button>
@@ -179,7 +179,7 @@ const Navbar = () => {
                 </AnimatePresence>
               </div>
             ) : (
-              <Link to="/Login" className="btn btn-primary btn-sm">
+              <Link to="/Login" className="btn btn-primary rounded-4xl hover:bg-neutral border-none btn-sm">
                 Sign In
               </Link>
             )}

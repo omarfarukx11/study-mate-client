@@ -61,14 +61,29 @@ const Dashboard = () => {
         <LuUserPlus size={20} />{" "}
         <span className="font-medium">Create Partner</span>
       </NavLink>
+      <NavLink
+        to="/dashboard/create-blogs"
+        className={({ isActive }) =>
+          `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+            isActive
+              ? "bg-primary text-white"
+              : "text-neutral hover:bg-base-300"
+          }`
+        }
+      >
+        <LuUserPlus size={20} />{" "}
+        <span className="font-medium">CreateBlog</span>
+      </NavLink>
+
+
     </div>
   );
 
   return (
-<div className="bg-base-300"> 
-      <div className="max-w-[1800px] mx-auto min-h-screen shadow-2xl bg-base-100 flex overflow-visible">
-        <aside className="hidden lg:flex w-72 sticky top-0 h-screen bg-base-100 border-r border-base-300 flex-col z-110">
-          <div className="py-5 px-6 mb-6 border-b border-base-200">
+<div className="bg-base-100 "> 
+      <div className="max-w-[1800px] mx-auto min-h-screen bg-base-100 flex overflow-visible">
+        <aside className="hidden lg:flex w-72 sticky top-0 h-screen bg-base-100 flex-col z-110">
+          <div className="py-5 px-6 mb-6">
             <Link to={"/"} className="text-3xl font-black text-neutral tracking-tighter">
               Study<span className="text-primary">Mate</span>
             </Link>
@@ -79,14 +94,14 @@ const Dashboard = () => {
         {/* MAIN CONTENT AREA */}
         <div className="flex-1 flex flex-col min-w-0 bg-base-200">
           
-          {/* DASNAV - Fixed/Sticky */}
+
           <div className="sticky top-0 z-100 w-full">
              <DasNav />
           </div>
 
           {/* PAGE CONTENT */}
-          <main className="mt-20">
-            <div className="w-full bg-gray-400 p-5">
+          <main className="mt-19">
+            <div className="w-full bg-secondary p-5">
               <Outlet />
             </div>
           </main>
@@ -95,7 +110,7 @@ const Dashboard = () => {
         {/* MOBILE SIDEBAR (DaisyUI Drawer Logic) */}
         <div className="drawer lg:hidden absolute">
           <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-side z-[120]">
+          <div className="drawer-side z-120">
             <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
             <aside className="w-72 min-h-full bg-base-100 p-4">
               <ul className="menu">{links}</ul>

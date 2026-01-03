@@ -30,7 +30,8 @@ a.active {
   --color-primary: #5bbc2e;
   --color-primary-content: #ffffff;
 
-  --color-secondary: #f5f5f5;
+  --color-secondary: #f5f3f4;
+  /* --color-secondary: #f5f5f5; */
   --color-secondary-content: #03373d;
 
   --color-accent: #e7000b;
@@ -43,14 +44,16 @@ a.active {
 @plugin "daisyui/theme" {
   name: 'studyMateDark';
 
-  --color-base-100: #0f111a;
+  --color-base-100: black;
+  /* --color-base-100: #000814; */
   --color-base-200: #1a1c29;
   --color-base-300: #27293f;
 
   --color-primary: #5bbc2e;
   --color-primary-content: #ffffff;
 
-  --color-secondary: #1a1c29;
+  --color-secondary:#161a1d;
+  /* --color-secondary: #1a1c29; */
   --color-secondary-content: #ffffff;
 
   --color-accent: #e7000b;

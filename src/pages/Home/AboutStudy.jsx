@@ -63,17 +63,10 @@ const AboutStudy = () => {
   ];
 
   return (
-    <section className="bg-secondary relative overflow-hidden">
-      {/* Background Decoration */}
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 8, repeat: Infinity }}
-        className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none"
-      />
+    <section className="bg-secondary relative overflow-hidden max-w-[1536px] mx-auto">
 
-      <div className="max-w-[1536px] mx-auto relative z-10 px-4 lg:px-10">
+      <div className="max-w-[1536px] mx-auto relative z-10">
         
-        {/* SECTION 1: HOW IT WORKS */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +101,6 @@ const AboutStudy = () => {
               whileHover={{ y: -12, scale: 1.02 }}
               className="card bg-base-100 hover:shadow-sm border border-primary/5 group relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 h-1.5 w-full bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               <div className="card-body items-center text-center p-10">
                 <motion.div variants={floatAnimation} animate="animate" className="md:text-7xl text-5xl text-primary mb-6">
                   {step.icon}
@@ -120,7 +112,7 @@ const AboutStudy = () => {
           ))}
         </motion.div>
 
-        {/* SECTION 2: LIVE STATISTICS */}
+
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -145,7 +137,6 @@ const AboutStudy = () => {
           </div>
         </motion.div>
 
-        {/* SECTION 3: RECENT BLOGS & INSIGHTS */}
         <div className="pb-10">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
