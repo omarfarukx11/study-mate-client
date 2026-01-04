@@ -1,6 +1,6 @@
 # 🎓 StudyMate - Collaborative Learning Platform
 
-<img width="840" height="832" alt="Screenshot 2025-12-31 124434" src="https://github.com/user-attachments/assets/8b0b710d-08ea-4eba-8166-c03949298cda" />
+<img width="1898" height="953" alt="Screenshot 2026-01-04 171147" src="https://github.com/user-attachments/assets/a61982f4-7982-49ef-ac98-93a776c057cd" />
 
 
 ## 📖 Project Overview
