@@ -183,7 +183,7 @@ const CreatePartnerProfile = () => {
         <div className="pt-2 flex justify-end">
           <button
             type="submit"
-            className="w-full md:w-max px-8 py-2 bg-green-500 text-white text-sm font-bold rounded-md hover:bg-green-600 shadow-md transition-all active:scale-95"
+            className="w-full md:w-max px-8 py-2 bg-primary rounded-4xl text-sm font-bold hover:bg-neutral text-base-100 shadow-md transition-all active:scale-95"
           >
             Save Changes
           </button>

@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { FaEye, FaEyeSlash, FaUserSecret } from "react-icons/fa"; // Added Guest Icon
+import { FaEye, FaEyeSlash, FaUserSecret } from "react-icons/fa";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { singInWithGoogle, loginWithEmail, setUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -15,7 +16,6 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  // Guest Credentials
   const guestEmail = "guest@gmail.com";
   const guestPassword = "@Guest";
 
@@ -33,7 +33,7 @@ const Login = () => {
         });
         navigate(from, { replace: true });
       })
-      .catch((error) => {
+      .catch(() => {
         setError("Google login failed. Please try again.");
       });
   };
@@ -45,12 +45,10 @@ const Login = () => {
     performLogin(email, password);
   };
 
-  // New Guest Login Function
   const handleGuestLogin = () => {
     performLogin(guestEmail, guestPassword);
   };
 
-  // Reusable login logic
   const performLogin = (email, password) => {
     loginWithEmail(email, password)
       .then((res) => {
@@ -65,7 +63,7 @@ const Login = () => {
         });
         navigate(from, { replace: true });
       })
-      .catch((error) => {
+      .catch(() => {
         setError("Invalid email or password");
       });
   };
@@ -79,7 +77,8 @@ const Login = () => {
           <div className="text-center lg:text-left max-w-lg">
             <h1 className="text-5xl font-bold mb-4 text-gray-800">Login now!</h1>
             <p className="text-gray-600 text-lg">
-              Access your StudyMate account to find learning partners, <br />
+              Access your StudyMate account to find learning partners,
+              <br />
               manage your connections, and continue your study journey.
             </p>
           </div>
@@ -87,38 +86,45 @@ const Login = () => {
           <div className="card bg-base-100 w-full max-w-lg lg:p-8 rounded-2xl shadow-2xl border border-gray-100">
             <div className="card-body flex flex-col gap-4">
               <form onSubmit={handleEmailSignIn}>
-                <label className="label font-semibold pb-1">Email</label>
+                <label className="label font-semibold pb-1 text-neutral">Email</label>
                 <input
                   name="email"
                   type="email"
-                  className={`input border w-full rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-green-500/20 ${
+                  className={`input border w-full rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-green-500/20 text-neutral ${
                     error ? "border-red-500" : "border-gray-200"
                   }`}
                   placeholder="Type Your Email"
                   required
                 />
 
-                <label className="label font-semibold py-1 mt-3">Password</label>
-                <div className="relative">
+                <label className="label font-semibold py-1 mt-3 text-neutral">Password</label>
+                
+                {/* --- FIXED SECTION START --- */}
+                <div className="relative flex items-center">
                   <input
                     name="password"
                     type={showPassword ? "text" : "password"}
-                    className={`input border w-full rounded-lg px-4 py-3 pr-12 outline-none focus:ring-2 focus:ring-green-500/20 ${
+                    className={`input border w-full rounded-lg px-4 py-3 pr-12 outline-none focus:ring-2 focus:ring-green-500/20 text-neutral transition-all ${
                       error ? "border-red-500" : "border-gray-200"
                     }`}
                     placeholder="Enter password"
                     required
                   />
 
-                  <span
-                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
+                  <button
+                    type="button" // Use button to prevent focus issues
+                    className="absolute right-3 z-10 p-1 text-gray-400 hover:text-gray-600 transition-colors"
                     onClick={() => setShowPassword(!showPassword)}
+                    tabIndex="-1" // Prevents tab-key from focusing the icon instead of the button
                   >
-                    {showPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
-                  </span>
+                    {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                  </button>
                 </div>
+                {/* --- FIXED SECTION END --- */}
 
-                {error && <p className="text-red-500 text-xs mt-2 font-medium">{error}</p>}
+                {error && (
+                  <p className="text-red-500 text-xs mt-2 font-medium">{error}</p>
+                )}
 
                 <div className="flex flex-col gap-3 mt-6">
                   <button
@@ -128,7 +134,9 @@ const Login = () => {
                     Sign In
                   </button>
 
-                  <div className="divider text-xs text-gray-400 font-bold uppercase tracking-widest">Or continue with</div>
+                  <div className="divider text-xs text-gray-400 font-bold uppercase tracking-widest">
+                    Or continue with
+                  </div>
 
                   <div className="grid grid-cols-2 gap-3">
                     <button
@@ -139,7 +147,6 @@ const Login = () => {
                       <FcGoogle size={20} /> Google
                     </button>
 
-                    {/* --- GUEST LOGIN BUTTON --- */}
                     <button
                       type="button"
                       onClick={handleGuestLogin}
@@ -151,8 +158,8 @@ const Login = () => {
                 </div>
 
                 <p className="text-sm text-center text-gray-500 mt-8">
-                  Don't have an account?{" "}
-                  <Link className="text-green-600 font-bold hover:underline" to={"/register"}>
+                  Don&apos;t have an account?{" "}
+                  <Link className="text-green-600 font-bold hover:underline" to="/register">
                     Register
                   </Link>
                 </p>

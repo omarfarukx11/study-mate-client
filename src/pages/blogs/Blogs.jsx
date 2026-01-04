@@ -119,11 +119,11 @@ const Blogs = () => {
                   <span className="flex items-center gap-1.5"><FaRegClock className="text-primary"/> {blog?.createdAt}</span>
                 </div>
 
-                <Link to={`/blogDetails/${blog._id}`}>
-                  <h3 className="text-xl font-bold mb-4 leading-tight group-hover:text-primary transition-colors cursor-pointer">
+                <button>
+                  <h3 className="text-xl text-start font-bold mb-4 leading-tight group-hover:text-primary transition-colors ">
                     {blog.title}
                   </h3>
-                </Link>
+                </button>
                 
                 <div className="pt-6 border-t border-white/10 flex justify-between items-center">
                   <div className="flex items-center gap-3">
@@ -136,7 +136,7 @@ const Blogs = () => {
                   </div>
                   
                   <Link to={`/blog-details/${blog._id}`}>
-                    <button className="flex items-center gap-2 text-sm font-black text-primary hover:gap-3 transition-all">
+                    <button className="flex items-center gap-2 text-sm font-black text-primary hover:gap-3 transition-all cursor-pointer">
                       READ <FaArrowRight />
                     </button>
                   </Link>

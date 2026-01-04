@@ -48,7 +48,7 @@ const DasNav = () => {
                 </div>
               </div>
               <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-xl border border-base-200 mt-3">
-                <li><Link to="/dashboard/profile">Profile</Link></li>
+                <li><Link to="/dashboard/profile" className="text-neutral-content">Profile</Link></li>
                 <div className="divider my-0"></div>
                 <li>
                   <button 

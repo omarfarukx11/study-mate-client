@@ -202,7 +202,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsSidebarOpen(false)}
-              className="fixed inset-0 bg-black/60 z-90 backdrop-blur-sm"
+              className="fixed inset-0 bg-black/60 z-90 backdrop-blur-sm h-full"
             />
 
             <motion.div
@@ -245,7 +245,7 @@ const Navbar = () => {
                     </NavLink>
                     <button
                       onClick={handleLogout}
-                      className="btn bg-red-500 text-white"
+                      className="btn bg-red-500 border-none text-white"
                     >
                       Logout
                     </button>
