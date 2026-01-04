@@ -70,7 +70,7 @@ const Register = () => {
           timer: 1500,
         });
 
-        navigate("/login");
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };
