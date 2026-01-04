@@ -33,7 +33,7 @@ const Dashboard = () => {
         }
       >
         <LuLayoutDashboard size={20} />{" "}
-        <span className="font-medium">Overview</span>
+        <span className="font-medium">Profile</span>
       </NavLink>
       <NavLink
         to="/dashboard/myConnection"

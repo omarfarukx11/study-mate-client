@@ -139,7 +139,7 @@ const MyRequest = ({ data, index }) => {
         <td>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="sm:btn sm:p-4 p-1 border bg-primary hover:bg-neutral text-white transition duration-200 text-[10px] sm:text-sm"
+            className="sm:btn sm:p-4 p-1 border bg-primary hover:bg-neutral rounded-sm text-white transition duration-200 text-[10px] sm:text-sm"
           >
             Update
           </button>
@@ -147,7 +147,7 @@ const MyRequest = ({ data, index }) => {
         <td>
           <button
             onClick={handleDelete}
-           className="btn btn-outline border-red-600 text-white hover:bg-red-800 border-none  bg-red-600 "
+            className="sm:btn sm:p-4 p-1 border bg-red-500 hover:bg-red-800 rounded-sm text-white transition duration-200 text-[10px] sm:text-sm"
           >
             Delete
           </button>

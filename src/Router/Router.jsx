@@ -68,10 +68,6 @@ export const router = createBrowserRouter([
         element: <FindPartners></FindPartners>,
       },
       {
-        path: "/profile",
-        Component: Profile,
-      },
-      {
         path: "/partnerDetails/:id",
         loader: ({ params }) =>
           fetch(
@@ -90,7 +86,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element:<DashboardDefault />
+        Component : Profile
         },
       {
         path: "/dashboard/myConnection",
@@ -119,6 +115,10 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         hydrateFallback: <Loader />,
+      },
+      {
+        path: "/dashboard/profile",
+        Component: Profile,
       },
     ],
   },

@@ -65,7 +65,6 @@ const Navbar = () => {
     <li><NavLink to="/blogs">Blogs</NavLink></li>
       {
         user && <>
-        <li><NavLink to="/dashboard/myConnection">My Connection</NavLink></li>
         <li><NavLink to="/dashboard/create-partner">Create Partner</NavLink></li>
         </>
       }
@@ -106,7 +105,7 @@ const Navbar = () => {
 
             {user && (
               <button>
-                <NavLink to="/dashboard" className="btn btn-primary rounded-4xl hover:bg-neutral border-none btn-sm">
+                <NavLink to="/dashboard" className="btn bg-primary text-base-100 rounded-4xl hover:bg-neutral border-none btn-sm">
                   Dashboard
                 </NavLink>
               </button>
@@ -146,7 +145,7 @@ const Navbar = () => {
                       </div>
 
                       <NavLink
-                        to="/profile"
+                        to="/dashboard/profile"
                         onClick={() => setIsProfileOpen(false)}
                         className="px-4 py-2 hover:bg-primary/10 rounded-lg text-sm transition-colors"
                       >

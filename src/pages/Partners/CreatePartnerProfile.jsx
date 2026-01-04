@@ -93,7 +93,7 @@ const CreatePartnerProfile = () => {
 
   return (
    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center rounded-lg text-neutral-content ">
-    <div className="max-w-4xl mx-auto rounded-xl border bg-base-100 border-gray-100 shadow-sm overflow-hidden">
+    <div className="max-w-4xl mx-auto rounded-xl bg-base-100  shadow-sm overflow-hidden">
       
       <div className="px-8 py-4 border-b border-gray-100 ">
         <h2 className="text-xl font-bold ">Talent Information</h2>

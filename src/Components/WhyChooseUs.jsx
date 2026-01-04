@@ -14,7 +14,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="relative py-32 bg-black overflow-hidden border-t border-white/5">
+    <section className="relative py-32 mt-20 bg-black overflow-hidden border-t border-white/5">
       
       {/* 1. MOVING BACKGROUND TEXT */}
       <div className="absolute top-0 left-0 w-full overflow-hidden opacity-[0.03] select-none pointer-events-none">

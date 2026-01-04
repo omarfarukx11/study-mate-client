@@ -65,7 +65,6 @@ const AboutStudy = () => {
 
   return (
     <section className="relative overflow-hidden max-w-[1536px] mx-auto text-neutral-content">
-      {/* --- HOW IT WORKS: TIMELINE --- */}
       <div className="max-w-[1536px] mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

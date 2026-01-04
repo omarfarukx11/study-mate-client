@@ -198,7 +198,7 @@ const CreateBlog = () => {
             <button
               type="submit"
               disabled={isUploading}
-              className={`w-full font-black py-2 rounded-2xl flex items-center justify-center gap-3 transition-all transform active:scale-[0.98] text-lg uppercase tracking-wider ${
+              className={`w-full font-black py-2 rounded-4xl text-white flex items-center justify-center gap-3 transition-all transform active:scale-[0.98] text-sm uppercase tracking-wider ${
                 isUploading
                   ? "bg-white/5 cursor-not-allowed text-gray-500"
                   : "bg-primary hover:bg-primary/90 text-black shadow-[0_10px_30px_rgba(var(--p),0.2)]"

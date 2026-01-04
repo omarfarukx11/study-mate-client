@@ -39,7 +39,7 @@ const TopPartners = ({ data }) => {
     <div className="mt-auto pt-3  dark:border-zinc-800">
       <Link
         to={`/partnerDetails/${_id}`}
-        className="w-full inline-flex items-center justify-center bg-primary dark:bg-primary text-base-100 text-xs font-bold py-2.5 rounded-lg transition-all hover:bg-neutral dark:hover:bg-primary/80 active:scale-95"
+        className="w-full inline-flex items-center justify-center bg-primary text-base-100 hover:bg-neutral  text-xs font-bold py-2.5 rounded-4xl transition-all dark:hover:bg-primary/80 active:scale-95"
       >
         View Profile
       </Link>

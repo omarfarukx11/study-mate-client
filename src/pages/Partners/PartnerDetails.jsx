@@ -205,18 +205,18 @@ const PartnerDetails = () => {
             <button
               onClick={handleSendRequest}
               disabled={requested}
-              className={`group relative overflow-hidden w-full py-5 rounded-[1.5rem] font-black uppercase tracking-widest text-sm transition-all duration-500 shadow-xl
-                ${
-                  requested
-                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                    : "bg-neutral text-white hover:bg-primary hover:shadow-primary/40 active:scale-95"
-                }`}
+              className={`w-full inline-flex items-center justify-center text-lg font-bold py-3 rounded-4xl transition-all active:scale-95 cursor-pointer
+    ${
+      requested
+        ? "bg-gray-400 text-white cursor-not-allowed opacity-70"
+        : "bg-primary text-base-100 hover:bg-neutral dark:hover:bg-primary/80"
+    }`}
             >
-              <span className="relative z-10 flex items-center justify-center gap-3">
-                {requested
-                  ? "Request Already Sent"
-                  : `Collaborate with ${name.split(" ")[0]}`}
-              </span>
+              {requested ? (
+                "Request Already Sent"
+              ) : (
+                <>Collaborate with {name.split(" ")[0]}</>
+              )}
             </button>
           </div>
         </div>

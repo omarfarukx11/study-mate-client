@@ -47,10 +47,8 @@ const DasNav = () => {
                   <img src={user.photoURL || "/avatar.png"} alt="User" />
                 </div>
               </div>
-              <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-xl border border-base-200 mt-3">
-                <li className="px-4 py-2 font-semibold text-xs text-gray-500 uppercase">Account</li>
-                <li><Link to="/profile">Profile</Link></li>
-                <li><Link to="/settings">Settings</Link></li>
+              <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-xl border border-base-200 mt-3">
+                <li><Link to="/dashboard/profile">Profile</Link></li>
                 <div className="divider my-0"></div>
                 <li>
                   <button 
